@@ -1,0 +1,43 @@
+file(REMOVE_RECURSE
+  "../lib/libPyEngineLib.a"
+  "../lib/libPyEngineLib.pdb"
+  "CMakeFiles/PyEngineLib.dir/src/Assets/Mesh.cpp.o"
+  "CMakeFiles/PyEngineLib.dir/src/Assets/Mesh.cpp.o.d"
+  "CMakeFiles/PyEngineLib.dir/src/Core/FileSystem.cpp.o"
+  "CMakeFiles/PyEngineLib.dir/src/Core/FileSystem.cpp.o.d"
+  "CMakeFiles/PyEngineLib.dir/src/Core/Log.cpp.o"
+  "CMakeFiles/PyEngineLib.dir/src/Core/Log.cpp.o.d"
+  "CMakeFiles/PyEngineLib.dir/src/Core/Timer.cpp.o"
+  "CMakeFiles/PyEngineLib.dir/src/Core/Timer.cpp.o.d"
+  "CMakeFiles/PyEngineLib.dir/src/ImGui/ImGuiLayer.cpp.o"
+  "CMakeFiles/PyEngineLib.dir/src/ImGui/ImGuiLayer.cpp.o.d"
+  "CMakeFiles/PyEngineLib.dir/src/Platform/Input.cpp.o"
+  "CMakeFiles/PyEngineLib.dir/src/Platform/Input.cpp.o.d"
+  "CMakeFiles/PyEngineLib.dir/src/Platform/Window.cpp.o"
+  "CMakeFiles/PyEngineLib.dir/src/Platform/Window.cpp.o.d"
+  "CMakeFiles/PyEngineLib.dir/src/Renderer/Buffer.cpp.o"
+  "CMakeFiles/PyEngineLib.dir/src/Renderer/Buffer.cpp.o.d"
+  "CMakeFiles/PyEngineLib.dir/src/Renderer/Pipeline.cpp.o"
+  "CMakeFiles/PyEngineLib.dir/src/Renderer/Pipeline.cpp.o.d"
+  "CMakeFiles/PyEngineLib.dir/src/Renderer/Renderer.cpp.o"
+  "CMakeFiles/PyEngineLib.dir/src/Renderer/Renderer.cpp.o.d"
+  "CMakeFiles/PyEngineLib.dir/src/Renderer/Swapchain.cpp.o"
+  "CMakeFiles/PyEngineLib.dir/src/Renderer/Swapchain.cpp.o.d"
+  "CMakeFiles/PyEngineLib.dir/src/Renderer/VulkanContext.cpp.o"
+  "CMakeFiles/PyEngineLib.dir/src/Renderer/VulkanContext.cpp.o.d"
+  "CMakeFiles/PyEngineLib.dir/src/Scene/Camera.cpp.o"
+  "CMakeFiles/PyEngineLib.dir/src/Scene/Camera.cpp.o.d"
+  "CMakeFiles/PyEngineLib.dir/src/Scene/Components.cpp.o"
+  "CMakeFiles/PyEngineLib.dir/src/Scene/Components.cpp.o.d"
+  "CMakeFiles/PyEngineLib.dir/src/Scene/Scene.cpp.o"
+  "CMakeFiles/PyEngineLib.dir/src/Scene/Scene.cpp.o.d"
+  "CMakeFiles/PyEngineLib.dir/src/ThirdParty/stb_image_impl.cpp.o"
+  "CMakeFiles/PyEngineLib.dir/src/ThirdParty/stb_image_impl.cpp.o.d"
+  "CMakeFiles/PyEngineLib.dir/src/ThirdParty/vma_impl.cpp.o"
+  "CMakeFiles/PyEngineLib.dir/src/ThirdParty/vma_impl.cpp.o.d"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/PyEngineLib.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

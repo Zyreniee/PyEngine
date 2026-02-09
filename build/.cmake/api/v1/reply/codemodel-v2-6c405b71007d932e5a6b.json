@@ -1,0 +1,395 @@
+{
+	"configurations" : 
+	[
+		{
+			"abstractTargets" : 
+			[
+				{
+					"directoryIndex" : 3,
+					"id" : "Doxygen::dot::@3b7dc57821a5902e577d",
+					"jsonFile" : "target-Doxygen__dot-Debug-103e603ccd339ff8dc60.json",
+					"name" : "Doxygen::dot",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "EnTT::@e079cb554d68b20fd169",
+					"jsonFile" : "target-EnTT-Debug-7c1ec00143b238e4837c.json",
+					"name" : "EnTT",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Git::Git::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Git__Git-Debug-e41f12c5586736c33727.json",
+					"name" : "Git::Git",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Threads::Threads::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Threads__Threads-Debug-59515d59f08ca81774e7.json",
+					"name" : "Threads::Threads",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Vulkan::Headers::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Vulkan__Headers-Debug-4fc074922ee5c2545bea.json",
+					"name" : "Vulkan::Headers",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Vulkan::Vulkan::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Vulkan__Vulkan-Debug-9c5b9711f4336d8a475b.json",
+					"name" : "Vulkan::Vulkan",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Vulkan::glslangValidator::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Vulkan__glslangValidator-Debug-7a2b5d6f5e55dd4f13f0.json",
+					"name" : "Vulkan::glslangValidator",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Vulkan::glslc::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Vulkan__glslc-Debug-05a5047fac8aabc5d89a.json",
+					"name" : "Vulkan::glslc",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "fmt::fmt::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-fmt__fmt-Debug-ef55bd48601162c7dda6.json",
+					"name" : "fmt::fmt",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "fmt::fmt-header-only::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-fmt__fmt-header-only-Debug-d0e450e70a8b37b8e76f.json",
+					"name" : "fmt::fmt-header-only",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "glfw::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-glfw-Debug-363335673825815e4cfb.json",
+					"name" : "glfw",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "glm::glm::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-glm__glm-Debug-b523fe3e5c28bee4e1fe.json",
+					"name" : "glm::glm",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "glm::glm-header-only::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-glm__glm-header-only-Debug-2a3676d2239309d0f69b.json",
+					"name" : "glm::glm-header-only",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "spdlog::spdlog::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-spdlog__spdlog-Debug-83cd147a738f76de25b5.json",
+					"name" : "spdlog::spdlog",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "spdlog::spdlog_header_only::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-spdlog__spdlog_header_only-Debug-f1f8e5dd0fd69be7a2c2.json",
+					"name" : "spdlog::spdlog_header_only",
+					"projectIndex" : 0
+				}
+			],
+			"directories" : 
+			[
+				{
+					"abstractTargetIndexes" : 
+					[
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14
+					],
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2,
+						3,
+						5,
+						6
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-9ad1a58d4644cf6543fa.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.24"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						3
+					]
+				},
+				{
+					"abstractTargetIndexes" : 
+					[
+						1
+					],
+					"build" : "_deps/entt-build",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.entt-build-Debug-a94efaee6c72179eca1b.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.15.7"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "build/_deps/entt-src"
+				},
+				{
+					"build" : "_deps/tinygltf-build",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.tinygltf-build-Debug-fe9ddbb68aa082f5ddb1.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 2,
+					"source" : "build/_deps/tinygltf-src",
+					"targetIndexes" : 
+					[
+						4,
+						5
+					]
+				},
+				{
+					"abstractTargetIndexes" : 
+					[
+						0
+					],
+					"build" : "_deps/vulkanmemoryallocator-build",
+					"childIndexes" : 
+					[
+						4
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.vulkanmemoryallocator-build-Debug-8360b38ffb2a07da45f2.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.9"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 3,
+					"source" : "build/_deps/vulkanmemoryallocator-src"
+				},
+				{
+					"build" : "_deps/vulkanmemoryallocator-build/src",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.vulkanmemoryallocator-build.src-Debug-4a0298d63bb438531820.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.9"
+					},
+					"parentIndex" : 3,
+					"projectIndex" : 3,
+					"source" : "build/_deps/vulkanmemoryallocator-src/src",
+					"targetIndexes" : 
+					[
+						2
+					]
+				},
+				{
+					"build" : "engine",
+					"jsonFile" : "directory-engine-Debug-f8ab5b9777cc7d5045a1.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.24"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "engine",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"build" : "sandbox",
+					"jsonFile" : "directory-sandbox-Debug-9f6d18eecf89b560eacf.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.24"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "sandbox",
+					"targetIndexes" : 
+					[
+						1
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"abstractTargetIndexes" : 
+					[
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14
+					],
+					"childIndexes" : 
+					[
+						1,
+						2,
+						3
+					],
+					"directoryIndexes" : 
+					[
+						0,
+						5,
+						6
+					],
+					"name" : "PyEngine",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						3
+					]
+				},
+				{
+					"abstractTargetIndexes" : 
+					[
+						1
+					],
+					"directoryIndexes" : 
+					[
+						1
+					],
+					"name" : "EnTT",
+					"parentIndex" : 0
+				},
+				{
+					"directoryIndexes" : 
+					[
+						2
+					],
+					"name" : "tinygltf",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						4,
+						5
+					]
+				},
+				{
+					"abstractTargetIndexes" : 
+					[
+						0
+					],
+					"directoryIndexes" : 
+					[
+						3,
+						4
+					],
+					"name" : "VulkanMemoryAllocator",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 5,
+					"id" : "PyEngineLib::@4088515cb4035b412499",
+					"jsonFile" : "target-PyEngineLib-Debug-45303c4885904740afd2.json",
+					"name" : "PyEngineLib",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "PyEngineSandbox::@e49c0a52b1bf699b6c68",
+					"jsonFile" : "target-PyEngineSandbox-Debug-6f2f05cdfe60c78c2311.json",
+					"name" : "PyEngineSandbox",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "VulkanMemoryAllocator::@c6ba3deea74822a1aad1",
+					"jsonFile" : "target-VulkanMemoryAllocator-Debug-7260c41f21af74181c50.json",
+					"name" : "VulkanMemoryAllocator",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "imgui::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-imgui-Debug-700f3c16ef00f16b1afc.json",
+					"name" : "imgui",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "loader_example::@cf7fec98cfc62fa92173",
+					"jsonFile" : "target-loader_example-Debug-347488659a1874aba15c.json",
+					"name" : "loader_example",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "tinygltf::@cf7fec98cfc62fa92173",
+					"jsonFile" : "target-tinygltf-Debug-1e14e961c3bb1d1a91bf.json",
+					"name" : "tinygltf",
+					"projectIndex" : 2
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/zyreniee/Belgeler/GitHub/PyEngine/build",
+		"source" : "/home/zyreniee/Belgeler/GitHub/PyEngine"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 9
+	}
+}

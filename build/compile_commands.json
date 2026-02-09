@@ -1,0 +1,170 @@
+[
+{
+  "directory": "/home/zyreniee/Belgeler/GitHub/PyEngine/build",
+  "command": "/usr/bin/c++ -DIMGUI_IMPL_VULKAN_HAS_DYNAMIC_RENDERING=1 -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src/backends -g -std=c++20 -w -o CMakeFiles/imgui.dir/_deps/imgui-src/imgui.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src/imgui.cpp",
+  "file": "/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src/imgui.cpp",
+  "output": "CMakeFiles/imgui.dir/_deps/imgui-src/imgui.cpp.o"
+},
+{
+  "directory": "/home/zyreniee/Belgeler/GitHub/PyEngine/build",
+  "command": "/usr/bin/c++ -DIMGUI_IMPL_VULKAN_HAS_DYNAMIC_RENDERING=1 -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src/backends -g -std=c++20 -w -o CMakeFiles/imgui.dir/_deps/imgui-src/imgui_demo.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src/imgui_demo.cpp",
+  "file": "/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src/imgui_demo.cpp",
+  "output": "CMakeFiles/imgui.dir/_deps/imgui-src/imgui_demo.cpp.o"
+},
+{
+  "directory": "/home/zyreniee/Belgeler/GitHub/PyEngine/build",
+  "command": "/usr/bin/c++ -DIMGUI_IMPL_VULKAN_HAS_DYNAMIC_RENDERING=1 -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src/backends -g -std=c++20 -w -o CMakeFiles/imgui.dir/_deps/imgui-src/imgui_draw.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src/imgui_draw.cpp",
+  "file": "/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src/imgui_draw.cpp",
+  "output": "CMakeFiles/imgui.dir/_deps/imgui-src/imgui_draw.cpp.o"
+},
+{
+  "directory": "/home/zyreniee/Belgeler/GitHub/PyEngine/build",
+  "command": "/usr/bin/c++ -DIMGUI_IMPL_VULKAN_HAS_DYNAMIC_RENDERING=1 -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src/backends -g -std=c++20 -w -o CMakeFiles/imgui.dir/_deps/imgui-src/imgui_tables.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src/imgui_tables.cpp",
+  "file": "/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src/imgui_tables.cpp",
+  "output": "CMakeFiles/imgui.dir/_deps/imgui-src/imgui_tables.cpp.o"
+},
+{
+  "directory": "/home/zyreniee/Belgeler/GitHub/PyEngine/build",
+  "command": "/usr/bin/c++ -DIMGUI_IMPL_VULKAN_HAS_DYNAMIC_RENDERING=1 -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src/backends -g -std=c++20 -w -o CMakeFiles/imgui.dir/_deps/imgui-src/imgui_widgets.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src/imgui_widgets.cpp",
+  "file": "/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src/imgui_widgets.cpp",
+  "output": "CMakeFiles/imgui.dir/_deps/imgui-src/imgui_widgets.cpp.o"
+},
+{
+  "directory": "/home/zyreniee/Belgeler/GitHub/PyEngine/build",
+  "command": "/usr/bin/c++ -DIMGUI_IMPL_VULKAN_HAS_DYNAMIC_RENDERING=1 -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src/backends -g -std=c++20 -w -o CMakeFiles/imgui.dir/_deps/imgui-src/backends/imgui_impl_glfw.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src/backends/imgui_impl_glfw.cpp",
+  "file": "/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src/backends/imgui_impl_glfw.cpp",
+  "output": "CMakeFiles/imgui.dir/_deps/imgui-src/backends/imgui_impl_glfw.cpp.o"
+},
+{
+  "directory": "/home/zyreniee/Belgeler/GitHub/PyEngine/build",
+  "command": "/usr/bin/c++ -DIMGUI_IMPL_VULKAN_HAS_DYNAMIC_RENDERING=1 -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src/backends -g -std=c++20 -w -o CMakeFiles/imgui.dir/_deps/imgui-src/backends/imgui_impl_vulkan.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src/backends/imgui_impl_vulkan.cpp",
+  "file": "/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src/backends/imgui_impl_vulkan.cpp",
+  "output": "CMakeFiles/imgui.dir/_deps/imgui-src/backends/imgui_impl_vulkan.cpp.o"
+},
+{
+  "directory": "/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/tinygltf-build",
+  "command": "/usr/bin/c++   -g -std=c++11 -w -o CMakeFiles/loader_example.dir/loader_example.cc.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/tinygltf-src/loader_example.cc",
+  "file": "/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/tinygltf-src/loader_example.cc",
+  "output": "_deps/tinygltf-build/CMakeFiles/loader_example.dir/loader_example.cc.o"
+},
+{
+  "directory": "/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/tinygltf-build",
+  "command": "/usr/bin/c++   -g -std=c++11 -w -o CMakeFiles/tinygltf.dir/tiny_gltf.cc.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/tinygltf-src/tiny_gltf.cc",
+  "file": "/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/tinygltf-src/tiny_gltf.cc",
+  "output": "_deps/tinygltf-build/CMakeFiles/tinygltf.dir/tiny_gltf.cc.o"
+},
+{
+  "directory": "/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/vulkanmemoryallocator-build/src",
+  "command": "/usr/bin/c++ -DVMA_DEBUG_ALWAYS_DEDICATED_MEMORY=0 -DVMA_DEBUG_DONT_EXCEED_MAX_MEMORY_ALLOCATION_COUNT=0 -DVMA_DEBUG_GLOBAL_MUTEX=0 -DVMA_DEBUG_INITIALIZE_ALLOCATIONS=0 -DVMA_DYNAMIC_VULKAN_FUNCTIONS=0 -DVMA_RECORDING_ENABLED=0 -DVMA_STATIC_VULKAN_FUNCTIONS=1 -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/vulkanmemoryallocator-src/include -g -std=c++14 -w -o CMakeFiles/VulkanMemoryAllocator.dir/VmaUsage.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/vulkanmemoryallocator-src/src/VmaUsage.cpp",
+  "file": "/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/vulkanmemoryallocator-src/src/VmaUsage.cpp",
+  "output": "_deps/vulkanmemoryallocator-build/src/CMakeFiles/VulkanMemoryAllocator.dir/VmaUsage.cpp.o"
+},
+{
+  "directory": "/home/zyreniee/Belgeler/GitHub/PyEngine/build/engine",
+  "command": "/usr/bin/c++ -DFMT_SHARED -DGLM_ENABLE_EXPERIMENTAL -DGLM_FORCE_DEPTH_ZERO_TO_ONE -DGLM_FORCE_RADIANS -DIMGUI_IMPL_VULKAN_HAS_DYNAMIC_RENDERING=1 -DPYENGINE_DEBUG -DPYENGINE_ENABLE_ASSERTS -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB -DVMA_DEBUG_ALWAYS_DEDICATED_MEMORY=0 -DVMA_DEBUG_DONT_EXCEED_MAX_MEMORY_ALLOCATION_COUNT=0 -DVMA_DEBUG_GLOBAL_MUTEX=0 -DVMA_DEBUG_INITIALIZE_ALLOCATIONS=0 -DVMA_DYNAMIC_VULKAN_FUNCTIONS=0 -DVMA_RECORDING_ENABLED=0 -DVMA_STATIC_VULKAN_FUNCTIONS=1 -I/home/zyreniee/Belgeler/GitHub/PyEngine/engine/include -I/home/zyreniee/Belgeler/GitHub/PyEngine/third_party -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/entt-src/single_include -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/vulkanmemoryallocator-src/include -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/entt-src/src -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src/backends -g -std=c++20 -w -o CMakeFiles/PyEngineLib.dir/src/Assets/Mesh.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Assets/Mesh.cpp",
+  "file": "/home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Assets/Mesh.cpp",
+  "output": "engine/CMakeFiles/PyEngineLib.dir/src/Assets/Mesh.cpp.o"
+},
+{
+  "directory": "/home/zyreniee/Belgeler/GitHub/PyEngine/build/engine",
+  "command": "/usr/bin/c++ -DFMT_SHARED -DGLM_ENABLE_EXPERIMENTAL -DGLM_FORCE_DEPTH_ZERO_TO_ONE -DGLM_FORCE_RADIANS -DIMGUI_IMPL_VULKAN_HAS_DYNAMIC_RENDERING=1 -DPYENGINE_DEBUG -DPYENGINE_ENABLE_ASSERTS -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB -DVMA_DEBUG_ALWAYS_DEDICATED_MEMORY=0 -DVMA_DEBUG_DONT_EXCEED_MAX_MEMORY_ALLOCATION_COUNT=0 -DVMA_DEBUG_GLOBAL_MUTEX=0 -DVMA_DEBUG_INITIALIZE_ALLOCATIONS=0 -DVMA_DYNAMIC_VULKAN_FUNCTIONS=0 -DVMA_RECORDING_ENABLED=0 -DVMA_STATIC_VULKAN_FUNCTIONS=1 -I/home/zyreniee/Belgeler/GitHub/PyEngine/engine/include -I/home/zyreniee/Belgeler/GitHub/PyEngine/third_party -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/entt-src/single_include -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/vulkanmemoryallocator-src/include -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/entt-src/src -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src/backends -g -std=c++20 -w -o CMakeFiles/PyEngineLib.dir/src/Core/FileSystem.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Core/FileSystem.cpp",
+  "file": "/home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Core/FileSystem.cpp",
+  "output": "engine/CMakeFiles/PyEngineLib.dir/src/Core/FileSystem.cpp.o"
+},
+{
+  "directory": "/home/zyreniee/Belgeler/GitHub/PyEngine/build/engine",
+  "command": "/usr/bin/c++ -DFMT_SHARED -DGLM_ENABLE_EXPERIMENTAL -DGLM_FORCE_DEPTH_ZERO_TO_ONE -DGLM_FORCE_RADIANS -DIMGUI_IMPL_VULKAN_HAS_DYNAMIC_RENDERING=1 -DPYENGINE_DEBUG -DPYENGINE_ENABLE_ASSERTS -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB -DVMA_DEBUG_ALWAYS_DEDICATED_MEMORY=0 -DVMA_DEBUG_DONT_EXCEED_MAX_MEMORY_ALLOCATION_COUNT=0 -DVMA_DEBUG_GLOBAL_MUTEX=0 -DVMA_DEBUG_INITIALIZE_ALLOCATIONS=0 -DVMA_DYNAMIC_VULKAN_FUNCTIONS=0 -DVMA_RECORDING_ENABLED=0 -DVMA_STATIC_VULKAN_FUNCTIONS=1 -I/home/zyreniee/Belgeler/GitHub/PyEngine/engine/include -I/home/zyreniee/Belgeler/GitHub/PyEngine/third_party -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/entt-src/single_include -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/vulkanmemoryallocator-src/include -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/entt-src/src -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src/backends -g -std=c++20 -w -o CMakeFiles/PyEngineLib.dir/src/Core/Log.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Core/Log.cpp",
+  "file": "/home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Core/Log.cpp",
+  "output": "engine/CMakeFiles/PyEngineLib.dir/src/Core/Log.cpp.o"
+},
+{
+  "directory": "/home/zyreniee/Belgeler/GitHub/PyEngine/build/engine",
+  "command": "/usr/bin/c++ -DFMT_SHARED -DGLM_ENABLE_EXPERIMENTAL -DGLM_FORCE_DEPTH_ZERO_TO_ONE -DGLM_FORCE_RADIANS -DIMGUI_IMPL_VULKAN_HAS_DYNAMIC_RENDERING=1 -DPYENGINE_DEBUG -DPYENGINE_ENABLE_ASSERTS -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB -DVMA_DEBUG_ALWAYS_DEDICATED_MEMORY=0 -DVMA_DEBUG_DONT_EXCEED_MAX_MEMORY_ALLOCATION_COUNT=0 -DVMA_DEBUG_GLOBAL_MUTEX=0 -DVMA_DEBUG_INITIALIZE_ALLOCATIONS=0 -DVMA_DYNAMIC_VULKAN_FUNCTIONS=0 -DVMA_RECORDING_ENABLED=0 -DVMA_STATIC_VULKAN_FUNCTIONS=1 -I/home/zyreniee/Belgeler/GitHub/PyEngine/engine/include -I/home/zyreniee/Belgeler/GitHub/PyEngine/third_party -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/entt-src/single_include -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/vulkanmemoryallocator-src/include -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/entt-src/src -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src/backends -g -std=c++20 -w -o CMakeFiles/PyEngineLib.dir/src/Core/Timer.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Core/Timer.cpp",
+  "file": "/home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Core/Timer.cpp",
+  "output": "engine/CMakeFiles/PyEngineLib.dir/src/Core/Timer.cpp.o"
+},
+{
+  "directory": "/home/zyreniee/Belgeler/GitHub/PyEngine/build/engine",
+  "command": "/usr/bin/c++ -DFMT_SHARED -DGLM_ENABLE_EXPERIMENTAL -DGLM_FORCE_DEPTH_ZERO_TO_ONE -DGLM_FORCE_RADIANS -DIMGUI_IMPL_VULKAN_HAS_DYNAMIC_RENDERING=1 -DPYENGINE_DEBUG -DPYENGINE_ENABLE_ASSERTS -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB -DVMA_DEBUG_ALWAYS_DEDICATED_MEMORY=0 -DVMA_DEBUG_DONT_EXCEED_MAX_MEMORY_ALLOCATION_COUNT=0 -DVMA_DEBUG_GLOBAL_MUTEX=0 -DVMA_DEBUG_INITIALIZE_ALLOCATIONS=0 -DVMA_DYNAMIC_VULKAN_FUNCTIONS=0 -DVMA_RECORDING_ENABLED=0 -DVMA_STATIC_VULKAN_FUNCTIONS=1 -I/home/zyreniee/Belgeler/GitHub/PyEngine/engine/include -I/home/zyreniee/Belgeler/GitHub/PyEngine/third_party -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/entt-src/single_include -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/vulkanmemoryallocator-src/include -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/entt-src/src -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src/backends -g -std=c++20 -w -o CMakeFiles/PyEngineLib.dir/src/ImGui/ImGuiLayer.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/ImGui/ImGuiLayer.cpp",
+  "file": "/home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/ImGui/ImGuiLayer.cpp",
+  "output": "engine/CMakeFiles/PyEngineLib.dir/src/ImGui/ImGuiLayer.cpp.o"
+},
+{
+  "directory": "/home/zyreniee/Belgeler/GitHub/PyEngine/build/engine",
+  "command": "/usr/bin/c++ -DFMT_SHARED -DGLM_ENABLE_EXPERIMENTAL -DGLM_FORCE_DEPTH_ZERO_TO_ONE -DGLM_FORCE_RADIANS -DIMGUI_IMPL_VULKAN_HAS_DYNAMIC_RENDERING=1 -DPYENGINE_DEBUG -DPYENGINE_ENABLE_ASSERTS -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB -DVMA_DEBUG_ALWAYS_DEDICATED_MEMORY=0 -DVMA_DEBUG_DONT_EXCEED_MAX_MEMORY_ALLOCATION_COUNT=0 -DVMA_DEBUG_GLOBAL_MUTEX=0 -DVMA_DEBUG_INITIALIZE_ALLOCATIONS=0 -DVMA_DYNAMIC_VULKAN_FUNCTIONS=0 -DVMA_RECORDING_ENABLED=0 -DVMA_STATIC_VULKAN_FUNCTIONS=1 -I/home/zyreniee/Belgeler/GitHub/PyEngine/engine/include -I/home/zyreniee/Belgeler/GitHub/PyEngine/third_party -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/entt-src/single_include -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/vulkanmemoryallocator-src/include -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/entt-src/src -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src/backends -g -std=c++20 -w -o CMakeFiles/PyEngineLib.dir/src/Platform/Input.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Platform/Input.cpp",
+  "file": "/home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Platform/Input.cpp",
+  "output": "engine/CMakeFiles/PyEngineLib.dir/src/Platform/Input.cpp.o"
+},
+{
+  "directory": "/home/zyreniee/Belgeler/GitHub/PyEngine/build/engine",
+  "command": "/usr/bin/c++ -DFMT_SHARED -DGLM_ENABLE_EXPERIMENTAL -DGLM_FORCE_DEPTH_ZERO_TO_ONE -DGLM_FORCE_RADIANS -DIMGUI_IMPL_VULKAN_HAS_DYNAMIC_RENDERING=1 -DPYENGINE_DEBUG -DPYENGINE_ENABLE_ASSERTS -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB -DVMA_DEBUG_ALWAYS_DEDICATED_MEMORY=0 -DVMA_DEBUG_DONT_EXCEED_MAX_MEMORY_ALLOCATION_COUNT=0 -DVMA_DEBUG_GLOBAL_MUTEX=0 -DVMA_DEBUG_INITIALIZE_ALLOCATIONS=0 -DVMA_DYNAMIC_VULKAN_FUNCTIONS=0 -DVMA_RECORDING_ENABLED=0 -DVMA_STATIC_VULKAN_FUNCTIONS=1 -I/home/zyreniee/Belgeler/GitHub/PyEngine/engine/include -I/home/zyreniee/Belgeler/GitHub/PyEngine/third_party -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/entt-src/single_include -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/vulkanmemoryallocator-src/include -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/entt-src/src -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src/backends -g -std=c++20 -w -o CMakeFiles/PyEngineLib.dir/src/Platform/Window.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Platform/Window.cpp",
+  "file": "/home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Platform/Window.cpp",
+  "output": "engine/CMakeFiles/PyEngineLib.dir/src/Platform/Window.cpp.o"
+},
+{
+  "directory": "/home/zyreniee/Belgeler/GitHub/PyEngine/build/engine",
+  "command": "/usr/bin/c++ -DFMT_SHARED -DGLM_ENABLE_EXPERIMENTAL -DGLM_FORCE_DEPTH_ZERO_TO_ONE -DGLM_FORCE_RADIANS -DIMGUI_IMPL_VULKAN_HAS_DYNAMIC_RENDERING=1 -DPYENGINE_DEBUG -DPYENGINE_ENABLE_ASSERTS -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB -DVMA_DEBUG_ALWAYS_DEDICATED_MEMORY=0 -DVMA_DEBUG_DONT_EXCEED_MAX_MEMORY_ALLOCATION_COUNT=0 -DVMA_DEBUG_GLOBAL_MUTEX=0 -DVMA_DEBUG_INITIALIZE_ALLOCATIONS=0 -DVMA_DYNAMIC_VULKAN_FUNCTIONS=0 -DVMA_RECORDING_ENABLED=0 -DVMA_STATIC_VULKAN_FUNCTIONS=1 -I/home/zyreniee/Belgeler/GitHub/PyEngine/engine/include -I/home/zyreniee/Belgeler/GitHub/PyEngine/third_party -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/entt-src/single_include -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/vulkanmemoryallocator-src/include -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/entt-src/src -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src/backends -g -std=c++20 -w -o CMakeFiles/PyEngineLib.dir/src/Renderer/Buffer.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Renderer/Buffer.cpp",
+  "file": "/home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Renderer/Buffer.cpp",
+  "output": "engine/CMakeFiles/PyEngineLib.dir/src/Renderer/Buffer.cpp.o"
+},
+{
+  "directory": "/home/zyreniee/Belgeler/GitHub/PyEngine/build/engine",
+  "command": "/usr/bin/c++ -DFMT_SHARED -DGLM_ENABLE_EXPERIMENTAL -DGLM_FORCE_DEPTH_ZERO_TO_ONE -DGLM_FORCE_RADIANS -DIMGUI_IMPL_VULKAN_HAS_DYNAMIC_RENDERING=1 -DPYENGINE_DEBUG -DPYENGINE_ENABLE_ASSERTS -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB -DVMA_DEBUG_ALWAYS_DEDICATED_MEMORY=0 -DVMA_DEBUG_DONT_EXCEED_MAX_MEMORY_ALLOCATION_COUNT=0 -DVMA_DEBUG_GLOBAL_MUTEX=0 -DVMA_DEBUG_INITIALIZE_ALLOCATIONS=0 -DVMA_DYNAMIC_VULKAN_FUNCTIONS=0 -DVMA_RECORDING_ENABLED=0 -DVMA_STATIC_VULKAN_FUNCTIONS=1 -I/home/zyreniee/Belgeler/GitHub/PyEngine/engine/include -I/home/zyreniee/Belgeler/GitHub/PyEngine/third_party -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/entt-src/single_include -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/vulkanmemoryallocator-src/include -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/entt-src/src -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src/backends -g -std=c++20 -w -o CMakeFiles/PyEngineLib.dir/src/Renderer/Pipeline.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Renderer/Pipeline.cpp",
+  "file": "/home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Renderer/Pipeline.cpp",
+  "output": "engine/CMakeFiles/PyEngineLib.dir/src/Renderer/Pipeline.cpp.o"
+},
+{
+  "directory": "/home/zyreniee/Belgeler/GitHub/PyEngine/build/engine",
+  "command": "/usr/bin/c++ -DFMT_SHARED -DGLM_ENABLE_EXPERIMENTAL -DGLM_FORCE_DEPTH_ZERO_TO_ONE -DGLM_FORCE_RADIANS -DIMGUI_IMPL_VULKAN_HAS_DYNAMIC_RENDERING=1 -DPYENGINE_DEBUG -DPYENGINE_ENABLE_ASSERTS -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB -DVMA_DEBUG_ALWAYS_DEDICATED_MEMORY=0 -DVMA_DEBUG_DONT_EXCEED_MAX_MEMORY_ALLOCATION_COUNT=0 -DVMA_DEBUG_GLOBAL_MUTEX=0 -DVMA_DEBUG_INITIALIZE_ALLOCATIONS=0 -DVMA_DYNAMIC_VULKAN_FUNCTIONS=0 -DVMA_RECORDING_ENABLED=0 -DVMA_STATIC_VULKAN_FUNCTIONS=1 -I/home/zyreniee/Belgeler/GitHub/PyEngine/engine/include -I/home/zyreniee/Belgeler/GitHub/PyEngine/third_party -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/entt-src/single_include -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/vulkanmemoryallocator-src/include -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/entt-src/src -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src/backends -g -std=c++20 -w -o CMakeFiles/PyEngineLib.dir/src/Renderer/Renderer.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Renderer/Renderer.cpp",
+  "file": "/home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Renderer/Renderer.cpp",
+  "output": "engine/CMakeFiles/PyEngineLib.dir/src/Renderer/Renderer.cpp.o"
+},
+{
+  "directory": "/home/zyreniee/Belgeler/GitHub/PyEngine/build/engine",
+  "command": "/usr/bin/c++ -DFMT_SHARED -DGLM_ENABLE_EXPERIMENTAL -DGLM_FORCE_DEPTH_ZERO_TO_ONE -DGLM_FORCE_RADIANS -DIMGUI_IMPL_VULKAN_HAS_DYNAMIC_RENDERING=1 -DPYENGINE_DEBUG -DPYENGINE_ENABLE_ASSERTS -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB -DVMA_DEBUG_ALWAYS_DEDICATED_MEMORY=0 -DVMA_DEBUG_DONT_EXCEED_MAX_MEMORY_ALLOCATION_COUNT=0 -DVMA_DEBUG_GLOBAL_MUTEX=0 -DVMA_DEBUG_INITIALIZE_ALLOCATIONS=0 -DVMA_DYNAMIC_VULKAN_FUNCTIONS=0 -DVMA_RECORDING_ENABLED=0 -DVMA_STATIC_VULKAN_FUNCTIONS=1 -I/home/zyreniee/Belgeler/GitHub/PyEngine/engine/include -I/home/zyreniee/Belgeler/GitHub/PyEngine/third_party -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/entt-src/single_include -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/vulkanmemoryallocator-src/include -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/entt-src/src -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src/backends -g -std=c++20 -w -o CMakeFiles/PyEngineLib.dir/src/Renderer/Swapchain.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Renderer/Swapchain.cpp",
+  "file": "/home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Renderer/Swapchain.cpp",
+  "output": "engine/CMakeFiles/PyEngineLib.dir/src/Renderer/Swapchain.cpp.o"
+},
+{
+  "directory": "/home/zyreniee/Belgeler/GitHub/PyEngine/build/engine",
+  "command": "/usr/bin/c++ -DFMT_SHARED -DGLM_ENABLE_EXPERIMENTAL -DGLM_FORCE_DEPTH_ZERO_TO_ONE -DGLM_FORCE_RADIANS -DIMGUI_IMPL_VULKAN_HAS_DYNAMIC_RENDERING=1 -DPYENGINE_DEBUG -DPYENGINE_ENABLE_ASSERTS -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB -DVMA_DEBUG_ALWAYS_DEDICATED_MEMORY=0 -DVMA_DEBUG_DONT_EXCEED_MAX_MEMORY_ALLOCATION_COUNT=0 -DVMA_DEBUG_GLOBAL_MUTEX=0 -DVMA_DEBUG_INITIALIZE_ALLOCATIONS=0 -DVMA_DYNAMIC_VULKAN_FUNCTIONS=0 -DVMA_RECORDING_ENABLED=0 -DVMA_STATIC_VULKAN_FUNCTIONS=1 -I/home/zyreniee/Belgeler/GitHub/PyEngine/engine/include -I/home/zyreniee/Belgeler/GitHub/PyEngine/third_party -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/entt-src/single_include -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/vulkanmemoryallocator-src/include -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/entt-src/src -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src/backends -g -std=c++20 -w -o CMakeFiles/PyEngineLib.dir/src/Renderer/VulkanContext.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Renderer/VulkanContext.cpp",
+  "file": "/home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Renderer/VulkanContext.cpp",
+  "output": "engine/CMakeFiles/PyEngineLib.dir/src/Renderer/VulkanContext.cpp.o"
+},
+{
+  "directory": "/home/zyreniee/Belgeler/GitHub/PyEngine/build/engine",
+  "command": "/usr/bin/c++ -DFMT_SHARED -DGLM_ENABLE_EXPERIMENTAL -DGLM_FORCE_DEPTH_ZERO_TO_ONE -DGLM_FORCE_RADIANS -DIMGUI_IMPL_VULKAN_HAS_DYNAMIC_RENDERING=1 -DPYENGINE_DEBUG -DPYENGINE_ENABLE_ASSERTS -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB -DVMA_DEBUG_ALWAYS_DEDICATED_MEMORY=0 -DVMA_DEBUG_DONT_EXCEED_MAX_MEMORY_ALLOCATION_COUNT=0 -DVMA_DEBUG_GLOBAL_MUTEX=0 -DVMA_DEBUG_INITIALIZE_ALLOCATIONS=0 -DVMA_DYNAMIC_VULKAN_FUNCTIONS=0 -DVMA_RECORDING_ENABLED=0 -DVMA_STATIC_VULKAN_FUNCTIONS=1 -I/home/zyreniee/Belgeler/GitHub/PyEngine/engine/include -I/home/zyreniee/Belgeler/GitHub/PyEngine/third_party -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/entt-src/single_include -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/vulkanmemoryallocator-src/include -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/entt-src/src -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src/backends -g -std=c++20 -w -o CMakeFiles/PyEngineLib.dir/src/Scene/Camera.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Scene/Camera.cpp",
+  "file": "/home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Scene/Camera.cpp",
+  "output": "engine/CMakeFiles/PyEngineLib.dir/src/Scene/Camera.cpp.o"
+},
+{
+  "directory": "/home/zyreniee/Belgeler/GitHub/PyEngine/build/engine",
+  "command": "/usr/bin/c++ -DFMT_SHARED -DGLM_ENABLE_EXPERIMENTAL -DGLM_FORCE_DEPTH_ZERO_TO_ONE -DGLM_FORCE_RADIANS -DIMGUI_IMPL_VULKAN_HAS_DYNAMIC_RENDERING=1 -DPYENGINE_DEBUG -DPYENGINE_ENABLE_ASSERTS -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB -DVMA_DEBUG_ALWAYS_DEDICATED_MEMORY=0 -DVMA_DEBUG_DONT_EXCEED_MAX_MEMORY_ALLOCATION_COUNT=0 -DVMA_DEBUG_GLOBAL_MUTEX=0 -DVMA_DEBUG_INITIALIZE_ALLOCATIONS=0 -DVMA_DYNAMIC_VULKAN_FUNCTIONS=0 -DVMA_RECORDING_ENABLED=0 -DVMA_STATIC_VULKAN_FUNCTIONS=1 -I/home/zyreniee/Belgeler/GitHub/PyEngine/engine/include -I/home/zyreniee/Belgeler/GitHub/PyEngine/third_party -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/entt-src/single_include -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/vulkanmemoryallocator-src/include -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/entt-src/src -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src/backends -g -std=c++20 -w -o CMakeFiles/PyEngineLib.dir/src/Scene/Components.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Scene/Components.cpp",
+  "file": "/home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Scene/Components.cpp",
+  "output": "engine/CMakeFiles/PyEngineLib.dir/src/Scene/Components.cpp.o"
+},
+{
+  "directory": "/home/zyreniee/Belgeler/GitHub/PyEngine/build/engine",
+  "command": "/usr/bin/c++ -DFMT_SHARED -DGLM_ENABLE_EXPERIMENTAL -DGLM_FORCE_DEPTH_ZERO_TO_ONE -DGLM_FORCE_RADIANS -DIMGUI_IMPL_VULKAN_HAS_DYNAMIC_RENDERING=1 -DPYENGINE_DEBUG -DPYENGINE_ENABLE_ASSERTS -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB -DVMA_DEBUG_ALWAYS_DEDICATED_MEMORY=0 -DVMA_DEBUG_DONT_EXCEED_MAX_MEMORY_ALLOCATION_COUNT=0 -DVMA_DEBUG_GLOBAL_MUTEX=0 -DVMA_DEBUG_INITIALIZE_ALLOCATIONS=0 -DVMA_DYNAMIC_VULKAN_FUNCTIONS=0 -DVMA_RECORDING_ENABLED=0 -DVMA_STATIC_VULKAN_FUNCTIONS=1 -I/home/zyreniee/Belgeler/GitHub/PyEngine/engine/include -I/home/zyreniee/Belgeler/GitHub/PyEngine/third_party -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/entt-src/single_include -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/vulkanmemoryallocator-src/include -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/entt-src/src -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src/backends -g -std=c++20 -w -o CMakeFiles/PyEngineLib.dir/src/Scene/Scene.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Scene/Scene.cpp",
+  "file": "/home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Scene/Scene.cpp",
+  "output": "engine/CMakeFiles/PyEngineLib.dir/src/Scene/Scene.cpp.o"
+},
+{
+  "directory": "/home/zyreniee/Belgeler/GitHub/PyEngine/build/engine",
+  "command": "/usr/bin/c++ -DFMT_SHARED -DGLM_ENABLE_EXPERIMENTAL -DGLM_FORCE_DEPTH_ZERO_TO_ONE -DGLM_FORCE_RADIANS -DIMGUI_IMPL_VULKAN_HAS_DYNAMIC_RENDERING=1 -DPYENGINE_DEBUG -DPYENGINE_ENABLE_ASSERTS -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB -DVMA_DEBUG_ALWAYS_DEDICATED_MEMORY=0 -DVMA_DEBUG_DONT_EXCEED_MAX_MEMORY_ALLOCATION_COUNT=0 -DVMA_DEBUG_GLOBAL_MUTEX=0 -DVMA_DEBUG_INITIALIZE_ALLOCATIONS=0 -DVMA_DYNAMIC_VULKAN_FUNCTIONS=0 -DVMA_RECORDING_ENABLED=0 -DVMA_STATIC_VULKAN_FUNCTIONS=1 -I/home/zyreniee/Belgeler/GitHub/PyEngine/engine/include -I/home/zyreniee/Belgeler/GitHub/PyEngine/third_party -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/entt-src/single_include -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/vulkanmemoryallocator-src/include -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/entt-src/src -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src/backends -g -std=c++20 -w -o CMakeFiles/PyEngineLib.dir/src/ThirdParty/stb_image_impl.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/ThirdParty/stb_image_impl.cpp",
+  "file": "/home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/ThirdParty/stb_image_impl.cpp",
+  "output": "engine/CMakeFiles/PyEngineLib.dir/src/ThirdParty/stb_image_impl.cpp.o"
+},
+{
+  "directory": "/home/zyreniee/Belgeler/GitHub/PyEngine/build/engine",
+  "command": "/usr/bin/c++ -DFMT_SHARED -DGLM_ENABLE_EXPERIMENTAL -DGLM_FORCE_DEPTH_ZERO_TO_ONE -DGLM_FORCE_RADIANS -DIMGUI_IMPL_VULKAN_HAS_DYNAMIC_RENDERING=1 -DPYENGINE_DEBUG -DPYENGINE_ENABLE_ASSERTS -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB -DVMA_DEBUG_ALWAYS_DEDICATED_MEMORY=0 -DVMA_DEBUG_DONT_EXCEED_MAX_MEMORY_ALLOCATION_COUNT=0 -DVMA_DEBUG_GLOBAL_MUTEX=0 -DVMA_DEBUG_INITIALIZE_ALLOCATIONS=0 -DVMA_DYNAMIC_VULKAN_FUNCTIONS=0 -DVMA_RECORDING_ENABLED=0 -DVMA_STATIC_VULKAN_FUNCTIONS=1 -I/home/zyreniee/Belgeler/GitHub/PyEngine/engine/include -I/home/zyreniee/Belgeler/GitHub/PyEngine/third_party -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/entt-src/single_include -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/vulkanmemoryallocator-src/include -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/entt-src/src -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src/backends -g -std=c++20 -w -o CMakeFiles/PyEngineLib.dir/src/ThirdParty/vma_impl.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/ThirdParty/vma_impl.cpp",
+  "file": "/home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/ThirdParty/vma_impl.cpp",
+  "output": "engine/CMakeFiles/PyEngineLib.dir/src/ThirdParty/vma_impl.cpp.o"
+},
+{
+  "directory": "/home/zyreniee/Belgeler/GitHub/PyEngine/build/sandbox",
+  "command": "/usr/bin/c++ -DFMT_SHARED -DGLM_ENABLE_EXPERIMENTAL -DGLM_FORCE_DEPTH_ZERO_TO_ONE -DGLM_FORCE_RADIANS -DIMGUI_IMPL_VULKAN_HAS_DYNAMIC_RENDERING=1 -DPYENGINE_DEBUG -DPYENGINE_ENABLE_ASSERTS -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB -DVMA_DEBUG_ALWAYS_DEDICATED_MEMORY=0 -DVMA_DEBUG_DONT_EXCEED_MAX_MEMORY_ALLOCATION_COUNT=0 -DVMA_DEBUG_GLOBAL_MUTEX=0 -DVMA_DEBUG_INITIALIZE_ALLOCATIONS=0 -DVMA_DYNAMIC_VULKAN_FUNCTIONS=0 -DVMA_RECORDING_ENABLED=0 -DVMA_STATIC_VULKAN_FUNCTIONS=1 -I/home/zyreniee/Belgeler/GitHub/PyEngine/engine/include -I/home/zyreniee/Belgeler/GitHub/PyEngine/third_party -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/entt-src/single_include -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/vulkanmemoryallocator-src/include -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/entt-src/src -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src -I/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src/backends -g -std=c++20 -w -o CMakeFiles/PyEngineSandbox.dir/src/main.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/sandbox/src/main.cpp",
+  "file": "/home/zyreniee/Belgeler/GitHub/PyEngine/sandbox/src/main.cpp",
+  "output": "sandbox/CMakeFiles/PyEngineSandbox.dir/src/main.cpp.o"
+}
+]

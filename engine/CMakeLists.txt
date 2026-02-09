@@ -16,7 +16,7 @@ target_include_directories(PyEngineLib PUBLIC
 # Third-party includes
 target_include_directories(PyEngineLib PUBLIC
     ${CMAKE_SOURCE_DIR}/third_party
-    ${CMAKE_BINARY_DIR}/_deps/entt-src/single_include/entt
+    ${CMAKE_BINARY_DIR}/_deps/entt-src/single_include
     ${CMAKE_BINARY_DIR}/_deps/vulkanmemoryallocator-src/include
 )
 

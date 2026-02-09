@@ -17,10 +17,7 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 # Global compile options
 if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
     add_compile_options(
-        -Wall
-        -Wextra
-        -Wpedantic
-        -Wno-unused-parameter
+        -w
     )
 endif()
 
