@@ -1,6 +1,7 @@
 #include "PyEngine/Renderer/Renderer.hpp"
 
 #include <array>
+#include <filesystem>
 #include <glm/gtc/matrix_transform.hpp>
 
 #include "PyEngine/Assets/Mesh.hpp"
@@ -175,14 +176,14 @@ void Renderer::EndFrame() {
 }
 
 void Renderer::DrawMesh(Mesh* mesh, const glm::mat4& transform) {
-    if (!m_IsFrameStarted)
+    if (!m_IsFrameStarted || !m_Pipeline)
         return;
 
-    UpdateUniformBuffer(m_CurrentImageIndex);
+    UpdateUniformBuffer(m_CurrentFrameIndex);
 
     m_Pipeline->Bind(m_CommandBuffers[m_CurrentImageIndex]);
     vkCmdBindDescriptorSets(m_CommandBuffers[m_CurrentImageIndex], VK_PIPELINE_BIND_POINT_GRAPHICS, m_PipelineLayout, 0,
-                            1, &m_DescriptorSets[m_CurrentImageIndex], 0, nullptr);
+                            1, &m_DescriptorSets[m_CurrentFrameIndex], 0, nullptr);
 
     mesh->Bind(m_CommandBuffers[m_CurrentImageIndex]);
     mesh->Draw(m_CommandBuffers[m_CurrentImageIndex]);
@@ -282,6 +283,13 @@ void Renderer::CreatePipeline() {
     auto exeDir = FileSystem::GetExecutableDirectory();
     std::string vertPath = (exeDir / "shaders" / "basic.vert.spv").string();
     std::string fragPath = (exeDir / "shaders" / "basic.frag.spv").string();
+
+    // Check if shader files exist before trying to create pipeline
+    if (!std::filesystem::exists(vertPath) || !std::filesystem::exists(fragPath)) {
+        PYENGINE_CORE_WARN("Shader files not found, skipping pipeline creation");
+        PYENGINE_CORE_WARN("  Expected: {} and {}", vertPath, fragPath);
+        return;
+    }
 
     PipelineConfig config;
     config.RenderPass = m_RenderPass;

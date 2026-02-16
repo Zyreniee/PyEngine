@@ -201,19 +201,6 @@ tinygltf/fast:
 .PHONY : tinygltf/fast
 
 #=============================================================================
-# Target rules for targets named VulkanMemoryAllocator
-
-# Build rule for target.
-VulkanMemoryAllocator: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 VulkanMemoryAllocator
-.PHONY : VulkanMemoryAllocator
-
-# fast build rule for target.
-VulkanMemoryAllocator/fast:
-	$(MAKE) $(MAKESILENT) -f _deps/vulkanmemoryallocator-build/src/CMakeFiles/VulkanMemoryAllocator.dir/build.make _deps/vulkanmemoryallocator-build/src/CMakeFiles/VulkanMemoryAllocator.dir/build
-.PHONY : VulkanMemoryAllocator/fast
-
-#=============================================================================
 # Target rules for targets named PyEngineLib
 
 # Build rule for target.
@@ -238,6 +225,19 @@ PyEngineSandbox: cmake_check_build_system
 PyEngineSandbox/fast:
 	$(MAKE) $(MAKESILENT) -f sandbox/CMakeFiles/PyEngineSandbox.dir/build.make sandbox/CMakeFiles/PyEngineSandbox.dir/build
 .PHONY : PyEngineSandbox/fast
+
+#=============================================================================
+# Target rules for targets named PyEngineEditor
+
+# Build rule for target.
+PyEngineEditor: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 PyEngineEditor
+.PHONY : PyEngineEditor
+
+# fast build rule for target.
+PyEngineEditor/fast:
+	$(MAKE) $(MAKESILENT) -f editor/CMakeFiles/PyEngineEditor.dir/build.make editor/CMakeFiles/PyEngineEditor.dir/build
+.PHONY : PyEngineEditor/fast
 
 _deps/imgui-src/backends/imgui_impl_glfw.o: _deps/imgui-src/backends/imgui_impl_glfw.cpp.o
 .PHONY : _deps/imgui-src/backends/imgui_impl_glfw.o
@@ -419,9 +419,9 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
+	@echo "... PyEngineEditor"
 	@echo "... PyEngineLib"
 	@echo "... PyEngineSandbox"
-	@echo "... VulkanMemoryAllocator"
 	@echo "... imgui"
 	@echo "... loader_example"
 	@echo "... tinygltf"

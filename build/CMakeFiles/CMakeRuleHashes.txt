@@ -1,3 +1,3 @@
 # Hashes of file build rules.
-64bbca59eed05465d2dd69b84a445683 bin/shaders/basic.frag.spv
-44edec8f433ee5bbda47a5ba62ee5361 bin/shaders/basic.vert.spv
+f4daf0a34fd567c6b82da5e4c91c27e3 bin/shaders/basic.frag.spv
+69f39c5050855ef6db62e016f6849947 bin/shaders/basic.vert.spv

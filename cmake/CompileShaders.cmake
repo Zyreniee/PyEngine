@@ -10,13 +10,15 @@ function(compile_shader TARGET_NAME SHADER_SOURCE OUTPUT_DIR)
     
     # Determine shader stage from extension
     get_filename_component(SHADER_EXT ${SHADER_SOURCE} LAST_EXT)
+    # Strip the leading dot from the extension (e.g., .vert -> vert)
+    string(SUBSTRING ${SHADER_EXT} 1 -1 SHADER_STAGE)
     
     # Add custom command to compile shader
     add_custom_command(
         OUTPUT ${SPIRV_OUTPUT}
         COMMAND ${CMAKE_COMMAND} -E make_directory ${OUTPUT_DIR}
         COMMAND ${GLSLC_EXECUTABLE}
-            -fshader-stage=${SHADER_EXT}
+            -fshader-stage=${SHADER_STAGE}
             -o ${SPIRV_OUTPUT}
             ${SHADER_SOURCE}
         DEPENDS ${SHADER_SOURCE}

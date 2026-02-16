@@ -175,6 +175,78 @@ PyEngineLib/fast:
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/build
 .PHONY : PyEngineLib/fast
 
+src/AI/NavMeshSystem.o: src/AI/NavMeshSystem.cpp.o
+.PHONY : src/AI/NavMeshSystem.o
+
+# target to build an object file
+src/AI/NavMeshSystem.cpp.o:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/AI/NavMeshSystem.cpp.o
+.PHONY : src/AI/NavMeshSystem.cpp.o
+
+src/AI/NavMeshSystem.i: src/AI/NavMeshSystem.cpp.i
+.PHONY : src/AI/NavMeshSystem.i
+
+# target to preprocess a source file
+src/AI/NavMeshSystem.cpp.i:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/AI/NavMeshSystem.cpp.i
+.PHONY : src/AI/NavMeshSystem.cpp.i
+
+src/AI/NavMeshSystem.s: src/AI/NavMeshSystem.cpp.s
+.PHONY : src/AI/NavMeshSystem.s
+
+# target to generate assembly for a file
+src/AI/NavMeshSystem.cpp.s:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/AI/NavMeshSystem.cpp.s
+.PHONY : src/AI/NavMeshSystem.cpp.s
+
+src/Animation/AnimationSystem.o: src/Animation/AnimationSystem.cpp.o
+.PHONY : src/Animation/AnimationSystem.o
+
+# target to build an object file
+src/Animation/AnimationSystem.cpp.o:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Animation/AnimationSystem.cpp.o
+.PHONY : src/Animation/AnimationSystem.cpp.o
+
+src/Animation/AnimationSystem.i: src/Animation/AnimationSystem.cpp.i
+.PHONY : src/Animation/AnimationSystem.i
+
+# target to preprocess a source file
+src/Animation/AnimationSystem.cpp.i:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Animation/AnimationSystem.cpp.i
+.PHONY : src/Animation/AnimationSystem.cpp.i
+
+src/Animation/AnimationSystem.s: src/Animation/AnimationSystem.cpp.s
+.PHONY : src/Animation/AnimationSystem.s
+
+# target to generate assembly for a file
+src/Animation/AnimationSystem.cpp.s:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Animation/AnimationSystem.cpp.s
+.PHONY : src/Animation/AnimationSystem.cpp.s
+
+src/Assets/AssetManager.o: src/Assets/AssetManager.cpp.o
+.PHONY : src/Assets/AssetManager.o
+
+# target to build an object file
+src/Assets/AssetManager.cpp.o:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Assets/AssetManager.cpp.o
+.PHONY : src/Assets/AssetManager.cpp.o
+
+src/Assets/AssetManager.i: src/Assets/AssetManager.cpp.i
+.PHONY : src/Assets/AssetManager.i
+
+# target to preprocess a source file
+src/Assets/AssetManager.cpp.i:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Assets/AssetManager.cpp.i
+.PHONY : src/Assets/AssetManager.cpp.i
+
+src/Assets/AssetManager.s: src/Assets/AssetManager.cpp.s
+.PHONY : src/Assets/AssetManager.s
+
+# target to generate assembly for a file
+src/Assets/AssetManager.cpp.s:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Assets/AssetManager.cpp.s
+.PHONY : src/Assets/AssetManager.cpp.s
+
 src/Assets/Mesh.o: src/Assets/Mesh.cpp.o
 .PHONY : src/Assets/Mesh.o
 
@@ -198,6 +270,78 @@ src/Assets/Mesh.s: src/Assets/Mesh.cpp.s
 src/Assets/Mesh.cpp.s:
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Assets/Mesh.cpp.s
 .PHONY : src/Assets/Mesh.cpp.s
+
+src/Assets/ModelImporter.o: src/Assets/ModelImporter.cpp.o
+.PHONY : src/Assets/ModelImporter.o
+
+# target to build an object file
+src/Assets/ModelImporter.cpp.o:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Assets/ModelImporter.cpp.o
+.PHONY : src/Assets/ModelImporter.cpp.o
+
+src/Assets/ModelImporter.i: src/Assets/ModelImporter.cpp.i
+.PHONY : src/Assets/ModelImporter.i
+
+# target to preprocess a source file
+src/Assets/ModelImporter.cpp.i:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Assets/ModelImporter.cpp.i
+.PHONY : src/Assets/ModelImporter.cpp.i
+
+src/Assets/ModelImporter.s: src/Assets/ModelImporter.cpp.s
+.PHONY : src/Assets/ModelImporter.s
+
+# target to generate assembly for a file
+src/Assets/ModelImporter.cpp.s:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Assets/ModelImporter.cpp.s
+.PHONY : src/Assets/ModelImporter.cpp.s
+
+src/Audio/AudioEngine.o: src/Audio/AudioEngine.cpp.o
+.PHONY : src/Audio/AudioEngine.o
+
+# target to build an object file
+src/Audio/AudioEngine.cpp.o:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Audio/AudioEngine.cpp.o
+.PHONY : src/Audio/AudioEngine.cpp.o
+
+src/Audio/AudioEngine.i: src/Audio/AudioEngine.cpp.i
+.PHONY : src/Audio/AudioEngine.i
+
+# target to preprocess a source file
+src/Audio/AudioEngine.cpp.i:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Audio/AudioEngine.cpp.i
+.PHONY : src/Audio/AudioEngine.cpp.i
+
+src/Audio/AudioEngine.s: src/Audio/AudioEngine.cpp.s
+.PHONY : src/Audio/AudioEngine.s
+
+# target to generate assembly for a file
+src/Audio/AudioEngine.cpp.s:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Audio/AudioEngine.cpp.s
+.PHONY : src/Audio/AudioEngine.cpp.s
+
+src/Core/Application.o: src/Core/Application.cpp.o
+.PHONY : src/Core/Application.o
+
+# target to build an object file
+src/Core/Application.cpp.o:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Core/Application.cpp.o
+.PHONY : src/Core/Application.cpp.o
+
+src/Core/Application.i: src/Core/Application.cpp.i
+.PHONY : src/Core/Application.i
+
+# target to preprocess a source file
+src/Core/Application.cpp.i:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Core/Application.cpp.i
+.PHONY : src/Core/Application.cpp.i
+
+src/Core/Application.s: src/Core/Application.cpp.s
+.PHONY : src/Core/Application.s
+
+# target to generate assembly for a file
+src/Core/Application.cpp.s:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Core/Application.cpp.s
+.PHONY : src/Core/Application.cpp.s
 
 src/Core/FileSystem.o: src/Core/FileSystem.cpp.o
 .PHONY : src/Core/FileSystem.o
@@ -223,6 +367,30 @@ src/Core/FileSystem.cpp.s:
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Core/FileSystem.cpp.s
 .PHONY : src/Core/FileSystem.cpp.s
 
+src/Core/LayerStack.o: src/Core/LayerStack.cpp.o
+.PHONY : src/Core/LayerStack.o
+
+# target to build an object file
+src/Core/LayerStack.cpp.o:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Core/LayerStack.cpp.o
+.PHONY : src/Core/LayerStack.cpp.o
+
+src/Core/LayerStack.i: src/Core/LayerStack.cpp.i
+.PHONY : src/Core/LayerStack.i
+
+# target to preprocess a source file
+src/Core/LayerStack.cpp.i:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Core/LayerStack.cpp.i
+.PHONY : src/Core/LayerStack.cpp.i
+
+src/Core/LayerStack.s: src/Core/LayerStack.cpp.s
+.PHONY : src/Core/LayerStack.s
+
+# target to generate assembly for a file
+src/Core/LayerStack.cpp.s:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Core/LayerStack.cpp.s
+.PHONY : src/Core/LayerStack.cpp.s
+
 src/Core/Log.o: src/Core/Log.cpp.o
 .PHONY : src/Core/Log.o
 
@@ -246,6 +414,30 @@ src/Core/Log.s: src/Core/Log.cpp.s
 src/Core/Log.cpp.s:
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Core/Log.cpp.s
 .PHONY : src/Core/Log.cpp.s
+
+src/Core/ProjectSerializer.o: src/Core/ProjectSerializer.cpp.o
+.PHONY : src/Core/ProjectSerializer.o
+
+# target to build an object file
+src/Core/ProjectSerializer.cpp.o:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Core/ProjectSerializer.cpp.o
+.PHONY : src/Core/ProjectSerializer.cpp.o
+
+src/Core/ProjectSerializer.i: src/Core/ProjectSerializer.cpp.i
+.PHONY : src/Core/ProjectSerializer.i
+
+# target to preprocess a source file
+src/Core/ProjectSerializer.cpp.i:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Core/ProjectSerializer.cpp.i
+.PHONY : src/Core/ProjectSerializer.cpp.i
+
+src/Core/ProjectSerializer.s: src/Core/ProjectSerializer.cpp.s
+.PHONY : src/Core/ProjectSerializer.s
+
+# target to generate assembly for a file
+src/Core/ProjectSerializer.cpp.s:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Core/ProjectSerializer.cpp.s
+.PHONY : src/Core/ProjectSerializer.cpp.s
 
 src/Core/Timer.o: src/Core/Timer.cpp.o
 .PHONY : src/Core/Timer.o
@@ -271,6 +463,102 @@ src/Core/Timer.cpp.s:
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Core/Timer.cpp.s
 .PHONY : src/Core/Timer.cpp.s
 
+src/Core/UUID.o: src/Core/UUID.cpp.o
+.PHONY : src/Core/UUID.o
+
+# target to build an object file
+src/Core/UUID.cpp.o:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Core/UUID.cpp.o
+.PHONY : src/Core/UUID.cpp.o
+
+src/Core/UUID.i: src/Core/UUID.cpp.i
+.PHONY : src/Core/UUID.i
+
+# target to preprocess a source file
+src/Core/UUID.cpp.i:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Core/UUID.cpp.i
+.PHONY : src/Core/UUID.cpp.i
+
+src/Core/UUID.s: src/Core/UUID.cpp.s
+.PHONY : src/Core/UUID.s
+
+# target to generate assembly for a file
+src/Core/UUID.cpp.s:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Core/UUID.cpp.s
+.PHONY : src/Core/UUID.cpp.s
+
+src/Debug/DebugDraw.o: src/Debug/DebugDraw.cpp.o
+.PHONY : src/Debug/DebugDraw.o
+
+# target to build an object file
+src/Debug/DebugDraw.cpp.o:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Debug/DebugDraw.cpp.o
+.PHONY : src/Debug/DebugDraw.cpp.o
+
+src/Debug/DebugDraw.i: src/Debug/DebugDraw.cpp.i
+.PHONY : src/Debug/DebugDraw.i
+
+# target to preprocess a source file
+src/Debug/DebugDraw.cpp.i:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Debug/DebugDraw.cpp.i
+.PHONY : src/Debug/DebugDraw.cpp.i
+
+src/Debug/DebugDraw.s: src/Debug/DebugDraw.cpp.s
+.PHONY : src/Debug/DebugDraw.s
+
+# target to generate assembly for a file
+src/Debug/DebugDraw.cpp.s:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Debug/DebugDraw.cpp.s
+.PHONY : src/Debug/DebugDraw.cpp.s
+
+src/Debug/Profiler.o: src/Debug/Profiler.cpp.o
+.PHONY : src/Debug/Profiler.o
+
+# target to build an object file
+src/Debug/Profiler.cpp.o:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Debug/Profiler.cpp.o
+.PHONY : src/Debug/Profiler.cpp.o
+
+src/Debug/Profiler.i: src/Debug/Profiler.cpp.i
+.PHONY : src/Debug/Profiler.i
+
+# target to preprocess a source file
+src/Debug/Profiler.cpp.i:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Debug/Profiler.cpp.i
+.PHONY : src/Debug/Profiler.cpp.i
+
+src/Debug/Profiler.s: src/Debug/Profiler.cpp.s
+.PHONY : src/Debug/Profiler.s
+
+# target to generate assembly for a file
+src/Debug/Profiler.cpp.s:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Debug/Profiler.cpp.s
+.PHONY : src/Debug/Profiler.cpp.s
+
+src/Debug/RuntimeConsole.o: src/Debug/RuntimeConsole.cpp.o
+.PHONY : src/Debug/RuntimeConsole.o
+
+# target to build an object file
+src/Debug/RuntimeConsole.cpp.o:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Debug/RuntimeConsole.cpp.o
+.PHONY : src/Debug/RuntimeConsole.cpp.o
+
+src/Debug/RuntimeConsole.i: src/Debug/RuntimeConsole.cpp.i
+.PHONY : src/Debug/RuntimeConsole.i
+
+# target to preprocess a source file
+src/Debug/RuntimeConsole.cpp.i:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Debug/RuntimeConsole.cpp.i
+.PHONY : src/Debug/RuntimeConsole.cpp.i
+
+src/Debug/RuntimeConsole.s: src/Debug/RuntimeConsole.cpp.s
+.PHONY : src/Debug/RuntimeConsole.s
+
+# target to generate assembly for a file
+src/Debug/RuntimeConsole.cpp.s:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Debug/RuntimeConsole.cpp.s
+.PHONY : src/Debug/RuntimeConsole.cpp.s
+
 src/ImGui/ImGuiLayer.o: src/ImGui/ImGuiLayer.cpp.o
 .PHONY : src/ImGui/ImGuiLayer.o
 
@@ -295,6 +583,102 @@ src/ImGui/ImGuiLayer.cpp.s:
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/ImGui/ImGuiLayer.cpp.s
 .PHONY : src/ImGui/ImGuiLayer.cpp.s
 
+src/Math/Math.o: src/Math/Math.cpp.o
+.PHONY : src/Math/Math.o
+
+# target to build an object file
+src/Math/Math.cpp.o:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Math/Math.cpp.o
+.PHONY : src/Math/Math.cpp.o
+
+src/Math/Math.i: src/Math/Math.cpp.i
+.PHONY : src/Math/Math.i
+
+# target to preprocess a source file
+src/Math/Math.cpp.i:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Math/Math.cpp.i
+.PHONY : src/Math/Math.cpp.i
+
+src/Math/Math.s: src/Math/Math.cpp.s
+.PHONY : src/Math/Math.s
+
+# target to generate assembly for a file
+src/Math/Math.cpp.s:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Math/Math.cpp.s
+.PHONY : src/Math/Math.cpp.s
+
+src/Network/NetworkSystem.o: src/Network/NetworkSystem.cpp.o
+.PHONY : src/Network/NetworkSystem.o
+
+# target to build an object file
+src/Network/NetworkSystem.cpp.o:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Network/NetworkSystem.cpp.o
+.PHONY : src/Network/NetworkSystem.cpp.o
+
+src/Network/NetworkSystem.i: src/Network/NetworkSystem.cpp.i
+.PHONY : src/Network/NetworkSystem.i
+
+# target to preprocess a source file
+src/Network/NetworkSystem.cpp.i:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Network/NetworkSystem.cpp.i
+.PHONY : src/Network/NetworkSystem.cpp.i
+
+src/Network/NetworkSystem.s: src/Network/NetworkSystem.cpp.s
+.PHONY : src/Network/NetworkSystem.s
+
+# target to generate assembly for a file
+src/Network/NetworkSystem.cpp.s:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Network/NetworkSystem.cpp.s
+.PHONY : src/Network/NetworkSystem.cpp.s
+
+src/Particles/ParticleSystem.o: src/Particles/ParticleSystem.cpp.o
+.PHONY : src/Particles/ParticleSystem.o
+
+# target to build an object file
+src/Particles/ParticleSystem.cpp.o:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Particles/ParticleSystem.cpp.o
+.PHONY : src/Particles/ParticleSystem.cpp.o
+
+src/Particles/ParticleSystem.i: src/Particles/ParticleSystem.cpp.i
+.PHONY : src/Particles/ParticleSystem.i
+
+# target to preprocess a source file
+src/Particles/ParticleSystem.cpp.i:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Particles/ParticleSystem.cpp.i
+.PHONY : src/Particles/ParticleSystem.cpp.i
+
+src/Particles/ParticleSystem.s: src/Particles/ParticleSystem.cpp.s
+.PHONY : src/Particles/ParticleSystem.s
+
+# target to generate assembly for a file
+src/Particles/ParticleSystem.cpp.s:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Particles/ParticleSystem.cpp.s
+.PHONY : src/Particles/ParticleSystem.cpp.s
+
+src/Physics/PhysicsWorld.o: src/Physics/PhysicsWorld.cpp.o
+.PHONY : src/Physics/PhysicsWorld.o
+
+# target to build an object file
+src/Physics/PhysicsWorld.cpp.o:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Physics/PhysicsWorld.cpp.o
+.PHONY : src/Physics/PhysicsWorld.cpp.o
+
+src/Physics/PhysicsWorld.i: src/Physics/PhysicsWorld.cpp.i
+.PHONY : src/Physics/PhysicsWorld.i
+
+# target to preprocess a source file
+src/Physics/PhysicsWorld.cpp.i:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Physics/PhysicsWorld.cpp.i
+.PHONY : src/Physics/PhysicsWorld.cpp.i
+
+src/Physics/PhysicsWorld.s: src/Physics/PhysicsWorld.cpp.s
+.PHONY : src/Physics/PhysicsWorld.s
+
+# target to generate assembly for a file
+src/Physics/PhysicsWorld.cpp.s:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Physics/PhysicsWorld.cpp.s
+.PHONY : src/Physics/PhysicsWorld.cpp.s
+
 src/Platform/Input.o: src/Platform/Input.cpp.o
 .PHONY : src/Platform/Input.o
 
@@ -318,6 +702,30 @@ src/Platform/Input.s: src/Platform/Input.cpp.s
 src/Platform/Input.cpp.s:
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Platform/Input.cpp.s
 .PHONY : src/Platform/Input.cpp.s
+
+src/Platform/InputManager.o: src/Platform/InputManager.cpp.o
+.PHONY : src/Platform/InputManager.o
+
+# target to build an object file
+src/Platform/InputManager.cpp.o:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Platform/InputManager.cpp.o
+.PHONY : src/Platform/InputManager.cpp.o
+
+src/Platform/InputManager.i: src/Platform/InputManager.cpp.i
+.PHONY : src/Platform/InputManager.i
+
+# target to preprocess a source file
+src/Platform/InputManager.cpp.i:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Platform/InputManager.cpp.i
+.PHONY : src/Platform/InputManager.cpp.i
+
+src/Platform/InputManager.s: src/Platform/InputManager.cpp.s
+.PHONY : src/Platform/InputManager.s
+
+# target to generate assembly for a file
+src/Platform/InputManager.cpp.s:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Platform/InputManager.cpp.s
+.PHONY : src/Platform/InputManager.cpp.s
 
 src/Platform/Window.o: src/Platform/Window.cpp.o
 .PHONY : src/Platform/Window.o
@@ -367,6 +775,78 @@ src/Renderer/Buffer.cpp.s:
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Renderer/Buffer.cpp.s
 .PHONY : src/Renderer/Buffer.cpp.s
 
+src/Renderer/Material.o: src/Renderer/Material.cpp.o
+.PHONY : src/Renderer/Material.o
+
+# target to build an object file
+src/Renderer/Material.cpp.o:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Renderer/Material.cpp.o
+.PHONY : src/Renderer/Material.cpp.o
+
+src/Renderer/Material.i: src/Renderer/Material.cpp.i
+.PHONY : src/Renderer/Material.i
+
+# target to preprocess a source file
+src/Renderer/Material.cpp.i:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Renderer/Material.cpp.i
+.PHONY : src/Renderer/Material.cpp.i
+
+src/Renderer/Material.s: src/Renderer/Material.cpp.s
+.PHONY : src/Renderer/Material.s
+
+# target to generate assembly for a file
+src/Renderer/Material.cpp.s:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Renderer/Material.cpp.s
+.PHONY : src/Renderer/Material.cpp.s
+
+src/Renderer/MaterialLibrary.o: src/Renderer/MaterialLibrary.cpp.o
+.PHONY : src/Renderer/MaterialLibrary.o
+
+# target to build an object file
+src/Renderer/MaterialLibrary.cpp.o:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Renderer/MaterialLibrary.cpp.o
+.PHONY : src/Renderer/MaterialLibrary.cpp.o
+
+src/Renderer/MaterialLibrary.i: src/Renderer/MaterialLibrary.cpp.i
+.PHONY : src/Renderer/MaterialLibrary.i
+
+# target to preprocess a source file
+src/Renderer/MaterialLibrary.cpp.i:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Renderer/MaterialLibrary.cpp.i
+.PHONY : src/Renderer/MaterialLibrary.cpp.i
+
+src/Renderer/MaterialLibrary.s: src/Renderer/MaterialLibrary.cpp.s
+.PHONY : src/Renderer/MaterialLibrary.s
+
+# target to generate assembly for a file
+src/Renderer/MaterialLibrary.cpp.s:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Renderer/MaterialLibrary.cpp.s
+.PHONY : src/Renderer/MaterialLibrary.cpp.s
+
+src/Renderer/MeshGenerator.o: src/Renderer/MeshGenerator.cpp.o
+.PHONY : src/Renderer/MeshGenerator.o
+
+# target to build an object file
+src/Renderer/MeshGenerator.cpp.o:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Renderer/MeshGenerator.cpp.o
+.PHONY : src/Renderer/MeshGenerator.cpp.o
+
+src/Renderer/MeshGenerator.i: src/Renderer/MeshGenerator.cpp.i
+.PHONY : src/Renderer/MeshGenerator.i
+
+# target to preprocess a source file
+src/Renderer/MeshGenerator.cpp.i:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Renderer/MeshGenerator.cpp.i
+.PHONY : src/Renderer/MeshGenerator.cpp.i
+
+src/Renderer/MeshGenerator.s: src/Renderer/MeshGenerator.cpp.s
+.PHONY : src/Renderer/MeshGenerator.s
+
+# target to generate assembly for a file
+src/Renderer/MeshGenerator.cpp.s:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Renderer/MeshGenerator.cpp.s
+.PHONY : src/Renderer/MeshGenerator.cpp.s
+
 src/Renderer/Pipeline.o: src/Renderer/Pipeline.cpp.o
 .PHONY : src/Renderer/Pipeline.o
 
@@ -390,6 +870,30 @@ src/Renderer/Pipeline.s: src/Renderer/Pipeline.cpp.s
 src/Renderer/Pipeline.cpp.s:
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Renderer/Pipeline.cpp.s
 .PHONY : src/Renderer/Pipeline.cpp.s
+
+src/Renderer/RenderQueue.o: src/Renderer/RenderQueue.cpp.o
+.PHONY : src/Renderer/RenderQueue.o
+
+# target to build an object file
+src/Renderer/RenderQueue.cpp.o:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Renderer/RenderQueue.cpp.o
+.PHONY : src/Renderer/RenderQueue.cpp.o
+
+src/Renderer/RenderQueue.i: src/Renderer/RenderQueue.cpp.i
+.PHONY : src/Renderer/RenderQueue.i
+
+# target to preprocess a source file
+src/Renderer/RenderQueue.cpp.i:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Renderer/RenderQueue.cpp.i
+.PHONY : src/Renderer/RenderQueue.cpp.i
+
+src/Renderer/RenderQueue.s: src/Renderer/RenderQueue.cpp.s
+.PHONY : src/Renderer/RenderQueue.s
+
+# target to generate assembly for a file
+src/Renderer/RenderQueue.cpp.s:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Renderer/RenderQueue.cpp.s
+.PHONY : src/Renderer/RenderQueue.cpp.s
 
 src/Renderer/Renderer.o: src/Renderer/Renderer.cpp.o
 .PHONY : src/Renderer/Renderer.o
@@ -439,6 +943,30 @@ src/Renderer/Swapchain.cpp.s:
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Renderer/Swapchain.cpp.s
 .PHONY : src/Renderer/Swapchain.cpp.s
 
+src/Renderer/Texture.o: src/Renderer/Texture.cpp.o
+.PHONY : src/Renderer/Texture.o
+
+# target to build an object file
+src/Renderer/Texture.cpp.o:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Renderer/Texture.cpp.o
+.PHONY : src/Renderer/Texture.cpp.o
+
+src/Renderer/Texture.i: src/Renderer/Texture.cpp.i
+.PHONY : src/Renderer/Texture.i
+
+# target to preprocess a source file
+src/Renderer/Texture.cpp.i:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Renderer/Texture.cpp.i
+.PHONY : src/Renderer/Texture.cpp.i
+
+src/Renderer/Texture.s: src/Renderer/Texture.cpp.s
+.PHONY : src/Renderer/Texture.s
+
+# target to generate assembly for a file
+src/Renderer/Texture.cpp.s:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Renderer/Texture.cpp.s
+.PHONY : src/Renderer/Texture.cpp.s
+
 src/Renderer/VulkanContext.o: src/Renderer/VulkanContext.cpp.o
 .PHONY : src/Renderer/VulkanContext.o
 
@@ -462,6 +990,78 @@ src/Renderer/VulkanContext.s: src/Renderer/VulkanContext.cpp.s
 src/Renderer/VulkanContext.cpp.s:
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Renderer/VulkanContext.cpp.s
 .PHONY : src/Renderer/VulkanContext.cpp.s
+
+src/Resources/AssetRegistry.o: src/Resources/AssetRegistry.cpp.o
+.PHONY : src/Resources/AssetRegistry.o
+
+# target to build an object file
+src/Resources/AssetRegistry.cpp.o:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Resources/AssetRegistry.cpp.o
+.PHONY : src/Resources/AssetRegistry.cpp.o
+
+src/Resources/AssetRegistry.i: src/Resources/AssetRegistry.cpp.i
+.PHONY : src/Resources/AssetRegistry.i
+
+# target to preprocess a source file
+src/Resources/AssetRegistry.cpp.i:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Resources/AssetRegistry.cpp.i
+.PHONY : src/Resources/AssetRegistry.cpp.i
+
+src/Resources/AssetRegistry.s: src/Resources/AssetRegistry.cpp.s
+.PHONY : src/Resources/AssetRegistry.s
+
+# target to generate assembly for a file
+src/Resources/AssetRegistry.cpp.s:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Resources/AssetRegistry.cpp.s
+.PHONY : src/Resources/AssetRegistry.cpp.s
+
+src/Resources/Prefab.o: src/Resources/Prefab.cpp.o
+.PHONY : src/Resources/Prefab.o
+
+# target to build an object file
+src/Resources/Prefab.cpp.o:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Resources/Prefab.cpp.o
+.PHONY : src/Resources/Prefab.cpp.o
+
+src/Resources/Prefab.i: src/Resources/Prefab.cpp.i
+.PHONY : src/Resources/Prefab.i
+
+# target to preprocess a source file
+src/Resources/Prefab.cpp.i:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Resources/Prefab.cpp.i
+.PHONY : src/Resources/Prefab.cpp.i
+
+src/Resources/Prefab.s: src/Resources/Prefab.cpp.s
+.PHONY : src/Resources/Prefab.s
+
+# target to generate assembly for a file
+src/Resources/Prefab.cpp.s:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Resources/Prefab.cpp.s
+.PHONY : src/Resources/Prefab.cpp.s
+
+src/Resources/ResourceManager.o: src/Resources/ResourceManager.cpp.o
+.PHONY : src/Resources/ResourceManager.o
+
+# target to build an object file
+src/Resources/ResourceManager.cpp.o:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Resources/ResourceManager.cpp.o
+.PHONY : src/Resources/ResourceManager.cpp.o
+
+src/Resources/ResourceManager.i: src/Resources/ResourceManager.cpp.i
+.PHONY : src/Resources/ResourceManager.i
+
+# target to preprocess a source file
+src/Resources/ResourceManager.cpp.i:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Resources/ResourceManager.cpp.i
+.PHONY : src/Resources/ResourceManager.cpp.i
+
+src/Resources/ResourceManager.s: src/Resources/ResourceManager.cpp.s
+.PHONY : src/Resources/ResourceManager.s
+
+# target to generate assembly for a file
+src/Resources/ResourceManager.cpp.s:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Resources/ResourceManager.cpp.s
+.PHONY : src/Resources/ResourceManager.cpp.s
 
 src/Scene/Camera.o: src/Scene/Camera.cpp.o
 .PHONY : src/Scene/Camera.o
@@ -511,6 +1111,54 @@ src/Scene/Components.cpp.s:
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Scene/Components.cpp.s
 .PHONY : src/Scene/Components.cpp.s
 
+src/Scene/EditorCamera.o: src/Scene/EditorCamera.cpp.o
+.PHONY : src/Scene/EditorCamera.o
+
+# target to build an object file
+src/Scene/EditorCamera.cpp.o:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Scene/EditorCamera.cpp.o
+.PHONY : src/Scene/EditorCamera.cpp.o
+
+src/Scene/EditorCamera.i: src/Scene/EditorCamera.cpp.i
+.PHONY : src/Scene/EditorCamera.i
+
+# target to preprocess a source file
+src/Scene/EditorCamera.cpp.i:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Scene/EditorCamera.cpp.i
+.PHONY : src/Scene/EditorCamera.cpp.i
+
+src/Scene/EditorCamera.s: src/Scene/EditorCamera.cpp.s
+.PHONY : src/Scene/EditorCamera.s
+
+# target to generate assembly for a file
+src/Scene/EditorCamera.cpp.s:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Scene/EditorCamera.cpp.s
+.PHONY : src/Scene/EditorCamera.cpp.s
+
+src/Scene/Entity.o: src/Scene/Entity.cpp.o
+.PHONY : src/Scene/Entity.o
+
+# target to build an object file
+src/Scene/Entity.cpp.o:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Scene/Entity.cpp.o
+.PHONY : src/Scene/Entity.cpp.o
+
+src/Scene/Entity.i: src/Scene/Entity.cpp.i
+.PHONY : src/Scene/Entity.i
+
+# target to preprocess a source file
+src/Scene/Entity.cpp.i:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Scene/Entity.cpp.i
+.PHONY : src/Scene/Entity.cpp.i
+
+src/Scene/Entity.s: src/Scene/Entity.cpp.s
+.PHONY : src/Scene/Entity.s
+
+# target to generate assembly for a file
+src/Scene/Entity.cpp.s:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Scene/Entity.cpp.s
+.PHONY : src/Scene/Entity.cpp.s
+
 src/Scene/Scene.o: src/Scene/Scene.cpp.o
 .PHONY : src/Scene/Scene.o
 
@@ -534,6 +1182,126 @@ src/Scene/Scene.s: src/Scene/Scene.cpp.s
 src/Scene/Scene.cpp.s:
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Scene/Scene.cpp.s
 .PHONY : src/Scene/Scene.cpp.s
+
+src/Scene/SceneGraph.o: src/Scene/SceneGraph.cpp.o
+.PHONY : src/Scene/SceneGraph.o
+
+# target to build an object file
+src/Scene/SceneGraph.cpp.o:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Scene/SceneGraph.cpp.o
+.PHONY : src/Scene/SceneGraph.cpp.o
+
+src/Scene/SceneGraph.i: src/Scene/SceneGraph.cpp.i
+.PHONY : src/Scene/SceneGraph.i
+
+# target to preprocess a source file
+src/Scene/SceneGraph.cpp.i:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Scene/SceneGraph.cpp.i
+.PHONY : src/Scene/SceneGraph.cpp.i
+
+src/Scene/SceneGraph.s: src/Scene/SceneGraph.cpp.s
+.PHONY : src/Scene/SceneGraph.s
+
+# target to generate assembly for a file
+src/Scene/SceneGraph.cpp.s:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Scene/SceneGraph.cpp.s
+.PHONY : src/Scene/SceneGraph.cpp.s
+
+src/Scene/SceneManager.o: src/Scene/SceneManager.cpp.o
+.PHONY : src/Scene/SceneManager.o
+
+# target to build an object file
+src/Scene/SceneManager.cpp.o:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Scene/SceneManager.cpp.o
+.PHONY : src/Scene/SceneManager.cpp.o
+
+src/Scene/SceneManager.i: src/Scene/SceneManager.cpp.i
+.PHONY : src/Scene/SceneManager.i
+
+# target to preprocess a source file
+src/Scene/SceneManager.cpp.i:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Scene/SceneManager.cpp.i
+.PHONY : src/Scene/SceneManager.cpp.i
+
+src/Scene/SceneManager.s: src/Scene/SceneManager.cpp.s
+.PHONY : src/Scene/SceneManager.s
+
+# target to generate assembly for a file
+src/Scene/SceneManager.cpp.s:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Scene/SceneManager.cpp.s
+.PHONY : src/Scene/SceneManager.cpp.s
+
+src/Scene/SceneSerializer.o: src/Scene/SceneSerializer.cpp.o
+.PHONY : src/Scene/SceneSerializer.o
+
+# target to build an object file
+src/Scene/SceneSerializer.cpp.o:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Scene/SceneSerializer.cpp.o
+.PHONY : src/Scene/SceneSerializer.cpp.o
+
+src/Scene/SceneSerializer.i: src/Scene/SceneSerializer.cpp.i
+.PHONY : src/Scene/SceneSerializer.i
+
+# target to preprocess a source file
+src/Scene/SceneSerializer.cpp.i:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Scene/SceneSerializer.cpp.i
+.PHONY : src/Scene/SceneSerializer.cpp.i
+
+src/Scene/SceneSerializer.s: src/Scene/SceneSerializer.cpp.s
+.PHONY : src/Scene/SceneSerializer.s
+
+# target to generate assembly for a file
+src/Scene/SceneSerializer.cpp.s:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Scene/SceneSerializer.cpp.s
+.PHONY : src/Scene/SceneSerializer.cpp.s
+
+src/Scene/TerrainSystem.o: src/Scene/TerrainSystem.cpp.o
+.PHONY : src/Scene/TerrainSystem.o
+
+# target to build an object file
+src/Scene/TerrainSystem.cpp.o:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Scene/TerrainSystem.cpp.o
+.PHONY : src/Scene/TerrainSystem.cpp.o
+
+src/Scene/TerrainSystem.i: src/Scene/TerrainSystem.cpp.i
+.PHONY : src/Scene/TerrainSystem.i
+
+# target to preprocess a source file
+src/Scene/TerrainSystem.cpp.i:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Scene/TerrainSystem.cpp.i
+.PHONY : src/Scene/TerrainSystem.cpp.i
+
+src/Scene/TerrainSystem.s: src/Scene/TerrainSystem.cpp.s
+.PHONY : src/Scene/TerrainSystem.s
+
+# target to generate assembly for a file
+src/Scene/TerrainSystem.cpp.s:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Scene/TerrainSystem.cpp.s
+.PHONY : src/Scene/TerrainSystem.cpp.s
+
+src/Scripting/ScriptEngine.o: src/Scripting/ScriptEngine.cpp.o
+.PHONY : src/Scripting/ScriptEngine.o
+
+# target to build an object file
+src/Scripting/ScriptEngine.cpp.o:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Scripting/ScriptEngine.cpp.o
+.PHONY : src/Scripting/ScriptEngine.cpp.o
+
+src/Scripting/ScriptEngine.i: src/Scripting/ScriptEngine.cpp.i
+.PHONY : src/Scripting/ScriptEngine.i
+
+# target to preprocess a source file
+src/Scripting/ScriptEngine.cpp.i:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Scripting/ScriptEngine.cpp.i
+.PHONY : src/Scripting/ScriptEngine.cpp.i
+
+src/Scripting/ScriptEngine.s: src/Scripting/ScriptEngine.cpp.s
+.PHONY : src/Scripting/ScriptEngine.s
+
+# target to generate assembly for a file
+src/Scripting/ScriptEngine.cpp.s:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Scripting/ScriptEngine.cpp.s
+.PHONY : src/Scripting/ScriptEngine.cpp.s
 
 src/ThirdParty/stb_image_impl.o: src/ThirdParty/stb_image_impl.cpp.o
 .PHONY : src/ThirdParty/stb_image_impl.o
@@ -583,6 +1351,30 @@ src/ThirdParty/vma_impl.cpp.s:
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/ThirdParty/vma_impl.cpp.s
 .PHONY : src/ThirdParty/vma_impl.cpp.s
 
+src/UI/UISystem.o: src/UI/UISystem.cpp.o
+.PHONY : src/UI/UISystem.o
+
+# target to build an object file
+src/UI/UISystem.cpp.o:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/UI/UISystem.cpp.o
+.PHONY : src/UI/UISystem.cpp.o
+
+src/UI/UISystem.i: src/UI/UISystem.cpp.i
+.PHONY : src/UI/UISystem.i
+
+# target to preprocess a source file
+src/UI/UISystem.cpp.i:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/UI/UISystem.cpp.i
+.PHONY : src/UI/UISystem.cpp.i
+
+src/UI/UISystem.s: src/UI/UISystem.cpp.s
+.PHONY : src/UI/UISystem.s
+
+# target to generate assembly for a file
+src/UI/UISystem.cpp.s:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/UI/UISystem.cpp.s
+.PHONY : src/UI/UISystem.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -596,57 +1388,156 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... PyEngineLib"
+	@echo "... src/AI/NavMeshSystem.o"
+	@echo "... src/AI/NavMeshSystem.i"
+	@echo "... src/AI/NavMeshSystem.s"
+	@echo "... src/Animation/AnimationSystem.o"
+	@echo "... src/Animation/AnimationSystem.i"
+	@echo "... src/Animation/AnimationSystem.s"
+	@echo "... src/Assets/AssetManager.o"
+	@echo "... src/Assets/AssetManager.i"
+	@echo "... src/Assets/AssetManager.s"
 	@echo "... src/Assets/Mesh.o"
 	@echo "... src/Assets/Mesh.i"
 	@echo "... src/Assets/Mesh.s"
+	@echo "... src/Assets/ModelImporter.o"
+	@echo "... src/Assets/ModelImporter.i"
+	@echo "... src/Assets/ModelImporter.s"
+	@echo "... src/Audio/AudioEngine.o"
+	@echo "... src/Audio/AudioEngine.i"
+	@echo "... src/Audio/AudioEngine.s"
+	@echo "... src/Core/Application.o"
+	@echo "... src/Core/Application.i"
+	@echo "... src/Core/Application.s"
 	@echo "... src/Core/FileSystem.o"
 	@echo "... src/Core/FileSystem.i"
 	@echo "... src/Core/FileSystem.s"
+	@echo "... src/Core/LayerStack.o"
+	@echo "... src/Core/LayerStack.i"
+	@echo "... src/Core/LayerStack.s"
 	@echo "... src/Core/Log.o"
 	@echo "... src/Core/Log.i"
 	@echo "... src/Core/Log.s"
+	@echo "... src/Core/ProjectSerializer.o"
+	@echo "... src/Core/ProjectSerializer.i"
+	@echo "... src/Core/ProjectSerializer.s"
 	@echo "... src/Core/Timer.o"
 	@echo "... src/Core/Timer.i"
 	@echo "... src/Core/Timer.s"
+	@echo "... src/Core/UUID.o"
+	@echo "... src/Core/UUID.i"
+	@echo "... src/Core/UUID.s"
+	@echo "... src/Debug/DebugDraw.o"
+	@echo "... src/Debug/DebugDraw.i"
+	@echo "... src/Debug/DebugDraw.s"
+	@echo "... src/Debug/Profiler.o"
+	@echo "... src/Debug/Profiler.i"
+	@echo "... src/Debug/Profiler.s"
+	@echo "... src/Debug/RuntimeConsole.o"
+	@echo "... src/Debug/RuntimeConsole.i"
+	@echo "... src/Debug/RuntimeConsole.s"
 	@echo "... src/ImGui/ImGuiLayer.o"
 	@echo "... src/ImGui/ImGuiLayer.i"
 	@echo "... src/ImGui/ImGuiLayer.s"
+	@echo "... src/Math/Math.o"
+	@echo "... src/Math/Math.i"
+	@echo "... src/Math/Math.s"
+	@echo "... src/Network/NetworkSystem.o"
+	@echo "... src/Network/NetworkSystem.i"
+	@echo "... src/Network/NetworkSystem.s"
+	@echo "... src/Particles/ParticleSystem.o"
+	@echo "... src/Particles/ParticleSystem.i"
+	@echo "... src/Particles/ParticleSystem.s"
+	@echo "... src/Physics/PhysicsWorld.o"
+	@echo "... src/Physics/PhysicsWorld.i"
+	@echo "... src/Physics/PhysicsWorld.s"
 	@echo "... src/Platform/Input.o"
 	@echo "... src/Platform/Input.i"
 	@echo "... src/Platform/Input.s"
+	@echo "... src/Platform/InputManager.o"
+	@echo "... src/Platform/InputManager.i"
+	@echo "... src/Platform/InputManager.s"
 	@echo "... src/Platform/Window.o"
 	@echo "... src/Platform/Window.i"
 	@echo "... src/Platform/Window.s"
 	@echo "... src/Renderer/Buffer.o"
 	@echo "... src/Renderer/Buffer.i"
 	@echo "... src/Renderer/Buffer.s"
+	@echo "... src/Renderer/Material.o"
+	@echo "... src/Renderer/Material.i"
+	@echo "... src/Renderer/Material.s"
+	@echo "... src/Renderer/MaterialLibrary.o"
+	@echo "... src/Renderer/MaterialLibrary.i"
+	@echo "... src/Renderer/MaterialLibrary.s"
+	@echo "... src/Renderer/MeshGenerator.o"
+	@echo "... src/Renderer/MeshGenerator.i"
+	@echo "... src/Renderer/MeshGenerator.s"
 	@echo "... src/Renderer/Pipeline.o"
 	@echo "... src/Renderer/Pipeline.i"
 	@echo "... src/Renderer/Pipeline.s"
+	@echo "... src/Renderer/RenderQueue.o"
+	@echo "... src/Renderer/RenderQueue.i"
+	@echo "... src/Renderer/RenderQueue.s"
 	@echo "... src/Renderer/Renderer.o"
 	@echo "... src/Renderer/Renderer.i"
 	@echo "... src/Renderer/Renderer.s"
 	@echo "... src/Renderer/Swapchain.o"
 	@echo "... src/Renderer/Swapchain.i"
 	@echo "... src/Renderer/Swapchain.s"
+	@echo "... src/Renderer/Texture.o"
+	@echo "... src/Renderer/Texture.i"
+	@echo "... src/Renderer/Texture.s"
 	@echo "... src/Renderer/VulkanContext.o"
 	@echo "... src/Renderer/VulkanContext.i"
 	@echo "... src/Renderer/VulkanContext.s"
+	@echo "... src/Resources/AssetRegistry.o"
+	@echo "... src/Resources/AssetRegistry.i"
+	@echo "... src/Resources/AssetRegistry.s"
+	@echo "... src/Resources/Prefab.o"
+	@echo "... src/Resources/Prefab.i"
+	@echo "... src/Resources/Prefab.s"
+	@echo "... src/Resources/ResourceManager.o"
+	@echo "... src/Resources/ResourceManager.i"
+	@echo "... src/Resources/ResourceManager.s"
 	@echo "... src/Scene/Camera.o"
 	@echo "... src/Scene/Camera.i"
 	@echo "... src/Scene/Camera.s"
 	@echo "... src/Scene/Components.o"
 	@echo "... src/Scene/Components.i"
 	@echo "... src/Scene/Components.s"
+	@echo "... src/Scene/EditorCamera.o"
+	@echo "... src/Scene/EditorCamera.i"
+	@echo "... src/Scene/EditorCamera.s"
+	@echo "... src/Scene/Entity.o"
+	@echo "... src/Scene/Entity.i"
+	@echo "... src/Scene/Entity.s"
 	@echo "... src/Scene/Scene.o"
 	@echo "... src/Scene/Scene.i"
 	@echo "... src/Scene/Scene.s"
+	@echo "... src/Scene/SceneGraph.o"
+	@echo "... src/Scene/SceneGraph.i"
+	@echo "... src/Scene/SceneGraph.s"
+	@echo "... src/Scene/SceneManager.o"
+	@echo "... src/Scene/SceneManager.i"
+	@echo "... src/Scene/SceneManager.s"
+	@echo "... src/Scene/SceneSerializer.o"
+	@echo "... src/Scene/SceneSerializer.i"
+	@echo "... src/Scene/SceneSerializer.s"
+	@echo "... src/Scene/TerrainSystem.o"
+	@echo "... src/Scene/TerrainSystem.i"
+	@echo "... src/Scene/TerrainSystem.s"
+	@echo "... src/Scripting/ScriptEngine.o"
+	@echo "... src/Scripting/ScriptEngine.i"
+	@echo "... src/Scripting/ScriptEngine.s"
 	@echo "... src/ThirdParty/stb_image_impl.o"
 	@echo "... src/ThirdParty/stb_image_impl.i"
 	@echo "... src/ThirdParty/stb_image_impl.s"
 	@echo "... src/ThirdParty/vma_impl.o"
 	@echo "... src/ThirdParty/vma_impl.i"
 	@echo "... src/ThirdParty/vma_impl.s"
+	@echo "... src/UI/UISystem.o"
+	@echo "... src/UI/UISystem.i"
+	@echo "... src/UI/UISystem.s"
 .PHONY : help
 
 

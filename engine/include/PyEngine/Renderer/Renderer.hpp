@@ -37,6 +37,7 @@ public:
     bool IsFrameInProgress() const { return m_IsFrameStarted; }
     VkCommandBuffer GetCurrentCommandBuffer() const { return m_CommandBuffers[m_CurrentImageIndex]; }
     uint32_t GetCurrentFrameIndex() const { return m_CurrentFrameIndex; }
+    VkRenderPass GetRenderPass() const { return m_RenderPass; }
 
 private:
     void CreateRenderPass();

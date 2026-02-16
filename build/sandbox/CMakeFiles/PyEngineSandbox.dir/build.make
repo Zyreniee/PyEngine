@@ -72,12 +72,12 @@ include sandbox/CMakeFiles/PyEngineSandbox.dir/flags.make
 bin/shaders/basic.vert.spv: /home/zyreniee/Belgeler/GitHub/PyEngine/assets/shaders/basic.vert
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Compiling shader: basic.vert"
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/sandbox && /usr/bin/cmake -E make_directory /home/zyreniee/Belgeler/GitHub/PyEngine/build/bin/shaders
-	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/sandbox && /usr/bin/glslc -fshader-stage=.vert -o /home/zyreniee/Belgeler/GitHub/PyEngine/build/bin/shaders/basic.vert.spv /home/zyreniee/Belgeler/GitHub/PyEngine/assets/shaders/basic.vert
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/sandbox && /usr/bin/glslc -fshader-stage=vert -o /home/zyreniee/Belgeler/GitHub/PyEngine/build/bin/shaders/basic.vert.spv /home/zyreniee/Belgeler/GitHub/PyEngine/assets/shaders/basic.vert
 
 bin/shaders/basic.frag.spv: /home/zyreniee/Belgeler/GitHub/PyEngine/assets/shaders/basic.frag
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Compiling shader: basic.frag"
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/sandbox && /usr/bin/cmake -E make_directory /home/zyreniee/Belgeler/GitHub/PyEngine/build/bin/shaders
-	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/sandbox && /usr/bin/glslc -fshader-stage=.frag -o /home/zyreniee/Belgeler/GitHub/PyEngine/build/bin/shaders/basic.frag.spv /home/zyreniee/Belgeler/GitHub/PyEngine/assets/shaders/basic.frag
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/sandbox && /usr/bin/glslc -fshader-stage=frag -o /home/zyreniee/Belgeler/GitHub/PyEngine/build/bin/shaders/basic.frag.spv /home/zyreniee/Belgeler/GitHub/PyEngine/assets/shaders/basic.frag
 
 sandbox/CMakeFiles/PyEngineSandbox.dir/codegen:
 .PHONY : sandbox/CMakeFiles/PyEngineSandbox.dir/codegen
@@ -111,9 +111,9 @@ bin/PyEngineSandbox: /usr/lib/libglm.a
 bin/PyEngineSandbox: /usr/lib/libspdlog.so.1.17.0
 bin/PyEngineSandbox: /usr/lib/libfmt.so.12.1.0
 bin/PyEngineSandbox: lib/libimgui.a
-bin/PyEngineSandbox: /usr/lib/libglfw.so.3.4
-bin/PyEngineSandbox: lib/libVulkanMemoryAllocatord.a
 bin/PyEngineSandbox: /lib/libvulkan.so
+bin/PyEngineSandbox: /usr/lib/libglfw.so.3.4
+bin/PyEngineSandbox: lib/libtinygltf.a
 bin/PyEngineSandbox: sandbox/CMakeFiles/PyEngineSandbox.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable ../bin/PyEngineSandbox"
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/sandbox && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/PyEngineSandbox.dir/link.txt --verbose=$(VERBOSE)

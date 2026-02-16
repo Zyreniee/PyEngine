@@ -1,0 +1,91 @@
+[23:46:19] [info] PYENGINE: PyEngine logging initialized
+[23:46:19] [info] PYENGINE: PyEngine PyEngine Editor initializing...
+[23:46:19] [info] PYENGINE: Window created: PyEngine Editor (1920x1080)
+[23:46:19] [info] PYENGINE: Vulkan instance created successfully
+[23:46:19] [info] PYENGINE: Selected GPU: NVIDIA GeForce RTX 4060 Laptop GPU
+[23:46:19] [info] PYENGINE: Logical device created successfully
+[23:46:19] [info] PYENGINE: Swapchain created: 3 images, 1920x1080
+[23:46:19] [info] PYENGINE: Graphics pipeline created
+[23:46:19] [info] PYENGINE: Renderer initialized successfully
+[23:46:19] [info] PYENGINE: ImGui layer initialized
+[23:46:19] [info] PYENGINE: PyEngine initialized successfully
+[23:46:19] [info] PYENGINE: GPU: NVIDIA GeForce RTX 4060 Laptop GPU
+[23:46:19] [info] PYENGINE: Scene 'Untitled' created
+[23:46:19] [info] PYENGINE: Terrain System Initialized
+[23:46:19] [info] PYENGINE: NavMesh System Initialized
+[23:46:19] [warning] PYENGINE: Validation layer: vkCreateGraphicsPipelines(): pCreateInfos[0].pVertexInputState Vertex attribute at location 0 not consumed by vertex shader.
+[23:46:19] [warning] PYENGINE: Validation layer: vkCreateGraphicsPipelines(): pCreateInfos[0].pVertexInputState Vertex attribute at location 1 not consumed by vertex shader.
+[23:46:19] [warning] PYENGINE: Validation layer: vkCreateGraphicsPipelines(): pCreateInfos[0].pVertexInputState Vertex attribute at location 2 not consumed by vertex shader.
+[23:46:19] [info] PYENGINE: Graphics pipeline created
+[23:46:19] [info] PYENGINE: Graphics pipeline created
+[23:46:19] [info] PYENGINE: Entering main loop
+[23:46:20] [warning] PYENGINE: Validation layer: vkQueueSubmit(): pSubmits[0].pSignalSemaphores[0] (VkSemaphore 0x1e000000001e) is being signaled by VkQueue 0x560e928a2680, but it may still be in use by VkSwapchainKHR 0x30000000003.
+Most recently acquired image indices: [0], 1, 2.
+(Brackets mark the last use of VkSemaphore 0x1e000000001e in a presentation operation.)
+Swapchain image 0 was presented but was not re-acquired, so VkSemaphore 0x1e000000001e may still be in use and cannot be safely reused with image index 2.
+Vulkan insight: See https://docs.vulkan.org/guide/latest/swapchain_semaphore_reuse.html for details on swapchain semaphore reuse. Examples of possible approaches:
+   a) Use a separate semaphore per swapchain image. Index these semaphores using the index of the acquired image.
+   b) Consider the VK_KHR_swapchain_maintenance1 extension. It allows using a VkFence with the presentation operation.
+The Vulkan spec states: Each binary semaphore element of the pSignalSemaphores member of any element of pSubmits must be unsignaled when the semaphore signal operation it defines is executed on the device (https://docs.vulkan.org/spec/latest/chapters/cmdbuffers.html#VUID-vkQueueSubmit-pSignalSemaphores-00067)
+[23:46:20] [warning] PYENGINE: Validation layer: vkQueueSubmit(): pSubmits[0].pSignalSemaphores[0] (VkSemaphore 0x210000000021) is being signaled by VkQueue 0x560e928a2680, but it may still be in use by VkSwapchainKHR 0x30000000003.
+Most recently acquired image indices: 0, [1], 2, 0.
+(Brackets mark the last use of VkSemaphore 0x210000000021 in a presentation operation.)
+Swapchain image 1 was presented but was not re-acquired, so VkSemaphore 0x210000000021 may still be in use and cannot be safely reused with image index 0.
+Vulkan insight: See https://docs.vulkan.org/guide/latest/swapchain_semaphore_reuse.html for details on swapchain semaphore reuse. Examples of possible approaches:
+   a) Use a separate semaphore per swapchain image. Index these semaphores using the index of the acquired image.
+   b) Consider the VK_KHR_swapchain_maintenance1 extension. It allows using a VkFence with the presentation operation.
+The Vulkan spec states: Each binary semaphore element of the pSignalSemaphores member of any element of pSubmits must be unsignaled when the semaphore signal operation it defines is executed on the device (https://docs.vulkan.org/spec/latest/chapters/cmdbuffers.html#VUID-vkQueueSubmit-pSignalSemaphores-00067)
+[23:46:21] [warning] PYENGINE: Validation layer: vkQueueSubmit(): pSubmits[0].pSignalSemaphores[0] (VkSemaphore 0x210000000021) is being signaled by VkQueue 0x560e928a2680, but it may still be in use by VkSwapchainKHR 0x30000000003.
+Most recently acquired image indices: 0, 1, 2, 0, 1, [0], 2, 1.
+(Brackets mark the last use of VkSemaphore 0x210000000021 in a presentation operation.)
+Swapchain image 0 was presented but was not re-acquired, so VkSemaphore 0x210000000021 may still be in use and cannot be safely reused with image index 1.
+Vulkan insight: See https://docs.vulkan.org/guide/latest/swapchain_semaphore_reuse.html for details on swapchain semaphore reuse. Examples of possible approaches:
+   a) Use a separate semaphore per swapchain image. Index these semaphores using the index of the acquired image.
+   b) Consider the VK_KHR_swapchain_maintenance1 extension. It allows using a VkFence with the presentation operation.
+The Vulkan spec states: Each binary semaphore element of the pSignalSemaphores member of any element of pSubmits must be unsignaled when the semaphore signal operation it defines is executed on the device (https://docs.vulkan.org/spec/latest/chapters/cmdbuffers.html#VUID-vkQueueSubmit-pSignalSemaphores-00067)
+[23:46:21] [warning] PYENGINE: Validation layer: vkQueueSubmit(): pSubmits[0].pSignalSemaphores[0] (VkSemaphore 0x210000000021) is being signaled by VkQueue 0x560e928a2680, but it may still be in use by VkSwapchainKHR 0x30000000003.
+Most recently acquired image indices: 0, 2, 1, 0, 2, [0], 1, 2.
+(Brackets mark the last use of VkSemaphore 0x210000000021 in a presentation operation.)
+Swapchain image 0 was presented but was not re-acquired, so VkSemaphore 0x210000000021 may still be in use and cannot be safely reused with image index 2.
+Vulkan insight: See https://docs.vulkan.org/guide/latest/swapchain_semaphore_reuse.html for details on swapchain semaphore reuse. Examples of possible approaches:
+   a) Use a separate semaphore per swapchain image. Index these semaphores using the index of the acquired image.
+   b) Consider the VK_KHR_swapchain_maintenance1 extension. It allows using a VkFence with the presentation operation.
+The Vulkan spec states: Each binary semaphore element of the pSignalSemaphores member of any element of pSubmits must be unsignaled when the semaphore signal operation it defines is executed on the device (https://docs.vulkan.org/spec/latest/chapters/cmdbuffers.html#VUID-vkQueueSubmit-pSignalSemaphores-00067)
+[23:46:31] [warning] PYENGINE: Validation layer: vkQueueSubmit(): pSubmits[0].pSignalSemaphores[0] (VkSemaphore 0x1e000000001e) is being signaled by VkQueue 0x560e928a2680, but it may still be in use by VkSwapchainKHR 0x30000000003.
+Most recently acquired image indices: 0, 1, 2, 0, 1, [0], 2, 1.
+(Brackets mark the last use of VkSemaphore 0x1e000000001e in a presentation operation.)
+Swapchain image 0 was presented but was not re-acquired, so VkSemaphore 0x1e000000001e may still be in use and cannot be safely reused with image index 1.
+Vulkan insight: See https://docs.vulkan.org/guide/latest/swapchain_semaphore_reuse.html for details on swapchain semaphore reuse. Examples of possible approaches:
+   a) Use a separate semaphore per swapchain image. Index these semaphores using the index of the acquired image.
+   b) Consider the VK_KHR_swapchain_maintenance1 extension. It allows using a VkFence with the presentation operation.
+The Vulkan spec states: Each binary semaphore element of the pSignalSemaphores member of any element of pSubmits must be unsignaled when the semaphore signal operation it defines is executed on the device (https://docs.vulkan.org/spec/latest/chapters/cmdbuffers.html#VUID-vkQueueSubmit-pSignalSemaphores-00067)
+[23:46:31] [warning] PYENGINE: Validation layer: vkQueueSubmit(): pSubmits[0].pSignalSemaphores[0] (VkSemaphore 0x210000000021) is being signaled by VkQueue 0x560e928a2680, but it may still be in use by VkSwapchainKHR 0x30000000003.
+Most recently acquired image indices: 2, 1, 0, 1, 0, [1], 2, 0.
+(Brackets mark the last use of VkSemaphore 0x210000000021 in a presentation operation.)
+Swapchain image 1 was presented but was not re-acquired, so VkSemaphore 0x210000000021 may still be in use and cannot be safely reused with image index 0.
+Vulkan insight: See https://docs.vulkan.org/guide/latest/swapchain_semaphore_reuse.html for details on swapchain semaphore reuse. Examples of possible approaches:
+   a) Use a separate semaphore per swapchain image. Index these semaphores using the index of the acquired image.
+   b) Consider the VK_KHR_swapchain_maintenance1 extension. It allows using a VkFence with the presentation operation.
+The Vulkan spec states: Each binary semaphore element of the pSignalSemaphores member of any element of pSubmits must be unsignaled when the semaphore signal operation it defines is executed on the device (https://docs.vulkan.org/spec/latest/chapters/cmdbuffers.html#VUID-vkQueueSubmit-pSignalSemaphores-00067)
+[23:46:31] [warning] PYENGINE: Validation layer: vkQueueSubmit(): pSubmits[0].pSignalSemaphores[0] (VkSemaphore 0x210000000021) is being signaled by VkQueue 0x560e928a2680, but it may still be in use by VkSwapchainKHR 0x30000000003.
+Most recently acquired image indices: 0, 1, 2, 0, 1, [0], 2, 1.
+(Brackets mark the last use of VkSemaphore 0x210000000021 in a presentation operation.)
+Swapchain image 0 was presented but was not re-acquired, so VkSemaphore 0x210000000021 may still be in use and cannot be safely reused with image index 1.
+Vulkan insight: See https://docs.vulkan.org/guide/latest/swapchain_semaphore_reuse.html for details on swapchain semaphore reuse. Examples of possible approaches:
+   a) Use a separate semaphore per swapchain image. Index these semaphores using the index of the acquired image.
+   b) Consider the VK_KHR_swapchain_maintenance1 extension. It allows using a VkFence with the presentation operation.
+The Vulkan spec states: Each binary semaphore element of the pSignalSemaphores member of any element of pSubmits must be unsignaled when the semaphore signal operation it defines is executed on the device (https://docs.vulkan.org/spec/latest/chapters/cmdbuffers.html#VUID-vkQueueSubmit-pSignalSemaphores-00067)
+[23:46:32] [warning] PYENGINE: Validation layer: vkQueueSubmit(): pSubmits[0].pSignalSemaphores[0] (VkSemaphore 0x1e000000001e) is being signaled by VkQueue 0x560e928a2680, but it may still be in use by VkSwapchainKHR 0x30000000003.
+Most recently acquired image indices: 1, 0, 2, 1, 0, [1], 2, 0.
+(Brackets mark the last use of VkSemaphore 0x1e000000001e in a presentation operation.)
+Swapchain image 1 was presented but was not re-acquired, so VkSemaphore 0x1e000000001e may still be in use and cannot be safely reused with image index 0.
+Vulkan insight: See https://docs.vulkan.org/guide/latest/swapchain_semaphore_reuse.html for details on swapchain semaphore reuse. Examples of possible approaches:
+   a) Use a separate semaphore per swapchain image. Index these semaphores using the index of the acquired image.
+   b) Consider the VK_KHR_swapchain_maintenance1 extension. It allows using a VkFence with the presentation operation.
+The Vulkan spec states: Each binary semaphore element of the pSignalSemaphores member of any element of pSubmits must be unsignaled when the semaphore signal operation it defines is executed on the device (https://docs.vulkan.org/spec/latest/chapters/cmdbuffers.html#VUID-vkQueueSubmit-pSignalSemaphores-00067)
+[23:46:35] [warning] PYENGINE: Validation layer: vkQueueSubmit(): pSubmits[0].pSignalSemaphores[0] (VkSemaphore 0x210000000021) is being signaled by VkQueue 0x560e928a2680, but it may still be in use by VkSwapchainKHR 0x30000000003.
+Most recently acquired image indices: 0, 1, 2, 0, 1, [0], 1, 2.
+(Brackets mark the last use of VkSemaphore 0x210000000021 in a presentation operation.)
+Swapchain image 0 was presented but was not re-acquired, so VkSemaphore 0x210000000021 may still be in use and cannot be safely reused with image index 2.
+Vulkan insight: See https://docs.vulkan.org/guide/latest/swapchain_semaphore_reuse.html for details on swapchain semaphore reuse. Examples of possible approaches:
+   a) Use a separate semaph

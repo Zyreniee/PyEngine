@@ -52,14 +52,31 @@ FetchContent_Declare(
     GIT_TAG v2.8.21
 )
 
-# VulkanMemoryAllocator
+# VulkanMemoryAllocator (header-only — we provide our own implementation in vma_impl.cpp)
 FetchContent_Declare(
     VulkanMemoryAllocator
     GIT_REPOSITORY https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git
     GIT_TAG v3.0.1
 )
 
-FetchContent_MakeAvailable(EnTT tinygltf VulkanMemoryAllocator)
+# nlohmann/json for scene serialization
+FetchContent_Declare(
+    json
+    GIT_REPOSITORY https://github.com/nlohmann/json.git
+    GIT_TAG v3.11.3
+)
+
+# Disable VMA building its own library (we provide our own implementation in vma_impl.cpp)
+set(VMA_BUILD_LIBRARY OFF CACHE BOOL "" FORCE)
+set(VMA_BUILD_SAMPLE OFF CACHE BOOL "" FORCE)
+
+FetchContent_MakeAvailable(EnTT tinygltf json)
+
+# VMA: only fetch, don't build its library (we have our own vma_impl.cpp)
+FetchContent_GetProperties(VulkanMemoryAllocator)
+if(NOT vulkanmemoryallocator_POPULATED)
+    FetchContent_Populate(VulkanMemoryAllocator)
+endif()
 
 # ImGui needs manual setup (header-only with implementation files)
 FetchContent_GetProperties(imgui)
@@ -97,3 +114,4 @@ include(cmake/CompileShaders.cmake)
 # Add subdirectories
 add_subdirectory(engine)
 add_subdirectory(sandbox)
+add_subdirectory(editor)

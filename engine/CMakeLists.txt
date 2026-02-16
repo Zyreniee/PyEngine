@@ -29,7 +29,8 @@ target_link_libraries(PyEngineLib PUBLIC
     fmt::fmt
     EnTT::EnTT
     imgui
-    VulkanMemoryAllocator
+    nlohmann_json::nlohmann_json
+    tinygltf
 )
 
 # Add preprocessor definitions

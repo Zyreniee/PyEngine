@@ -63,7 +63,7 @@ ImGuiLayer::ImGuiLayer(Window& window, VulkanContext& context, Renderer& rendere
 
     // Note: This is a simplified version that doesn't create a separate render
     // pass for ImGui In production, you might want a separate render pass
-    ImGui_ImplVulkan_Init(&init_info, VK_NULL_HANDLE);
+    ImGui_ImplVulkan_Init(&init_info, m_Renderer.GetRenderPass());
 
     // Upload Fonts
     VkCommandPool command_pool = VK_NULL_HANDLE;
@@ -131,22 +131,132 @@ void ImGuiLayer::RenderDrawData(VkCommandBuffer commandBuffer) {
 void ImGuiLayer::SetupImGuiStyle() {
     ImGuiStyle& style = ImGui::GetStyle();
 
-    // Dark theme
-    ImGui::StyleColorsDark();
+    // ── Rounding & Spacing ─────────────────────────────────────
+    style.WindowRounding = 2.0f;
+    style.FrameRounding = 2.0f;
+    style.GrabRounding = 2.0f;
+    style.ScrollbarRounding = 4.0f;
+    style.TabRounding = 2.0f;
+    style.ChildRounding = 2.0f;
+    style.PopupRounding = 3.0f;
 
-    // Rounding
-    style.WindowRounding = 5.3f;
-    style.FrameRounding = 2.3f;
-    style.ScrollbarRounding = 0;
+    style.WindowPadding = ImVec2(8.0f, 8.0f);
+    style.FramePadding = ImVec2(6.0f, 4.0f);
+    style.ItemSpacing = ImVec2(8.0f, 4.0f);
+    style.ItemInnerSpacing = ImVec2(6.0f, 4.0f);
+    style.IndentSpacing = 18.0f;
+    style.ScrollbarSize = 12.0f;
+    style.GrabMinSize = 8.0f;
 
-    // Colors
-    ImVec4* colors = style.Colors;
-    colors[ImGuiCol_WindowBg] = ImVec4(0.1f, 0.1f, 0.1f, 0.94f);
-    colors[ImGuiCol_TitleBgActive] = ImVec4(0.16f, 0.16f, 0.16f, 1.0f);
-    colors[ImGuiCol_FrameBg] = ImVec4(0.2f, 0.2f, 0.2f, 0.54f);
-    colors[ImGuiCol_Button] = ImVec4(0.26f, 0.59f, 0.98f, 0.4f);
-    colors[ImGuiCol_ButtonHovered] = ImVec4(0.26f, 0.59f, 0.98f, 1.0f);
-    colors[ImGuiCol_ButtonActive] = ImVec4(0.06f, 0.53f, 0.98f, 1.0f);
+    style.WindowBorderSize = 1.0f;
+    style.FrameBorderSize = 0.0f;
+    style.PopupBorderSize = 1.0f;
+    style.TabBorderSize = 0.0f;
+    style.WindowMenuButtonPosition = ImGuiDir_None;
+
+    // ═══════════════════════════════════════════════════════════
+    // PyEngine BLACK Theme — True black backgrounds
+    // Inspired by Unity Pro dark, Unreal, and Godot dark themes
+    // Accent: cyan-blue (#2D8CFF / #40B0FF) — PyEngine signature
+    // ═══════════════════════════════════════════════════════════
+    ImVec4* c = style.Colors;
+
+    // ── Base backgrounds — TRUE BLACK ────────────────────────
+    c[ImGuiCol_WindowBg] = ImVec4(0.051f, 0.051f, 0.055f, 1.000f);  // #0D0D0E — pitch black
+    c[ImGuiCol_ChildBg] = ImVec4(0.051f, 0.051f, 0.055f, 1.000f);
+    c[ImGuiCol_PopupBg] = ImVec4(0.078f, 0.078f, 0.086f, 0.980f);  // #141416
+
+    // ── Borders — subtle, almost invisible ───────────────────
+    c[ImGuiCol_Border] = ImVec4(0.140f, 0.140f, 0.155f, 0.600f);
+    c[ImGuiCol_BorderShadow] = ImVec4(0.000f, 0.000f, 0.000f, 0.000f);
+
+    // ── Frames (input bg, checkbox bg) — very dark gray ──────
+    c[ImGuiCol_FrameBg] = ImVec4(0.098f, 0.098f, 0.106f, 1.000f);  // #191A1B
+    c[ImGuiCol_FrameBgHovered] = ImVec4(0.130f, 0.130f, 0.142f, 1.000f);
+    c[ImGuiCol_FrameBgActive] = ImVec4(0.165f, 0.165f, 0.180f, 1.000f);
+
+    // ── Title bars — near black ──────────────────────────────
+    c[ImGuiCol_TitleBg] = ImVec4(0.035f, 0.035f, 0.039f, 1.000f);        // #090A0A
+    c[ImGuiCol_TitleBgActive] = ImVec4(0.055f, 0.055f, 0.063f, 1.000f);  // #0E0E10
+    c[ImGuiCol_TitleBgCollapsed] = ImVec4(0.035f, 0.035f, 0.039f, 0.750f);
+
+    // ── Menu bar — black ─────────────────────────────────────
+    c[ImGuiCol_MenuBarBg] = ImVec4(0.067f, 0.067f, 0.075f, 1.000f);  // #111113
+
+    // ── Scrollbar ────────────────────────────────────────────
+    c[ImGuiCol_ScrollbarBg] = ImVec4(0.051f, 0.051f, 0.055f, 0.400f);
+    c[ImGuiCol_ScrollbarGrab] = ImVec4(0.220f, 0.220f, 0.240f, 1.000f);
+    c[ImGuiCol_ScrollbarGrabHovered] = ImVec4(0.310f, 0.310f, 0.340f, 1.000f);
+    c[ImGuiCol_ScrollbarGrabActive] = ImVec4(0.400f, 0.400f, 0.440f, 1.000f);
+
+    // ── Checkmark — PyEngine cyan accent ─────────────────────
+    c[ImGuiCol_CheckMark] = ImVec4(0.180f, 0.550f, 1.000f, 1.000f);  // #2D8CFF
+
+    // ── Slider ───────────────────────────────────────────────
+    c[ImGuiCol_SliderGrab] = ImVec4(0.180f, 0.550f, 1.000f, 0.800f);
+    c[ImGuiCol_SliderGrabActive] = ImVec4(0.250f, 0.690f, 1.000f, 1.000f);  // #40B0FF
+
+    // ── Buttons — dark with cyan hover ───────────────────────
+    c[ImGuiCol_Button] = ImVec4(0.130f, 0.130f, 0.145f, 1.000f);
+    c[ImGuiCol_ButtonHovered] = ImVec4(0.180f, 0.440f, 0.780f, 0.800f);
+    c[ImGuiCol_ButtonActive] = ImVec4(0.140f, 0.380f, 0.680f, 1.000f);
+
+    // ── Headers (tree nodes, collapsing headers) ─────────────
+    c[ImGuiCol_Header] = ImVec4(0.120f, 0.120f, 0.135f, 0.700f);
+    c[ImGuiCol_HeaderHovered] = ImVec4(0.180f, 0.440f, 0.780f, 0.500f);
+    c[ImGuiCol_HeaderActive] = ImVec4(0.180f, 0.440f, 0.780f, 0.750f);
+
+    // ── Separator ────────────────────────────────────────────
+    c[ImGuiCol_Separator] = ImVec4(0.140f, 0.140f, 0.155f, 0.500f);
+    c[ImGuiCol_SeparatorHovered] = ImVec4(0.180f, 0.550f, 1.000f, 0.700f);
+    c[ImGuiCol_SeparatorActive] = ImVec4(0.180f, 0.550f, 1.000f, 1.000f);
+
+    // ── Resize grip ──────────────────────────────────────────
+    c[ImGuiCol_ResizeGrip] = ImVec4(0.180f, 0.550f, 1.000f, 0.150f);
+    c[ImGuiCol_ResizeGripHovered] = ImVec4(0.180f, 0.550f, 1.000f, 0.600f);
+    c[ImGuiCol_ResizeGripActive] = ImVec4(0.180f, 0.550f, 1.000f, 0.900f);
+
+    // ── Tabs (docked windows) — black inactive, dark active ──
+    c[ImGuiCol_Tab] = ImVec4(0.067f, 0.067f, 0.075f, 1.000f);  // #111113
+    c[ImGuiCol_TabHovered] = ImVec4(0.180f, 0.440f, 0.780f, 0.600f);
+    c[ImGuiCol_TabActive] = ImVec4(0.098f, 0.098f, 0.110f, 1.000f);  // #191A1C — subtle
+    c[ImGuiCol_TabUnfocused] = ImVec4(0.051f, 0.051f, 0.055f, 1.000f);
+    c[ImGuiCol_TabUnfocusedActive] = ImVec4(0.082f, 0.082f, 0.090f, 1.000f);
+
+    // ── Docking ──────────────────────────────────────────────
+    c[ImGuiCol_DockingPreview] = ImVec4(0.180f, 0.550f, 1.000f, 0.600f);
+    c[ImGuiCol_DockingEmptyBg] = ImVec4(0.039f, 0.039f, 0.043f, 1.000f);  // #0A0A0B
+
+    // ── Text — bright on black ───────────────────────────────
+    c[ImGuiCol_Text] = ImVec4(0.900f, 0.900f, 0.920f, 1.000f);  // near white
+    c[ImGuiCol_TextDisabled] = ImVec4(0.420f, 0.420f, 0.450f, 1.000f);
+
+    // ── Drag & drop ──────────────────────────────────────────
+    c[ImGuiCol_DragDropTarget] = ImVec4(0.250f, 0.690f, 1.000f, 0.900f);  // bright cyan
+
+    // ── Nav highlight ────────────────────────────────────────
+    c[ImGuiCol_NavHighlight] = ImVec4(0.180f, 0.550f, 1.000f, 1.000f);
+    c[ImGuiCol_NavWindowingHighlight] = ImVec4(1.000f, 1.000f, 1.000f, 0.700f);
+    c[ImGuiCol_NavWindowingDimBg] = ImVec4(0.000f, 0.000f, 0.000f, 0.500f);
+
+    // ── Modal dim — very dark ────────────────────────────────
+    c[ImGuiCol_ModalWindowDimBg] = ImVec4(0.000f, 0.000f, 0.000f, 0.600f);
+
+    // ── Table ────────────────────────────────────────────────
+    c[ImGuiCol_TableHeaderBg] = ImVec4(0.082f, 0.082f, 0.090f, 1.000f);
+    c[ImGuiCol_TableBorderStrong] = ImVec4(0.180f, 0.180f, 0.200f, 1.000f);
+    c[ImGuiCol_TableBorderLight] = ImVec4(0.130f, 0.130f, 0.145f, 1.000f);
+    c[ImGuiCol_TableRowBg] = ImVec4(0.000f, 0.000f, 0.000f, 0.000f);
+    c[ImGuiCol_TableRowBgAlt] = ImVec4(1.000f, 1.000f, 1.000f, 0.030f);
+
+    // ── Plot ─────────────────────────────────────────────────
+    c[ImGuiCol_PlotLines] = ImVec4(0.180f, 0.550f, 1.000f, 1.000f);
+    c[ImGuiCol_PlotLinesHovered] = ImVec4(0.250f, 0.690f, 1.000f, 1.000f);
+    c[ImGuiCol_PlotHistogram] = ImVec4(0.180f, 0.550f, 1.000f, 0.800f);
+    c[ImGuiCol_PlotHistogramHovered] = ImVec4(0.250f, 0.690f, 1.000f, 1.000f);
+
+    // ── Text selection ───────────────────────────────────────
+    c[ImGuiCol_TextSelectedBg] = ImVec4(0.180f, 0.440f, 0.780f, 0.350f);
 }
 
 }  // namespace PyEngine

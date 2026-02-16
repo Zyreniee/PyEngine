@@ -54,7 +54,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/vulkanmemoryallocator-build/cmake_install.cmake")
+  include("/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/json-build/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
@@ -65,6 +65,11 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
   include("/home/zyreniee/Belgeler/GitHub/PyEngine/build/sandbox/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("/home/zyreniee/Belgeler/GitHub/PyEngine/build/editor/cmake_install.cmake")
 endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT

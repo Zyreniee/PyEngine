@@ -4,10 +4,10 @@
 		"/home/zyreniee/Belgeler/GitHub/PyEngine/build/cmake_install.cmake",
 		"/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/entt-build/cmake_install.cmake",
 		"/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/tinygltf-build/cmake_install.cmake",
-		"/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/vulkanmemoryallocator-build/cmake_install.cmake",
-		"/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/vulkanmemoryallocator-build/src/cmake_install.cmake",
+		"/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/json-build/cmake_install.cmake",
 		"/home/zyreniee/Belgeler/GitHub/PyEngine/build/engine/cmake_install.cmake",
-		"/home/zyreniee/Belgeler/GitHub/PyEngine/build/sandbox/cmake_install.cmake"
+		"/home/zyreniee/Belgeler/GitHub/PyEngine/build/sandbox/cmake_install.cmake",
+		"/home/zyreniee/Belgeler/GitHub/PyEngine/build/editor/cmake_install.cmake"
 	],
 	"Parallel" : false
 }
