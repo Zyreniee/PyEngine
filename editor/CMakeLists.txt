@@ -25,6 +25,8 @@ set(SHADER_OUTPUT_DIR ${CMAKE_BINARY_DIR}/bin/shaders)
 compile_shaders(PyEngineEditor ${SHADER_OUTPUT_DIR}
     ${SHADER_SOURCE_DIR}/basic.vert
     ${SHADER_SOURCE_DIR}/basic.frag
+    ${SHADER_SOURCE_DIR}/grid.vert
+    ${SHADER_SOURCE_DIR}/grid.frag
 )
 
 # Copy assets to build directory

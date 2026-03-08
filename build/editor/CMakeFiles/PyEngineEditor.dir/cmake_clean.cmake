@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "../bin/PyEngineEditor.pdb"
   "../bin/shaders/basic.frag.spv"
   "../bin/shaders/basic.vert.spv"
+  "../bin/shaders/grid.frag.spv"
+  "../bin/shaders/grid.vert.spv"
   "CMakeFiles/PyEngineEditor.dir/link.d"
   "CMakeFiles/PyEngineEditor.dir/src/EditorLayer.cpp.o"
   "CMakeFiles/PyEngineEditor.dir/src/EditorLayer.cpp.o.d"
