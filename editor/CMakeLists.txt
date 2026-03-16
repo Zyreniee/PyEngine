@@ -27,6 +27,8 @@ compile_shaders(PyEngineEditor ${SHADER_OUTPUT_DIR}
     ${SHADER_SOURCE_DIR}/basic.frag
     ${SHADER_SOURCE_DIR}/grid.vert
     ${SHADER_SOURCE_DIR}/grid.frag
+    ${SHADER_SOURCE_DIR}/navmesh_debug.vert
+    ${SHADER_SOURCE_DIR}/navmesh_debug.frag
 )
 
 # Copy assets to build directory

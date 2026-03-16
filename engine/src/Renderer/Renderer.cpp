@@ -51,9 +51,11 @@ Renderer::~Renderer() {
 
     for (size_t i = 0; i < MAX_FRAMES_IN_FLIGHT; i++) {
         vkDestroySemaphore(m_Context->GetDevice(), m_ImageAvailableSemaphores[i], nullptr);
-        vkDestroySemaphore(m_Context->GetDevice(), m_RenderFinishedSemaphores[i], nullptr);
         vkDestroyFence(m_Context->GetDevice(), m_InFlightFences[i], nullptr);
         vmaDestroyBuffer(m_Allocator, m_UniformBuffers[i], m_UniformBufferAllocations[i]);
+    }
+    for (size_t i = 0; i < m_RenderFinishedSemaphores.size(); i++) {
+        vkDestroySemaphore(m_Context->GetDevice(), m_RenderFinishedSemaphores[i], nullptr);
     }
 
     if (m_DescriptorPool)
@@ -85,6 +87,11 @@ void Renderer::BeginFrame() {
         return;
     }
     PYENGINE_CORE_ASSERT(result == VK_SUCCESS || result == VK_SUBOPTIMAL_KHR, "Failed to acquire swap chain image!");
+
+    if (m_ImagesInFlight[m_CurrentImageIndex] != VK_NULL_HANDLE) {
+        vkWaitForFences(m_Context->GetDevice(), 1, &m_ImagesInFlight[m_CurrentImageIndex], VK_TRUE, UINT64_MAX);
+    }
+    m_ImagesInFlight[m_CurrentImageIndex] = m_InFlightFences[m_CurrentFrameIndex];
 
     vkResetFences(m_Context->GetDevice(), 1, &m_InFlightFences[m_CurrentFrameIndex]);
 
@@ -144,7 +151,7 @@ void Renderer::EndFrame() {
     submitInfo.commandBufferCount = 1;
     submitInfo.pCommandBuffers = &m_CommandBuffers[m_CurrentImageIndex];
 
-    VkSemaphore signalSemaphores[] = {m_RenderFinishedSemaphores[m_CurrentFrameIndex]};
+    VkSemaphore signalSemaphores[] = {m_RenderFinishedSemaphores[m_CurrentImageIndex]};
     submitInfo.signalSemaphoreCount = 1;
     submitInfo.pSignalSemaphores = signalSemaphores;
 
@@ -176,22 +183,36 @@ void Renderer::EndFrame() {
 }
 
 void Renderer::DrawMesh(Mesh* mesh, const glm::mat4& transform) {
-    if (!m_IsFrameStarted || !m_Pipeline)
+    if (!m_Pipeline)
+        return;
+
+    // When the editor sets an external command buffer (for offscreen rendering),
+    // record commands there instead of the swapchain command buffer.
+    VkCommandBuffer cmd = (m_ExternalCommandBuffer != VK_NULL_HANDLE)
+                              ? m_ExternalCommandBuffer
+                              : m_CommandBuffers[m_CurrentImageIndex];
+
+    // External buffer doesn't require IsFrameStarted check
+    if (m_ExternalCommandBuffer == VK_NULL_HANDLE && !m_IsFrameStarted)
         return;
 
     UpdateUniformBuffer(m_CurrentFrameIndex);
 
-    m_Pipeline->Bind(m_CommandBuffers[m_CurrentImageIndex]);
-    vkCmdBindDescriptorSets(m_CommandBuffers[m_CurrentImageIndex], VK_PIPELINE_BIND_POINT_GRAPHICS, m_PipelineLayout, 0,
+    m_Pipeline->Bind(cmd);
+    vkCmdBindDescriptorSets(cmd, VK_PIPELINE_BIND_POINT_GRAPHICS, m_PipelineLayout, 0,
                             1, &m_DescriptorSets[m_CurrentFrameIndex], 0, nullptr);
 
-    mesh->Bind(m_CommandBuffers[m_CurrentImageIndex]);
-    mesh->Draw(m_CommandBuffers[m_CurrentImageIndex]);
+    mesh->Bind(cmd);
+    mesh->Draw(cmd);
 }
 
 void Renderer::SetCamera(const glm::mat4& view, const glm::mat4& projection) {
     m_ViewMatrix = view;
     m_ProjectionMatrix = projection;
+}
+
+VkFormat Renderer::GetImageFormat() const {
+    return m_Swapchain->GetImageFormat();
 }
 
 void Renderer::CreateRenderPass() {
@@ -293,6 +314,7 @@ void Renderer::CreatePipeline() {
 
     PipelineConfig config;
     config.RenderPass = m_RenderPass;
+    config.CullMode = VK_CULL_MODE_NONE;
 
     m_Pipeline = std::make_unique<Pipeline>(*m_Context, vertPath, fragPath, m_PipelineLayout, config);
 }
@@ -323,9 +345,11 @@ void Renderer::CreateCommandBuffers() {
 }
 
 void Renderer::CreateSyncObjects() {
+    uint32_t imageCount = m_Swapchain->GetImageCount();
     m_ImageAvailableSemaphores.resize(MAX_FRAMES_IN_FLIGHT);
-    m_RenderFinishedSemaphores.resize(MAX_FRAMES_IN_FLIGHT);
     m_InFlightFences.resize(MAX_FRAMES_IN_FLIGHT);
+    m_RenderFinishedSemaphores.resize(imageCount);
+    m_ImagesInFlight.resize(imageCount, VK_NULL_HANDLE);
 
     VkSemaphoreCreateInfo semaphoreInfo{};
     semaphoreInfo.sType = VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO;
@@ -336,8 +360,10 @@ void Renderer::CreateSyncObjects() {
 
     for (size_t i = 0; i < MAX_FRAMES_IN_FLIGHT; i++) {
         vkCreateSemaphore(m_Context->GetDevice(), &semaphoreInfo, nullptr, &m_ImageAvailableSemaphores[i]);
-        vkCreateSemaphore(m_Context->GetDevice(), &semaphoreInfo, nullptr, &m_RenderFinishedSemaphores[i]);
         vkCreateFence(m_Context->GetDevice(), &fenceInfo, nullptr, &m_InFlightFences[i]);
+    }
+    for (size_t i = 0; i < imageCount; i++) {
+        vkCreateSemaphore(m_Context->GetDevice(), &semaphoreInfo, nullptr, &m_RenderFinishedSemaphores[i]);
     }
 }
 
@@ -416,8 +442,26 @@ void Renderer::CreateDescriptorSets() {
 void Renderer::RecreateSwapchain() {
     vkDeviceWaitIdle(m_Context->GetDevice());
 
+    for (size_t i = 0; i < m_RenderFinishedSemaphores.size(); i++) {
+        vkDestroySemaphore(m_Context->GetDevice(), m_RenderFinishedSemaphores[i], nullptr);
+    }
+
+    if (!m_CommandBuffers.empty()) {
+        vkFreeCommandBuffers(m_Context->GetDevice(), m_CommandPool, static_cast<uint32_t>(m_CommandBuffers.size()), m_CommandBuffers.data());
+    }
+
     m_Swapchain->Recreate(m_Window.GetWidth(), m_Window.GetHeight());
     m_Swapchain->CreateFramebuffers(m_RenderPass);
+
+    uint32_t imageCount = m_Swapchain->GetImageCount();
+    VkSemaphoreCreateInfo semaphoreInfo{};
+    semaphoreInfo.sType = VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO;
+
+    m_RenderFinishedSemaphores.resize(imageCount);
+    m_ImagesInFlight.assign(imageCount, VK_NULL_HANDLE);
+    for (size_t i = 0; i < imageCount; i++) {
+        vkCreateSemaphore(m_Context->GetDevice(), &semaphoreInfo, nullptr, &m_RenderFinishedSemaphores[i]);
+    }
 
     CreateCommandBuffers();
 }

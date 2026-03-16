@@ -25,6 +25,8 @@ public:
     void SetMoveDown(bool v) { m_MoveDown = v; }
     void SetRightMouseButton(bool v) { m_RightMouseDown = v; }
     void SetMiddleMouseButton(bool v) { m_MiddleMouseDown = v; }
+    void SetLeftMouseButton(bool v) { m_LeftMouseDown = v; }
+    void SetAltPressed(bool v) { m_AltPressed = v; }
 
     // Getters
     const glm::mat4& GetViewMatrix() const { return m_ViewMatrix; }
@@ -38,6 +40,11 @@ public:
     void SetAspectRatio(float ratio);
     void SetPosition(const glm::vec3& pos) {
         m_Position = pos;
+        m_FocalPoint = pos + GetForwardDirection() * m_Distance;
+        UpdateViewMatrix();
+    }
+    void Focus(const glm::vec3& focalPoint) {
+        m_FocalPoint = focalPoint;
         UpdateViewMatrix();
     }
 
@@ -63,6 +70,9 @@ private:
     float m_FarClip = 1000.0f;
 
     glm::vec3 m_Position = {0.0f, 2.0f, 5.0f};
+    glm::vec3 m_FocalPoint = {0.0f, 0.0f, 0.0f};
+    float m_Distance = 5.0f;
+
     float m_Yaw = -90.0f;    // Look toward -Z initially
     float m_Pitch = -15.0f;  // Slight downward angle
 
@@ -79,6 +89,8 @@ private:
     bool m_MoveDown = false;
     bool m_RightMouseDown = false;
     bool m_MiddleMouseDown = false;
+    bool m_LeftMouseDown = false;
+    bool m_AltPressed = false;
     bool m_Boost = false;
 
     glm::mat4 m_ViewMatrix{1.0f};

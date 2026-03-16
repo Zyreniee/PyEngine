@@ -1,0 +1,21 @@
+[21:02:56] PYENGINE: PyEngine logging initialized
+[21:02:56] PYENGINE: PyEngine PyEngine (by Pyrena) Editor initializing...
+[21:02:56] PYENGINE: Window created: PyEngine (by Pyrena) Editor (1920x1080)
+[21:02:56] PYENGINE: Vulkan instance created successfully
+[21:02:56] PYENGINE: Selected GPU: NVIDIA GeForce RTX 4060 Laptop GPU
+[21:02:56] PYENGINE: Logical device created successfully
+[21:02:56] PYENGINE: Swapchain created: 3 images, 1920x1080
+[21:02:56] PYENGINE: Graphics pipeline created
+[21:02:56] PYENGINE: Renderer initialized successfully
+[21:02:56] PYENGINE: ImGui layer initialized
+[21:02:56] PYENGINE: PyEngine initialized successfully
+[21:02:56] PYENGINE: GPU: NVIDIA GeForce RTX 4060 Laptop GPU
+[21:02:56] PYENGINE: Scene 'Untitled' created
+[21:02:56] PYENGINE: Terrain System Initialized
+[21:02:56] PYENGINE: NavMesh System Initialized
+[21:02:56] PYENGINE: OffscreenRenderer created: 1280x720
+[21:02:56] PYENGINE: Graphics pipeline created
+[21:02:56] PYENGINE: Validation layer: vkCreateGraphicsPipelines(): pCreateInfos[0].pVertexInputState Vertex attribute at location 2 not consumed by vertex shader.
+[21:02:56] PYENGINE: Graphics pipeline created
+[21:02:56] PYENGINE: Entering main loop
+[21:02:57] PYENGINE: OffscreenRenderer created: 1149x716

@@ -62,8 +62,7 @@ FetchContent_Declare(
 # nlohmann/json for scene serialization
 FetchContent_Declare(
     json
-    GIT_REPOSITORY https://github.com/nlohmann/json.git
-    GIT_TAG v3.11.3
+    URL https://github.com/nlohmann/json/archive/refs/tags/v3.11.3.tar.gz
 )
 
 # Disable VMA building its own library (we provide our own implementation in vma_impl.cpp)

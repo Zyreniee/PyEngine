@@ -14,7 +14,7 @@ void main() {
     vec2 coord = inWorldPos.xz;
     vec2 derivative = fwidth(coord);
     
-    // Grid function
+    // Grid function for thin lines
     vec2 grid = abs(fract(coord - 0.5) - 0.5) / derivative;
     float line = min(grid.x, grid.y);
     float alpha = 1.0 - min(line, 1.0);
@@ -24,20 +24,25 @@ void main() {
     float lineMajor = min(gridMajor.x, gridMajor.y);
     float alphaMajor = 1.0 - min(lineMajor, 1.0);
     
-    // Color
-    vec3 color = vec3(0.2); // Dark gray
+    // Color (Subtle white/gray for lines, matching the image)
+    vec3 color = vec3(0.6); 
     
-    // X axis (Red)
-    if (abs(inWorldPos.z) < lineWidth) color = vec3(1.0, 0.0, 0.0);
-    // Z axis (Blue)
-    if (abs(inWorldPos.x) < lineWidth) color = vec3(0.0, 0.0, 1.0);
+    // Axes (Vibrant, bright like in the screenshot)
+    bool isZAxis = abs(inWorldPos.x) < lineWidth * 1.5;
+    bool isXAxis = abs(inWorldPos.z) < lineWidth * 1.5;
+    
+    if (isZAxis) { color = vec3(0.1, 0.2, 1.0); alphaMajor = max(alphaMajor, 1.0); }
+    if (isXAxis) { color = vec3(1.0, 0.1, 0.1); alphaMajor = max(alphaMajor, 1.0); }
     
     // Combine
-    float finalAlpha = max(alpha * 0.3, alphaMajor * 0.6);
+    float finalAlpha = max(alpha * 0.1, alphaMajor * 0.4); 
+    if (isZAxis || isXAxis) {
+        finalAlpha = max(finalAlpha, 0.8);
+    }
     
     // Fade distance
     float dist = length(inWorldPos);
-    float fade = 1.0 - smoothstep(100.0, 200.0, dist);
+    float fade = 1.0 - smoothstep(15.0, 60.0, dist);
     finalAlpha *= fade;
     
     if (finalAlpha < 0.01) discard;

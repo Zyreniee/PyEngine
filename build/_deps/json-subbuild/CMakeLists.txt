@@ -16,18 +16,10 @@ unset(ENV{CMAKE_TOOLCHAIN_FILE})
 project(json-populate NONE)
 
 
-# Pass through things we've already detected in the main project to avoid
-# paying the cost of redetecting them again in ExternalProject_Add()
-set(GIT_EXECUTABLE [==[/usr/bin/git]==])
-set(Git_VERSION [==[2.53.0]==])
-set_property(GLOBAL PROPERTY _CMAKE_FindGit_GIT_EXECUTABLE_VERSION
-  [==[/usr/bin/git;2.53.0]==]
-)
-
 
 include(ExternalProject)
 ExternalProject_Add(json-populate
-                     "UPDATE_DISCONNECTED" "False" "GIT_REPOSITORY" "https://github.com/nlohmann/json.git" "EXTERNALPROJECT_INTERNAL_ARGUMENT_SEPARATOR" "GIT_TAG" "v3.11.3"
+                     "UPDATE_DISCONNECTED" "False" "DOWNLOAD_EXTRACT_TIMESTAMP" "FALSE" "EXTERNALPROJECT_INTERNAL_ARGUMENT_SEPARATOR" "URL" "https://github.com/nlohmann/json/archive/refs/tags/v3.11.3.tar.gz"
                     SOURCE_DIR          "/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/json-src"
                     BINARY_DIR          "/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/json-build"
                     CONFIGURE_COMMAND   ""

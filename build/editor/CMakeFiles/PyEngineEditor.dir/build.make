@@ -89,13 +89,23 @@ bin/shaders/grid.frag.spv: /home/zyreniee/Belgeler/GitHub/PyEngine/assets/shader
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/editor && /usr/bin/cmake -E make_directory /home/zyreniee/Belgeler/GitHub/PyEngine/build/bin/shaders
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/editor && /usr/bin/glslc -fshader-stage=frag -o /home/zyreniee/Belgeler/GitHub/PyEngine/build/bin/shaders/grid.frag.spv /home/zyreniee/Belgeler/GitHub/PyEngine/assets/shaders/grid.frag
 
+bin/shaders/navmesh_debug.vert.spv: /home/zyreniee/Belgeler/GitHub/PyEngine/assets/shaders/navmesh_debug.vert
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Compiling shader: navmesh_debug.vert"
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/editor && /usr/bin/cmake -E make_directory /home/zyreniee/Belgeler/GitHub/PyEngine/build/bin/shaders
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/editor && /usr/bin/glslc -fshader-stage=vert -o /home/zyreniee/Belgeler/GitHub/PyEngine/build/bin/shaders/navmesh_debug.vert.spv /home/zyreniee/Belgeler/GitHub/PyEngine/assets/shaders/navmesh_debug.vert
+
+bin/shaders/navmesh_debug.frag.spv: /home/zyreniee/Belgeler/GitHub/PyEngine/assets/shaders/navmesh_debug.frag
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Compiling shader: navmesh_debug.frag"
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/editor && /usr/bin/cmake -E make_directory /home/zyreniee/Belgeler/GitHub/PyEngine/build/bin/shaders
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/editor && /usr/bin/glslc -fshader-stage=frag -o /home/zyreniee/Belgeler/GitHub/PyEngine/build/bin/shaders/navmesh_debug.frag.spv /home/zyreniee/Belgeler/GitHub/PyEngine/assets/shaders/navmesh_debug.frag
+
 editor/CMakeFiles/PyEngineEditor.dir/codegen:
 .PHONY : editor/CMakeFiles/PyEngineEditor.dir/codegen
 
 editor/CMakeFiles/PyEngineEditor.dir/src/EditorLayer.cpp.o: editor/CMakeFiles/PyEngineEditor.dir/flags.make
 editor/CMakeFiles/PyEngineEditor.dir/src/EditorLayer.cpp.o: /home/zyreniee/Belgeler/GitHub/PyEngine/editor/src/EditorLayer.cpp
 editor/CMakeFiles/PyEngineEditor.dir/src/EditorLayer.cpp.o: editor/CMakeFiles/PyEngineEditor.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object editor/CMakeFiles/PyEngineEditor.dir/src/EditorLayer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object editor/CMakeFiles/PyEngineEditor.dir/src/EditorLayer.cpp.o"
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/editor && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT editor/CMakeFiles/PyEngineEditor.dir/src/EditorLayer.cpp.o -MF CMakeFiles/PyEngineEditor.dir/src/EditorLayer.cpp.o.d -o CMakeFiles/PyEngineEditor.dir/src/EditorLayer.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/editor/src/EditorLayer.cpp
 
 editor/CMakeFiles/PyEngineEditor.dir/src/EditorLayer.cpp.i: cmake_force
@@ -109,7 +119,7 @@ editor/CMakeFiles/PyEngineEditor.dir/src/EditorLayer.cpp.s: cmake_force
 editor/CMakeFiles/PyEngineEditor.dir/src/Panels/ConsolePanel.cpp.o: editor/CMakeFiles/PyEngineEditor.dir/flags.make
 editor/CMakeFiles/PyEngineEditor.dir/src/Panels/ConsolePanel.cpp.o: /home/zyreniee/Belgeler/GitHub/PyEngine/editor/src/Panels/ConsolePanel.cpp
 editor/CMakeFiles/PyEngineEditor.dir/src/Panels/ConsolePanel.cpp.o: editor/CMakeFiles/PyEngineEditor.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object editor/CMakeFiles/PyEngineEditor.dir/src/Panels/ConsolePanel.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object editor/CMakeFiles/PyEngineEditor.dir/src/Panels/ConsolePanel.cpp.o"
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/editor && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT editor/CMakeFiles/PyEngineEditor.dir/src/Panels/ConsolePanel.cpp.o -MF CMakeFiles/PyEngineEditor.dir/src/Panels/ConsolePanel.cpp.o.d -o CMakeFiles/PyEngineEditor.dir/src/Panels/ConsolePanel.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/editor/src/Panels/ConsolePanel.cpp
 
 editor/CMakeFiles/PyEngineEditor.dir/src/Panels/ConsolePanel.cpp.i: cmake_force
@@ -123,7 +133,7 @@ editor/CMakeFiles/PyEngineEditor.dir/src/Panels/ConsolePanel.cpp.s: cmake_force
 editor/CMakeFiles/PyEngineEditor.dir/src/Panels/HierarchyPanel.cpp.o: editor/CMakeFiles/PyEngineEditor.dir/flags.make
 editor/CMakeFiles/PyEngineEditor.dir/src/Panels/HierarchyPanel.cpp.o: /home/zyreniee/Belgeler/GitHub/PyEngine/editor/src/Panels/HierarchyPanel.cpp
 editor/CMakeFiles/PyEngineEditor.dir/src/Panels/HierarchyPanel.cpp.o: editor/CMakeFiles/PyEngineEditor.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object editor/CMakeFiles/PyEngineEditor.dir/src/Panels/HierarchyPanel.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object editor/CMakeFiles/PyEngineEditor.dir/src/Panels/HierarchyPanel.cpp.o"
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/editor && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT editor/CMakeFiles/PyEngineEditor.dir/src/Panels/HierarchyPanel.cpp.o -MF CMakeFiles/PyEngineEditor.dir/src/Panels/HierarchyPanel.cpp.o.d -o CMakeFiles/PyEngineEditor.dir/src/Panels/HierarchyPanel.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/editor/src/Panels/HierarchyPanel.cpp
 
 editor/CMakeFiles/PyEngineEditor.dir/src/Panels/HierarchyPanel.cpp.i: cmake_force
@@ -137,7 +147,7 @@ editor/CMakeFiles/PyEngineEditor.dir/src/Panels/HierarchyPanel.cpp.s: cmake_forc
 editor/CMakeFiles/PyEngineEditor.dir/src/Panels/InspectorPanel.cpp.o: editor/CMakeFiles/PyEngineEditor.dir/flags.make
 editor/CMakeFiles/PyEngineEditor.dir/src/Panels/InspectorPanel.cpp.o: /home/zyreniee/Belgeler/GitHub/PyEngine/editor/src/Panels/InspectorPanel.cpp
 editor/CMakeFiles/PyEngineEditor.dir/src/Panels/InspectorPanel.cpp.o: editor/CMakeFiles/PyEngineEditor.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object editor/CMakeFiles/PyEngineEditor.dir/src/Panels/InspectorPanel.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object editor/CMakeFiles/PyEngineEditor.dir/src/Panels/InspectorPanel.cpp.o"
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/editor && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT editor/CMakeFiles/PyEngineEditor.dir/src/Panels/InspectorPanel.cpp.o -MF CMakeFiles/PyEngineEditor.dir/src/Panels/InspectorPanel.cpp.o.d -o CMakeFiles/PyEngineEditor.dir/src/Panels/InspectorPanel.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/editor/src/Panels/InspectorPanel.cpp
 
 editor/CMakeFiles/PyEngineEditor.dir/src/Panels/InspectorPanel.cpp.i: cmake_force
@@ -151,7 +161,7 @@ editor/CMakeFiles/PyEngineEditor.dir/src/Panels/InspectorPanel.cpp.s: cmake_forc
 editor/CMakeFiles/PyEngineEditor.dir/src/Panels/ProjectPanel.cpp.o: editor/CMakeFiles/PyEngineEditor.dir/flags.make
 editor/CMakeFiles/PyEngineEditor.dir/src/Panels/ProjectPanel.cpp.o: /home/zyreniee/Belgeler/GitHub/PyEngine/editor/src/Panels/ProjectPanel.cpp
 editor/CMakeFiles/PyEngineEditor.dir/src/Panels/ProjectPanel.cpp.o: editor/CMakeFiles/PyEngineEditor.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object editor/CMakeFiles/PyEngineEditor.dir/src/Panels/ProjectPanel.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object editor/CMakeFiles/PyEngineEditor.dir/src/Panels/ProjectPanel.cpp.o"
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/editor && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT editor/CMakeFiles/PyEngineEditor.dir/src/Panels/ProjectPanel.cpp.o -MF CMakeFiles/PyEngineEditor.dir/src/Panels/ProjectPanel.cpp.o.d -o CMakeFiles/PyEngineEditor.dir/src/Panels/ProjectPanel.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/editor/src/Panels/ProjectPanel.cpp
 
 editor/CMakeFiles/PyEngineEditor.dir/src/Panels/ProjectPanel.cpp.i: cmake_force
@@ -165,7 +175,7 @@ editor/CMakeFiles/PyEngineEditor.dir/src/Panels/ProjectPanel.cpp.s: cmake_force
 editor/CMakeFiles/PyEngineEditor.dir/src/Panels/SceneViewPanel.cpp.o: editor/CMakeFiles/PyEngineEditor.dir/flags.make
 editor/CMakeFiles/PyEngineEditor.dir/src/Panels/SceneViewPanel.cpp.o: /home/zyreniee/Belgeler/GitHub/PyEngine/editor/src/Panels/SceneViewPanel.cpp
 editor/CMakeFiles/PyEngineEditor.dir/src/Panels/SceneViewPanel.cpp.o: editor/CMakeFiles/PyEngineEditor.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object editor/CMakeFiles/PyEngineEditor.dir/src/Panels/SceneViewPanel.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object editor/CMakeFiles/PyEngineEditor.dir/src/Panels/SceneViewPanel.cpp.o"
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/editor && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT editor/CMakeFiles/PyEngineEditor.dir/src/Panels/SceneViewPanel.cpp.o -MF CMakeFiles/PyEngineEditor.dir/src/Panels/SceneViewPanel.cpp.o.d -o CMakeFiles/PyEngineEditor.dir/src/Panels/SceneViewPanel.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/editor/src/Panels/SceneViewPanel.cpp
 
 editor/CMakeFiles/PyEngineEditor.dir/src/Panels/SceneViewPanel.cpp.i: cmake_force
@@ -179,7 +189,7 @@ editor/CMakeFiles/PyEngineEditor.dir/src/Panels/SceneViewPanel.cpp.s: cmake_forc
 editor/CMakeFiles/PyEngineEditor.dir/src/Panels/ToolbarPanel.cpp.o: editor/CMakeFiles/PyEngineEditor.dir/flags.make
 editor/CMakeFiles/PyEngineEditor.dir/src/Panels/ToolbarPanel.cpp.o: /home/zyreniee/Belgeler/GitHub/PyEngine/editor/src/Panels/ToolbarPanel.cpp
 editor/CMakeFiles/PyEngineEditor.dir/src/Panels/ToolbarPanel.cpp.o: editor/CMakeFiles/PyEngineEditor.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object editor/CMakeFiles/PyEngineEditor.dir/src/Panels/ToolbarPanel.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object editor/CMakeFiles/PyEngineEditor.dir/src/Panels/ToolbarPanel.cpp.o"
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/editor && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT editor/CMakeFiles/PyEngineEditor.dir/src/Panels/ToolbarPanel.cpp.o -MF CMakeFiles/PyEngineEditor.dir/src/Panels/ToolbarPanel.cpp.o.d -o CMakeFiles/PyEngineEditor.dir/src/Panels/ToolbarPanel.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/editor/src/Panels/ToolbarPanel.cpp
 
 editor/CMakeFiles/PyEngineEditor.dir/src/Panels/ToolbarPanel.cpp.i: cmake_force
@@ -193,7 +203,7 @@ editor/CMakeFiles/PyEngineEditor.dir/src/Panels/ToolbarPanel.cpp.s: cmake_force
 editor/CMakeFiles/PyEngineEditor.dir/src/main.cpp.o: editor/CMakeFiles/PyEngineEditor.dir/flags.make
 editor/CMakeFiles/PyEngineEditor.dir/src/main.cpp.o: /home/zyreniee/Belgeler/GitHub/PyEngine/editor/src/main.cpp
 editor/CMakeFiles/PyEngineEditor.dir/src/main.cpp.o: editor/CMakeFiles/PyEngineEditor.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object editor/CMakeFiles/PyEngineEditor.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object editor/CMakeFiles/PyEngineEditor.dir/src/main.cpp.o"
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/editor && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT editor/CMakeFiles/PyEngineEditor.dir/src/main.cpp.o -MF CMakeFiles/PyEngineEditor.dir/src/main.cpp.o.d -o CMakeFiles/PyEngineEditor.dir/src/main.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/editor/src/main.cpp
 
 editor/CMakeFiles/PyEngineEditor.dir/src/main.cpp.i: cmake_force
@@ -237,7 +247,7 @@ bin/PyEngineEditor: /lib/libvulkan.so
 bin/PyEngineEditor: /usr/lib/libglfw.so.3.4
 bin/PyEngineEditor: lib/libtinygltf.a
 bin/PyEngineEditor: editor/CMakeFiles/PyEngineEditor.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX executable ../bin/PyEngineEditor"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking CXX executable ../bin/PyEngineEditor"
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/editor && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/PyEngineEditor.dir/link.txt --verbose=$(VERBOSE)
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold "Copying assets to build directory"
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/editor && /usr/bin/cmake -E make_directory /home/zyreniee/Belgeler/GitHub/PyEngine/build/bin/assets
@@ -255,6 +265,8 @@ editor/CMakeFiles/PyEngineEditor.dir/depend: bin/shaders/basic.frag.spv
 editor/CMakeFiles/PyEngineEditor.dir/depend: bin/shaders/basic.vert.spv
 editor/CMakeFiles/PyEngineEditor.dir/depend: bin/shaders/grid.frag.spv
 editor/CMakeFiles/PyEngineEditor.dir/depend: bin/shaders/grid.vert.spv
+editor/CMakeFiles/PyEngineEditor.dir/depend: bin/shaders/navmesh_debug.frag.spv
+editor/CMakeFiles/PyEngineEditor.dir/depend: bin/shaders/navmesh_debug.vert.spv
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/zyreniee/Belgeler/GitHub/PyEngine /home/zyreniee/Belgeler/GitHub/PyEngine/editor /home/zyreniee/Belgeler/GitHub/PyEngine/build /home/zyreniee/Belgeler/GitHub/PyEngine/build/editor /home/zyreniee/Belgeler/GitHub/PyEngine/build/editor/CMakeFiles/PyEngineEditor.dir/DependInfo.cmake "--color=$(COLOR)" PyEngineEditor
 .PHONY : editor/CMakeFiles/PyEngineEditor.dir/depend
 

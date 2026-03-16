@@ -13,6 +13,7 @@
 #include "PyEngine/Assets/Mesh.hpp"
 #include "PyEngine/Core/Event.hpp"
 #include "PyEngine/Core/Layer.hpp"
+#include "PyEngine/Renderer/OffscreenRenderer.hpp"
 #include "PyEngine/Renderer/Pipeline.hpp"
 #include "PyEngine/Scene/EditorCamera.hpp"
 #include "PyEngine/Scene/Scene.hpp"
@@ -88,7 +89,12 @@ private:
     std::shared_ptr<PyEngine::Mesh> m_NavMeshDebugMesh;
     bool m_ShowNavMesh = true;
 
-    // Import Modal
+    // ── Imports Modal ──────────────────────────────────────────
     bool m_ShowModelImportModal = false;
     char m_ImportPathBuffer[256] = "";
+
+    // ── Offscreen Scene Renderer ───────────────────────────────
+    // Renders the 3D scene to a VkImage and passes it to SceneViewPanel
+    // as an ImGui texture so the viewport shows the actual scene.
+    std::unique_ptr<PyEngine::OffscreenRenderer> m_OffscreenRenderer;
 };

@@ -847,6 +847,30 @@ src/Renderer/MeshGenerator.cpp.s:
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Renderer/MeshGenerator.cpp.s
 .PHONY : src/Renderer/MeshGenerator.cpp.s
 
+src/Renderer/OffscreenRenderer.o: src/Renderer/OffscreenRenderer.cpp.o
+.PHONY : src/Renderer/OffscreenRenderer.o
+
+# target to build an object file
+src/Renderer/OffscreenRenderer.cpp.o:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Renderer/OffscreenRenderer.cpp.o
+.PHONY : src/Renderer/OffscreenRenderer.cpp.o
+
+src/Renderer/OffscreenRenderer.i: src/Renderer/OffscreenRenderer.cpp.i
+.PHONY : src/Renderer/OffscreenRenderer.i
+
+# target to preprocess a source file
+src/Renderer/OffscreenRenderer.cpp.i:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Renderer/OffscreenRenderer.cpp.i
+.PHONY : src/Renderer/OffscreenRenderer.cpp.i
+
+src/Renderer/OffscreenRenderer.s: src/Renderer/OffscreenRenderer.cpp.s
+.PHONY : src/Renderer/OffscreenRenderer.s
+
+# target to generate assembly for a file
+src/Renderer/OffscreenRenderer.cpp.s:
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build && $(MAKE) $(MAKESILENT) -f engine/CMakeFiles/PyEngineLib.dir/build.make engine/CMakeFiles/PyEngineLib.dir/src/Renderer/OffscreenRenderer.cpp.s
+.PHONY : src/Renderer/OffscreenRenderer.cpp.s
+
 src/Renderer/Pipeline.o: src/Renderer/Pipeline.cpp.o
 .PHONY : src/Renderer/Pipeline.o
 
@@ -1472,6 +1496,9 @@ help:
 	@echo "... src/Renderer/MeshGenerator.o"
 	@echo "... src/Renderer/MeshGenerator.i"
 	@echo "... src/Renderer/MeshGenerator.s"
+	@echo "... src/Renderer/OffscreenRenderer.o"
+	@echo "... src/Renderer/OffscreenRenderer.i"
+	@echo "... src/Renderer/OffscreenRenderer.s"
 	@echo "... src/Renderer/Pipeline.o"
 	@echo "... src/Renderer/Pipeline.i"
 	@echo "... src/Renderer/Pipeline.s"

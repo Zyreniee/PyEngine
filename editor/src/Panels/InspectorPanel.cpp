@@ -21,53 +21,53 @@ void InspectorPanel::OnImGuiRender() {
 void InspectorPanel::DrawVec3Control(const char* label, glm::vec3& values, float resetValue, float columnWidth) {
     ImGui::PushID(label);
 
-    ImGui::Columns(2);
+    ImGui::Columns(2, nullptr, false);
     ImGui::SetColumnWidth(0, columnWidth);
     ImGui::Text("%s", label);
     ImGui::NextColumn();
 
-    float totalWidth = ImGui::CalcItemWidth();
-    float itemWidth = (totalWidth - 2.0f * ImGui::GetStyle().ItemInnerSpacing.x) / 3.0f;
-    ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2{0, 0});
+    float totalWidth = ImGui::GetContentRegionAvail().x;
+    float itemWidth = (totalWidth - 3.0f * ImGui::GetStyle().ItemInnerSpacing.x) / 3.0f;
+    ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2{2, 0}); // Tighter spacing between X/Y/Z
 
     float lineHeight = ImGui::GetFontSize() + ImGui::GetStyle().FramePadding.y * 2.0f;
     ImVec2 buttonSize = {lineHeight + 3.0f, lineHeight};
 
     // X
-    ImGui::PushStyleColor(ImGuiCol_Button, ImVec4{0.8f, 0.1f, 0.15f, 1.0f});
-    ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{0.9f, 0.2f, 0.2f, 1.0f});
-    ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4{0.8f, 0.1f, 0.15f, 1.0f});
-    if (ImGui::Button("X", buttonSize))
-        values.x = resetValue;
-    ImGui::PopStyleColor(3);
+    ImGui::PushStyleColor(ImGuiCol_Button, ImVec4{0.8f, 0.2f, 0.2f, 1.0f});
+    ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{0.9f, 0.3f, 0.3f, 1.0f});
+    ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4{0.8f, 0.2f, 0.2f, 1.0f});
+    ImGui::PushStyleColor(ImGuiCol_Text, ImVec4{1.0f, 1.0f, 1.0f, 1.0f});
+    if (ImGui::Button("X", buttonSize)) values.x = resetValue;
+    ImGui::PopStyleColor(4);
     ImGui::SameLine();
-    ImGui::PushItemWidth(itemWidth);
+    ImGui::PushItemWidth(itemWidth - buttonSize.x);
     ImGui::DragFloat("##X", &values.x, 0.1f, 0.0f, 0.0f, "%.2f");
     ImGui::PopItemWidth();
     ImGui::SameLine();
 
     // Y
-    ImGui::PushStyleColor(ImGuiCol_Button, ImVec4{0.2f, 0.7f, 0.2f, 1.0f});
-    ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{0.3f, 0.8f, 0.3f, 1.0f});
-    ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4{0.2f, 0.7f, 0.2f, 1.0f});
-    if (ImGui::Button("Y", buttonSize))
-        values.y = resetValue;
-    ImGui::PopStyleColor(3);
+    ImGui::PushStyleColor(ImGuiCol_Button, ImVec4{0.2f, 0.8f, 0.2f, 1.0f});
+    ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{0.3f, 0.9f, 0.3f, 1.0f});
+    ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4{0.2f, 0.8f, 0.2f, 1.0f});
+    ImGui::PushStyleColor(ImGuiCol_Text, ImVec4{1.0f, 1.0f, 1.0f, 1.0f});
+    if (ImGui::Button("Y", buttonSize)) values.y = resetValue;
+    ImGui::PopStyleColor(4);
     ImGui::SameLine();
-    ImGui::PushItemWidth(itemWidth);
+    ImGui::PushItemWidth(itemWidth - buttonSize.x);
     ImGui::DragFloat("##Y", &values.y, 0.1f, 0.0f, 0.0f, "%.2f");
     ImGui::PopItemWidth();
     ImGui::SameLine();
 
     // Z
-    ImGui::PushStyleColor(ImGuiCol_Button, ImVec4{0.1f, 0.25f, 0.8f, 1.0f});
-    ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{0.2f, 0.35f, 0.9f, 1.0f});
-    ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4{0.1f, 0.25f, 0.8f, 1.0f});
-    if (ImGui::Button("Z", buttonSize))
-        values.z = resetValue;
-    ImGui::PopStyleColor(3);
+    ImGui::PushStyleColor(ImGuiCol_Button, ImVec4{0.2f, 0.4f, 1.0f, 1.0f});
+    ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{0.3f, 0.5f, 1.0f, 1.0f});
+    ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4{0.2f, 0.4f, 1.0f, 1.0f});
+    ImGui::PushStyleColor(ImGuiCol_Text, ImVec4{1.0f, 1.0f, 1.0f, 1.0f});
+    if (ImGui::Button("Z", buttonSize)) values.z = resetValue;
+    ImGui::PopStyleColor(4);
     ImGui::SameLine();
-    ImGui::PushItemWidth(itemWidth);
+    ImGui::PushItemWidth(itemWidth - buttonSize.x);
     ImGui::DragFloat("##Z", &values.z, 0.1f, 0.0f, 0.0f, "%.2f");
     ImGui::PopItemWidth();
 
@@ -99,12 +99,14 @@ void InspectorPanel::DrawComponents(PyEngine::Entity entity) {
 
     // ─── Transform ───────────────────────────────────────────
     if (entity.HasComponent<PyEngine::TransformComponent>()) {
-        if (ImGui::TreeNodeEx("Transform", ImGuiTreeNodeFlags_DefaultOpen | ImGuiTreeNodeFlags_Framed |
-                                               ImGuiTreeNodeFlags_SpanAvailWidth | ImGuiTreeNodeFlags_AllowOverlap)) {
+        const ImGuiTreeNodeFlags treeNodeFlags = ImGuiTreeNodeFlags_DefaultOpen | ImGuiTreeNodeFlags_Framed | ImGuiTreeNodeFlags_SpanAvailWidth | ImGuiTreeNodeFlags_AllowItemOverlap | ImGuiTreeNodeFlags_FramePadding;
+        if (ImGui::TreeNodeEx("Transform", treeNodeFlags)) {
             auto& tc = entity.GetTransform();
-            DrawVec3Control("Position", tc.Position);
-            DrawVec3Control("Rotation", tc.Rotation);
-            DrawVec3Control("Scale", tc.Scale, 1.0f);
+            ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(0, 4));
+            DrawVec3Control("Position", tc.Position, 0.0f, 70.0f);
+            DrawVec3Control("Rotation", tc.Rotation, 0.0f, 70.0f);
+            DrawVec3Control("Scale", tc.Scale, 1.0f, 70.0f);
+            ImGui::PopStyleVar();
             ImGui::TreePop();
         }
     }
@@ -277,13 +279,23 @@ void InspectorPanel::DrawComponents(PyEngine::Entity entity) {
     ImGui::Spacing();
 
     // ─── Add Component Button ────────────────────────────────
-    float buttonWidth = ImGui::GetContentRegionAvail().x;
-    ImGui::PushStyleColor(ImGuiCol_Button, ImVec4{0.2f, 0.5f, 0.2f, 1.0f});
-    ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{0.3f, 0.6f, 0.3f, 1.0f});
-    ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4{0.2f, 0.5f, 0.2f, 1.0f});
-    if (ImGui::Button("Add Component", ImVec2{buttonWidth, 30})) {
+    ImGui::Spacing();
+    ImGui::Spacing();
+    
+    // Center the Add Component button
+    float buttonWidth = 200.0f;
+    float availWidth = ImGui::GetContentRegionAvail().x;
+    ImGui::SetCursorPosX((availWidth - buttonWidth) * 0.5f);
+    
+    // Style the button slightly differently like Unity
+    ImGui::PushStyleColor(ImGuiCol_Button, ImVec4{0.25f, 0.25f, 0.25f, 1.0f});
+    ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{0.35f, 0.35f, 0.35f, 1.0f});
+    ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4{0.20f, 0.20f, 0.20f, 1.0f});
+    ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 15.0f); // Rounded capsule button
+    if (ImGui::Button("Add Component", ImVec2{buttonWidth, 25})) {
         ImGui::OpenPopup("AddComponent");
     }
+    ImGui::PopStyleVar();
     ImGui::PopStyleColor(3);
 
     if (ImGui::BeginPopup("AddComponent")) {

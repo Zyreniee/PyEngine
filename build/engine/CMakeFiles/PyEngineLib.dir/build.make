@@ -464,10 +464,24 @@ engine/CMakeFiles/PyEngineLib.dir/src/Renderer/MeshGenerator.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/PyEngineLib.dir/src/Renderer/MeshGenerator.cpp.s"
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Renderer/MeshGenerator.cpp -o CMakeFiles/PyEngineLib.dir/src/Renderer/MeshGenerator.cpp.s
 
+engine/CMakeFiles/PyEngineLib.dir/src/Renderer/OffscreenRenderer.cpp.o: engine/CMakeFiles/PyEngineLib.dir/flags.make
+engine/CMakeFiles/PyEngineLib.dir/src/Renderer/OffscreenRenderer.cpp.o: /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Renderer/OffscreenRenderer.cpp
+engine/CMakeFiles/PyEngineLib.dir/src/Renderer/OffscreenRenderer.cpp.o: engine/CMakeFiles/PyEngineLib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object engine/CMakeFiles/PyEngineLib.dir/src/Renderer/OffscreenRenderer.cpp.o"
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT engine/CMakeFiles/PyEngineLib.dir/src/Renderer/OffscreenRenderer.cpp.o -MF CMakeFiles/PyEngineLib.dir/src/Renderer/OffscreenRenderer.cpp.o.d -o CMakeFiles/PyEngineLib.dir/src/Renderer/OffscreenRenderer.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Renderer/OffscreenRenderer.cpp
+
+engine/CMakeFiles/PyEngineLib.dir/src/Renderer/OffscreenRenderer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/PyEngineLib.dir/src/Renderer/OffscreenRenderer.cpp.i"
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Renderer/OffscreenRenderer.cpp > CMakeFiles/PyEngineLib.dir/src/Renderer/OffscreenRenderer.cpp.i
+
+engine/CMakeFiles/PyEngineLib.dir/src/Renderer/OffscreenRenderer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/PyEngineLib.dir/src/Renderer/OffscreenRenderer.cpp.s"
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Renderer/OffscreenRenderer.cpp -o CMakeFiles/PyEngineLib.dir/src/Renderer/OffscreenRenderer.cpp.s
+
 engine/CMakeFiles/PyEngineLib.dir/src/Renderer/Pipeline.cpp.o: engine/CMakeFiles/PyEngineLib.dir/flags.make
 engine/CMakeFiles/PyEngineLib.dir/src/Renderer/Pipeline.cpp.o: /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Renderer/Pipeline.cpp
 engine/CMakeFiles/PyEngineLib.dir/src/Renderer/Pipeline.cpp.o: engine/CMakeFiles/PyEngineLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object engine/CMakeFiles/PyEngineLib.dir/src/Renderer/Pipeline.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object engine/CMakeFiles/PyEngineLib.dir/src/Renderer/Pipeline.cpp.o"
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT engine/CMakeFiles/PyEngineLib.dir/src/Renderer/Pipeline.cpp.o -MF CMakeFiles/PyEngineLib.dir/src/Renderer/Pipeline.cpp.o.d -o CMakeFiles/PyEngineLib.dir/src/Renderer/Pipeline.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Renderer/Pipeline.cpp
 
 engine/CMakeFiles/PyEngineLib.dir/src/Renderer/Pipeline.cpp.i: cmake_force
@@ -481,7 +495,7 @@ engine/CMakeFiles/PyEngineLib.dir/src/Renderer/Pipeline.cpp.s: cmake_force
 engine/CMakeFiles/PyEngineLib.dir/src/Renderer/RenderQueue.cpp.o: engine/CMakeFiles/PyEngineLib.dir/flags.make
 engine/CMakeFiles/PyEngineLib.dir/src/Renderer/RenderQueue.cpp.o: /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Renderer/RenderQueue.cpp
 engine/CMakeFiles/PyEngineLib.dir/src/Renderer/RenderQueue.cpp.o: engine/CMakeFiles/PyEngineLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object engine/CMakeFiles/PyEngineLib.dir/src/Renderer/RenderQueue.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object engine/CMakeFiles/PyEngineLib.dir/src/Renderer/RenderQueue.cpp.o"
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT engine/CMakeFiles/PyEngineLib.dir/src/Renderer/RenderQueue.cpp.o -MF CMakeFiles/PyEngineLib.dir/src/Renderer/RenderQueue.cpp.o.d -o CMakeFiles/PyEngineLib.dir/src/Renderer/RenderQueue.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Renderer/RenderQueue.cpp
 
 engine/CMakeFiles/PyEngineLib.dir/src/Renderer/RenderQueue.cpp.i: cmake_force
@@ -495,7 +509,7 @@ engine/CMakeFiles/PyEngineLib.dir/src/Renderer/RenderQueue.cpp.s: cmake_force
 engine/CMakeFiles/PyEngineLib.dir/src/Renderer/Renderer.cpp.o: engine/CMakeFiles/PyEngineLib.dir/flags.make
 engine/CMakeFiles/PyEngineLib.dir/src/Renderer/Renderer.cpp.o: /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Renderer/Renderer.cpp
 engine/CMakeFiles/PyEngineLib.dir/src/Renderer/Renderer.cpp.o: engine/CMakeFiles/PyEngineLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object engine/CMakeFiles/PyEngineLib.dir/src/Renderer/Renderer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object engine/CMakeFiles/PyEngineLib.dir/src/Renderer/Renderer.cpp.o"
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT engine/CMakeFiles/PyEngineLib.dir/src/Renderer/Renderer.cpp.o -MF CMakeFiles/PyEngineLib.dir/src/Renderer/Renderer.cpp.o.d -o CMakeFiles/PyEngineLib.dir/src/Renderer/Renderer.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Renderer/Renderer.cpp
 
 engine/CMakeFiles/PyEngineLib.dir/src/Renderer/Renderer.cpp.i: cmake_force
@@ -509,7 +523,7 @@ engine/CMakeFiles/PyEngineLib.dir/src/Renderer/Renderer.cpp.s: cmake_force
 engine/CMakeFiles/PyEngineLib.dir/src/Renderer/Swapchain.cpp.o: engine/CMakeFiles/PyEngineLib.dir/flags.make
 engine/CMakeFiles/PyEngineLib.dir/src/Renderer/Swapchain.cpp.o: /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Renderer/Swapchain.cpp
 engine/CMakeFiles/PyEngineLib.dir/src/Renderer/Swapchain.cpp.o: engine/CMakeFiles/PyEngineLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object engine/CMakeFiles/PyEngineLib.dir/src/Renderer/Swapchain.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object engine/CMakeFiles/PyEngineLib.dir/src/Renderer/Swapchain.cpp.o"
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT engine/CMakeFiles/PyEngineLib.dir/src/Renderer/Swapchain.cpp.o -MF CMakeFiles/PyEngineLib.dir/src/Renderer/Swapchain.cpp.o.d -o CMakeFiles/PyEngineLib.dir/src/Renderer/Swapchain.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Renderer/Swapchain.cpp
 
 engine/CMakeFiles/PyEngineLib.dir/src/Renderer/Swapchain.cpp.i: cmake_force
@@ -523,7 +537,7 @@ engine/CMakeFiles/PyEngineLib.dir/src/Renderer/Swapchain.cpp.s: cmake_force
 engine/CMakeFiles/PyEngineLib.dir/src/Renderer/Texture.cpp.o: engine/CMakeFiles/PyEngineLib.dir/flags.make
 engine/CMakeFiles/PyEngineLib.dir/src/Renderer/Texture.cpp.o: /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Renderer/Texture.cpp
 engine/CMakeFiles/PyEngineLib.dir/src/Renderer/Texture.cpp.o: engine/CMakeFiles/PyEngineLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object engine/CMakeFiles/PyEngineLib.dir/src/Renderer/Texture.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object engine/CMakeFiles/PyEngineLib.dir/src/Renderer/Texture.cpp.o"
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT engine/CMakeFiles/PyEngineLib.dir/src/Renderer/Texture.cpp.o -MF CMakeFiles/PyEngineLib.dir/src/Renderer/Texture.cpp.o.d -o CMakeFiles/PyEngineLib.dir/src/Renderer/Texture.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Renderer/Texture.cpp
 
 engine/CMakeFiles/PyEngineLib.dir/src/Renderer/Texture.cpp.i: cmake_force
@@ -537,7 +551,7 @@ engine/CMakeFiles/PyEngineLib.dir/src/Renderer/Texture.cpp.s: cmake_force
 engine/CMakeFiles/PyEngineLib.dir/src/Renderer/VulkanContext.cpp.o: engine/CMakeFiles/PyEngineLib.dir/flags.make
 engine/CMakeFiles/PyEngineLib.dir/src/Renderer/VulkanContext.cpp.o: /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Renderer/VulkanContext.cpp
 engine/CMakeFiles/PyEngineLib.dir/src/Renderer/VulkanContext.cpp.o: engine/CMakeFiles/PyEngineLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object engine/CMakeFiles/PyEngineLib.dir/src/Renderer/VulkanContext.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building CXX object engine/CMakeFiles/PyEngineLib.dir/src/Renderer/VulkanContext.cpp.o"
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT engine/CMakeFiles/PyEngineLib.dir/src/Renderer/VulkanContext.cpp.o -MF CMakeFiles/PyEngineLib.dir/src/Renderer/VulkanContext.cpp.o.d -o CMakeFiles/PyEngineLib.dir/src/Renderer/VulkanContext.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Renderer/VulkanContext.cpp
 
 engine/CMakeFiles/PyEngineLib.dir/src/Renderer/VulkanContext.cpp.i: cmake_force
@@ -551,7 +565,7 @@ engine/CMakeFiles/PyEngineLib.dir/src/Renderer/VulkanContext.cpp.s: cmake_force
 engine/CMakeFiles/PyEngineLib.dir/src/Resources/AssetRegistry.cpp.o: engine/CMakeFiles/PyEngineLib.dir/flags.make
 engine/CMakeFiles/PyEngineLib.dir/src/Resources/AssetRegistry.cpp.o: /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Resources/AssetRegistry.cpp
 engine/CMakeFiles/PyEngineLib.dir/src/Resources/AssetRegistry.cpp.o: engine/CMakeFiles/PyEngineLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building CXX object engine/CMakeFiles/PyEngineLib.dir/src/Resources/AssetRegistry.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building CXX object engine/CMakeFiles/PyEngineLib.dir/src/Resources/AssetRegistry.cpp.o"
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT engine/CMakeFiles/PyEngineLib.dir/src/Resources/AssetRegistry.cpp.o -MF CMakeFiles/PyEngineLib.dir/src/Resources/AssetRegistry.cpp.o.d -o CMakeFiles/PyEngineLib.dir/src/Resources/AssetRegistry.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Resources/AssetRegistry.cpp
 
 engine/CMakeFiles/PyEngineLib.dir/src/Resources/AssetRegistry.cpp.i: cmake_force
@@ -565,7 +579,7 @@ engine/CMakeFiles/PyEngineLib.dir/src/Resources/AssetRegistry.cpp.s: cmake_force
 engine/CMakeFiles/PyEngineLib.dir/src/Resources/Prefab.cpp.o: engine/CMakeFiles/PyEngineLib.dir/flags.make
 engine/CMakeFiles/PyEngineLib.dir/src/Resources/Prefab.cpp.o: /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Resources/Prefab.cpp
 engine/CMakeFiles/PyEngineLib.dir/src/Resources/Prefab.cpp.o: engine/CMakeFiles/PyEngineLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building CXX object engine/CMakeFiles/PyEngineLib.dir/src/Resources/Prefab.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building CXX object engine/CMakeFiles/PyEngineLib.dir/src/Resources/Prefab.cpp.o"
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT engine/CMakeFiles/PyEngineLib.dir/src/Resources/Prefab.cpp.o -MF CMakeFiles/PyEngineLib.dir/src/Resources/Prefab.cpp.o.d -o CMakeFiles/PyEngineLib.dir/src/Resources/Prefab.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Resources/Prefab.cpp
 
 engine/CMakeFiles/PyEngineLib.dir/src/Resources/Prefab.cpp.i: cmake_force
@@ -579,7 +593,7 @@ engine/CMakeFiles/PyEngineLib.dir/src/Resources/Prefab.cpp.s: cmake_force
 engine/CMakeFiles/PyEngineLib.dir/src/Resources/ResourceManager.cpp.o: engine/CMakeFiles/PyEngineLib.dir/flags.make
 engine/CMakeFiles/PyEngineLib.dir/src/Resources/ResourceManager.cpp.o: /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Resources/ResourceManager.cpp
 engine/CMakeFiles/PyEngineLib.dir/src/Resources/ResourceManager.cpp.o: engine/CMakeFiles/PyEngineLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building CXX object engine/CMakeFiles/PyEngineLib.dir/src/Resources/ResourceManager.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building CXX object engine/CMakeFiles/PyEngineLib.dir/src/Resources/ResourceManager.cpp.o"
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT engine/CMakeFiles/PyEngineLib.dir/src/Resources/ResourceManager.cpp.o -MF CMakeFiles/PyEngineLib.dir/src/Resources/ResourceManager.cpp.o.d -o CMakeFiles/PyEngineLib.dir/src/Resources/ResourceManager.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Resources/ResourceManager.cpp
 
 engine/CMakeFiles/PyEngineLib.dir/src/Resources/ResourceManager.cpp.i: cmake_force
@@ -593,7 +607,7 @@ engine/CMakeFiles/PyEngineLib.dir/src/Resources/ResourceManager.cpp.s: cmake_for
 engine/CMakeFiles/PyEngineLib.dir/src/Scene/Camera.cpp.o: engine/CMakeFiles/PyEngineLib.dir/flags.make
 engine/CMakeFiles/PyEngineLib.dir/src/Scene/Camera.cpp.o: /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Scene/Camera.cpp
 engine/CMakeFiles/PyEngineLib.dir/src/Scene/Camera.cpp.o: engine/CMakeFiles/PyEngineLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building CXX object engine/CMakeFiles/PyEngineLib.dir/src/Scene/Camera.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building CXX object engine/CMakeFiles/PyEngineLib.dir/src/Scene/Camera.cpp.o"
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT engine/CMakeFiles/PyEngineLib.dir/src/Scene/Camera.cpp.o -MF CMakeFiles/PyEngineLib.dir/src/Scene/Camera.cpp.o.d -o CMakeFiles/PyEngineLib.dir/src/Scene/Camera.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Scene/Camera.cpp
 
 engine/CMakeFiles/PyEngineLib.dir/src/Scene/Camera.cpp.i: cmake_force
@@ -607,7 +621,7 @@ engine/CMakeFiles/PyEngineLib.dir/src/Scene/Camera.cpp.s: cmake_force
 engine/CMakeFiles/PyEngineLib.dir/src/Scene/Components.cpp.o: engine/CMakeFiles/PyEngineLib.dir/flags.make
 engine/CMakeFiles/PyEngineLib.dir/src/Scene/Components.cpp.o: /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Scene/Components.cpp
 engine/CMakeFiles/PyEngineLib.dir/src/Scene/Components.cpp.o: engine/CMakeFiles/PyEngineLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building CXX object engine/CMakeFiles/PyEngineLib.dir/src/Scene/Components.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building CXX object engine/CMakeFiles/PyEngineLib.dir/src/Scene/Components.cpp.o"
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT engine/CMakeFiles/PyEngineLib.dir/src/Scene/Components.cpp.o -MF CMakeFiles/PyEngineLib.dir/src/Scene/Components.cpp.o.d -o CMakeFiles/PyEngineLib.dir/src/Scene/Components.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Scene/Components.cpp
 
 engine/CMakeFiles/PyEngineLib.dir/src/Scene/Components.cpp.i: cmake_force
@@ -621,7 +635,7 @@ engine/CMakeFiles/PyEngineLib.dir/src/Scene/Components.cpp.s: cmake_force
 engine/CMakeFiles/PyEngineLib.dir/src/Scene/EditorCamera.cpp.o: engine/CMakeFiles/PyEngineLib.dir/flags.make
 engine/CMakeFiles/PyEngineLib.dir/src/Scene/EditorCamera.cpp.o: /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Scene/EditorCamera.cpp
 engine/CMakeFiles/PyEngineLib.dir/src/Scene/EditorCamera.cpp.o: engine/CMakeFiles/PyEngineLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building CXX object engine/CMakeFiles/PyEngineLib.dir/src/Scene/EditorCamera.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building CXX object engine/CMakeFiles/PyEngineLib.dir/src/Scene/EditorCamera.cpp.o"
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT engine/CMakeFiles/PyEngineLib.dir/src/Scene/EditorCamera.cpp.o -MF CMakeFiles/PyEngineLib.dir/src/Scene/EditorCamera.cpp.o.d -o CMakeFiles/PyEngineLib.dir/src/Scene/EditorCamera.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Scene/EditorCamera.cpp
 
 engine/CMakeFiles/PyEngineLib.dir/src/Scene/EditorCamera.cpp.i: cmake_force
@@ -635,7 +649,7 @@ engine/CMakeFiles/PyEngineLib.dir/src/Scene/EditorCamera.cpp.s: cmake_force
 engine/CMakeFiles/PyEngineLib.dir/src/Scene/Entity.cpp.o: engine/CMakeFiles/PyEngineLib.dir/flags.make
 engine/CMakeFiles/PyEngineLib.dir/src/Scene/Entity.cpp.o: /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Scene/Entity.cpp
 engine/CMakeFiles/PyEngineLib.dir/src/Scene/Entity.cpp.o: engine/CMakeFiles/PyEngineLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building CXX object engine/CMakeFiles/PyEngineLib.dir/src/Scene/Entity.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building CXX object engine/CMakeFiles/PyEngineLib.dir/src/Scene/Entity.cpp.o"
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT engine/CMakeFiles/PyEngineLib.dir/src/Scene/Entity.cpp.o -MF CMakeFiles/PyEngineLib.dir/src/Scene/Entity.cpp.o.d -o CMakeFiles/PyEngineLib.dir/src/Scene/Entity.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Scene/Entity.cpp
 
 engine/CMakeFiles/PyEngineLib.dir/src/Scene/Entity.cpp.i: cmake_force
@@ -649,7 +663,7 @@ engine/CMakeFiles/PyEngineLib.dir/src/Scene/Entity.cpp.s: cmake_force
 engine/CMakeFiles/PyEngineLib.dir/src/Scene/Scene.cpp.o: engine/CMakeFiles/PyEngineLib.dir/flags.make
 engine/CMakeFiles/PyEngineLib.dir/src/Scene/Scene.cpp.o: /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Scene/Scene.cpp
 engine/CMakeFiles/PyEngineLib.dir/src/Scene/Scene.cpp.o: engine/CMakeFiles/PyEngineLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building CXX object engine/CMakeFiles/PyEngineLib.dir/src/Scene/Scene.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building CXX object engine/CMakeFiles/PyEngineLib.dir/src/Scene/Scene.cpp.o"
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT engine/CMakeFiles/PyEngineLib.dir/src/Scene/Scene.cpp.o -MF CMakeFiles/PyEngineLib.dir/src/Scene/Scene.cpp.o.d -o CMakeFiles/PyEngineLib.dir/src/Scene/Scene.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Scene/Scene.cpp
 
 engine/CMakeFiles/PyEngineLib.dir/src/Scene/Scene.cpp.i: cmake_force
@@ -663,7 +677,7 @@ engine/CMakeFiles/PyEngineLib.dir/src/Scene/Scene.cpp.s: cmake_force
 engine/CMakeFiles/PyEngineLib.dir/src/Scene/SceneGraph.cpp.o: engine/CMakeFiles/PyEngineLib.dir/flags.make
 engine/CMakeFiles/PyEngineLib.dir/src/Scene/SceneGraph.cpp.o: /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Scene/SceneGraph.cpp
 engine/CMakeFiles/PyEngineLib.dir/src/Scene/SceneGraph.cpp.o: engine/CMakeFiles/PyEngineLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building CXX object engine/CMakeFiles/PyEngineLib.dir/src/Scene/SceneGraph.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building CXX object engine/CMakeFiles/PyEngineLib.dir/src/Scene/SceneGraph.cpp.o"
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT engine/CMakeFiles/PyEngineLib.dir/src/Scene/SceneGraph.cpp.o -MF CMakeFiles/PyEngineLib.dir/src/Scene/SceneGraph.cpp.o.d -o CMakeFiles/PyEngineLib.dir/src/Scene/SceneGraph.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Scene/SceneGraph.cpp
 
 engine/CMakeFiles/PyEngineLib.dir/src/Scene/SceneGraph.cpp.i: cmake_force
@@ -677,7 +691,7 @@ engine/CMakeFiles/PyEngineLib.dir/src/Scene/SceneGraph.cpp.s: cmake_force
 engine/CMakeFiles/PyEngineLib.dir/src/Scene/SceneManager.cpp.o: engine/CMakeFiles/PyEngineLib.dir/flags.make
 engine/CMakeFiles/PyEngineLib.dir/src/Scene/SceneManager.cpp.o: /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Scene/SceneManager.cpp
 engine/CMakeFiles/PyEngineLib.dir/src/Scene/SceneManager.cpp.o: engine/CMakeFiles/PyEngineLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building CXX object engine/CMakeFiles/PyEngineLib.dir/src/Scene/SceneManager.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building CXX object engine/CMakeFiles/PyEngineLib.dir/src/Scene/SceneManager.cpp.o"
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT engine/CMakeFiles/PyEngineLib.dir/src/Scene/SceneManager.cpp.o -MF CMakeFiles/PyEngineLib.dir/src/Scene/SceneManager.cpp.o.d -o CMakeFiles/PyEngineLib.dir/src/Scene/SceneManager.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Scene/SceneManager.cpp
 
 engine/CMakeFiles/PyEngineLib.dir/src/Scene/SceneManager.cpp.i: cmake_force
@@ -691,7 +705,7 @@ engine/CMakeFiles/PyEngineLib.dir/src/Scene/SceneManager.cpp.s: cmake_force
 engine/CMakeFiles/PyEngineLib.dir/src/Scene/SceneSerializer.cpp.o: engine/CMakeFiles/PyEngineLib.dir/flags.make
 engine/CMakeFiles/PyEngineLib.dir/src/Scene/SceneSerializer.cpp.o: /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Scene/SceneSerializer.cpp
 engine/CMakeFiles/PyEngineLib.dir/src/Scene/SceneSerializer.cpp.o: engine/CMakeFiles/PyEngineLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building CXX object engine/CMakeFiles/PyEngineLib.dir/src/Scene/SceneSerializer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building CXX object engine/CMakeFiles/PyEngineLib.dir/src/Scene/SceneSerializer.cpp.o"
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT engine/CMakeFiles/PyEngineLib.dir/src/Scene/SceneSerializer.cpp.o -MF CMakeFiles/PyEngineLib.dir/src/Scene/SceneSerializer.cpp.o.d -o CMakeFiles/PyEngineLib.dir/src/Scene/SceneSerializer.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Scene/SceneSerializer.cpp
 
 engine/CMakeFiles/PyEngineLib.dir/src/Scene/SceneSerializer.cpp.i: cmake_force
@@ -705,7 +719,7 @@ engine/CMakeFiles/PyEngineLib.dir/src/Scene/SceneSerializer.cpp.s: cmake_force
 engine/CMakeFiles/PyEngineLib.dir/src/Scene/TerrainSystem.cpp.o: engine/CMakeFiles/PyEngineLib.dir/flags.make
 engine/CMakeFiles/PyEngineLib.dir/src/Scene/TerrainSystem.cpp.o: /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Scene/TerrainSystem.cpp
 engine/CMakeFiles/PyEngineLib.dir/src/Scene/TerrainSystem.cpp.o: engine/CMakeFiles/PyEngineLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building CXX object engine/CMakeFiles/PyEngineLib.dir/src/Scene/TerrainSystem.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building CXX object engine/CMakeFiles/PyEngineLib.dir/src/Scene/TerrainSystem.cpp.o"
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT engine/CMakeFiles/PyEngineLib.dir/src/Scene/TerrainSystem.cpp.o -MF CMakeFiles/PyEngineLib.dir/src/Scene/TerrainSystem.cpp.o.d -o CMakeFiles/PyEngineLib.dir/src/Scene/TerrainSystem.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Scene/TerrainSystem.cpp
 
 engine/CMakeFiles/PyEngineLib.dir/src/Scene/TerrainSystem.cpp.i: cmake_force
@@ -719,7 +733,7 @@ engine/CMakeFiles/PyEngineLib.dir/src/Scene/TerrainSystem.cpp.s: cmake_force
 engine/CMakeFiles/PyEngineLib.dir/src/Scripting/ScriptEngine.cpp.o: engine/CMakeFiles/PyEngineLib.dir/flags.make
 engine/CMakeFiles/PyEngineLib.dir/src/Scripting/ScriptEngine.cpp.o: /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Scripting/ScriptEngine.cpp
 engine/CMakeFiles/PyEngineLib.dir/src/Scripting/ScriptEngine.cpp.o: engine/CMakeFiles/PyEngineLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building CXX object engine/CMakeFiles/PyEngineLib.dir/src/Scripting/ScriptEngine.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building CXX object engine/CMakeFiles/PyEngineLib.dir/src/Scripting/ScriptEngine.cpp.o"
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT engine/CMakeFiles/PyEngineLib.dir/src/Scripting/ScriptEngine.cpp.o -MF CMakeFiles/PyEngineLib.dir/src/Scripting/ScriptEngine.cpp.o.d -o CMakeFiles/PyEngineLib.dir/src/Scripting/ScriptEngine.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/Scripting/ScriptEngine.cpp
 
 engine/CMakeFiles/PyEngineLib.dir/src/Scripting/ScriptEngine.cpp.i: cmake_force
@@ -733,7 +747,7 @@ engine/CMakeFiles/PyEngineLib.dir/src/Scripting/ScriptEngine.cpp.s: cmake_force
 engine/CMakeFiles/PyEngineLib.dir/src/ThirdParty/stb_image_impl.cpp.o: engine/CMakeFiles/PyEngineLib.dir/flags.make
 engine/CMakeFiles/PyEngineLib.dir/src/ThirdParty/stb_image_impl.cpp.o: /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/ThirdParty/stb_image_impl.cpp
 engine/CMakeFiles/PyEngineLib.dir/src/ThirdParty/stb_image_impl.cpp.o: engine/CMakeFiles/PyEngineLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building CXX object engine/CMakeFiles/PyEngineLib.dir/src/ThirdParty/stb_image_impl.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building CXX object engine/CMakeFiles/PyEngineLib.dir/src/ThirdParty/stb_image_impl.cpp.o"
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT engine/CMakeFiles/PyEngineLib.dir/src/ThirdParty/stb_image_impl.cpp.o -MF CMakeFiles/PyEngineLib.dir/src/ThirdParty/stb_image_impl.cpp.o.d -o CMakeFiles/PyEngineLib.dir/src/ThirdParty/stb_image_impl.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/ThirdParty/stb_image_impl.cpp
 
 engine/CMakeFiles/PyEngineLib.dir/src/ThirdParty/stb_image_impl.cpp.i: cmake_force
@@ -747,7 +761,7 @@ engine/CMakeFiles/PyEngineLib.dir/src/ThirdParty/stb_image_impl.cpp.s: cmake_for
 engine/CMakeFiles/PyEngineLib.dir/src/ThirdParty/vma_impl.cpp.o: engine/CMakeFiles/PyEngineLib.dir/flags.make
 engine/CMakeFiles/PyEngineLib.dir/src/ThirdParty/vma_impl.cpp.o: /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/ThirdParty/vma_impl.cpp
 engine/CMakeFiles/PyEngineLib.dir/src/ThirdParty/vma_impl.cpp.o: engine/CMakeFiles/PyEngineLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building CXX object engine/CMakeFiles/PyEngineLib.dir/src/ThirdParty/vma_impl.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building CXX object engine/CMakeFiles/PyEngineLib.dir/src/ThirdParty/vma_impl.cpp.o"
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT engine/CMakeFiles/PyEngineLib.dir/src/ThirdParty/vma_impl.cpp.o -MF CMakeFiles/PyEngineLib.dir/src/ThirdParty/vma_impl.cpp.o.d -o CMakeFiles/PyEngineLib.dir/src/ThirdParty/vma_impl.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/ThirdParty/vma_impl.cpp
 
 engine/CMakeFiles/PyEngineLib.dir/src/ThirdParty/vma_impl.cpp.i: cmake_force
@@ -761,7 +775,7 @@ engine/CMakeFiles/PyEngineLib.dir/src/ThirdParty/vma_impl.cpp.s: cmake_force
 engine/CMakeFiles/PyEngineLib.dir/src/UI/UISystem.cpp.o: engine/CMakeFiles/PyEngineLib.dir/flags.make
 engine/CMakeFiles/PyEngineLib.dir/src/UI/UISystem.cpp.o: /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/UI/UISystem.cpp
 engine/CMakeFiles/PyEngineLib.dir/src/UI/UISystem.cpp.o: engine/CMakeFiles/PyEngineLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building CXX object engine/CMakeFiles/PyEngineLib.dir/src/UI/UISystem.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building CXX object engine/CMakeFiles/PyEngineLib.dir/src/UI/UISystem.cpp.o"
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT engine/CMakeFiles/PyEngineLib.dir/src/UI/UISystem.cpp.o -MF CMakeFiles/PyEngineLib.dir/src/UI/UISystem.cpp.o.d -o CMakeFiles/PyEngineLib.dir/src/UI/UISystem.cpp.o -c /home/zyreniee/Belgeler/GitHub/PyEngine/engine/src/UI/UISystem.cpp
 
 engine/CMakeFiles/PyEngineLib.dir/src/UI/UISystem.cpp.i: cmake_force
@@ -802,6 +816,7 @@ PyEngineLib_OBJECTS = \
 "CMakeFiles/PyEngineLib.dir/src/Renderer/Material.cpp.o" \
 "CMakeFiles/PyEngineLib.dir/src/Renderer/MaterialLibrary.cpp.o" \
 "CMakeFiles/PyEngineLib.dir/src/Renderer/MeshGenerator.cpp.o" \
+"CMakeFiles/PyEngineLib.dir/src/Renderer/OffscreenRenderer.cpp.o" \
 "CMakeFiles/PyEngineLib.dir/src/Renderer/Pipeline.cpp.o" \
 "CMakeFiles/PyEngineLib.dir/src/Renderer/RenderQueue.cpp.o" \
 "CMakeFiles/PyEngineLib.dir/src/Renderer/Renderer.cpp.o" \
@@ -856,6 +871,7 @@ lib/libPyEngineLib.a: engine/CMakeFiles/PyEngineLib.dir/src/Renderer/Buffer.cpp.
 lib/libPyEngineLib.a: engine/CMakeFiles/PyEngineLib.dir/src/Renderer/Material.cpp.o
 lib/libPyEngineLib.a: engine/CMakeFiles/PyEngineLib.dir/src/Renderer/MaterialLibrary.cpp.o
 lib/libPyEngineLib.a: engine/CMakeFiles/PyEngineLib.dir/src/Renderer/MeshGenerator.cpp.o
+lib/libPyEngineLib.a: engine/CMakeFiles/PyEngineLib.dir/src/Renderer/OffscreenRenderer.cpp.o
 lib/libPyEngineLib.a: engine/CMakeFiles/PyEngineLib.dir/src/Renderer/Pipeline.cpp.o
 lib/libPyEngineLib.a: engine/CMakeFiles/PyEngineLib.dir/src/Renderer/RenderQueue.cpp.o
 lib/libPyEngineLib.a: engine/CMakeFiles/PyEngineLib.dir/src/Renderer/Renderer.cpp.o
@@ -880,7 +896,7 @@ lib/libPyEngineLib.a: engine/CMakeFiles/PyEngineLib.dir/src/ThirdParty/vma_impl.
 lib/libPyEngineLib.a: engine/CMakeFiles/PyEngineLib.dir/src/UI/UISystem.cpp.o
 lib/libPyEngineLib.a: engine/CMakeFiles/PyEngineLib.dir/build.make
 lib/libPyEngineLib.a: engine/CMakeFiles/PyEngineLib.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Linking CXX static library ../lib/libPyEngineLib.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Linking CXX static library ../lib/libPyEngineLib.a"
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/engine && $(CMAKE_COMMAND) -P CMakeFiles/PyEngineLib.dir/cmake_clean_target.cmake
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/engine && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/PyEngineLib.dir/link.txt --verbose=$(VERBOSE)
 

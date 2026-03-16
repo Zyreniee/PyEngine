@@ -19,10 +19,11 @@
 
 // Renderer Headers
 #include "PyEngine/Assets/Mesh.hpp"
+#include "PyEngine/Renderer/OffscreenRenderer.hpp"
 #include "PyEngine/Renderer/Pipeline.hpp"
 #include "PyEngine/Renderer/Renderer.hpp"
-#include "PyEngine/Renderer/Swapchain.hpp"      // Added include for FramebufferSpecification (if in Swapchain)
-#include "PyEngine/Renderer/VulkanContext.hpp"  // Added include for GetDevice
+#include "PyEngine/Renderer/Swapchain.hpp"
+#include "PyEngine/Renderer/VulkanContext.hpp"
 
 // Scene Headers
 #include "PyEngine/Assets/ModelImporter.hpp"
@@ -30,15 +31,18 @@
 #include "PyEngine/Scene/SceneManager.hpp"
 #include "PyEngine/Scene/SceneSerializer.hpp"
 
-// Utils
-// #include "PyEngine/Utils/PlatformUtils.hpp"
-
 EditorLayer::EditorLayer() : Layer("EditorLayer") {}
 
 void EditorLayer::OnAttach() {
     // 16:9 aspect ratio default
-    m_EditorCamera = PyEngine::EditorCamera(30.0f, 1.778f, 0.1f, 1000.0f);
+    m_EditorCamera = PyEngine::EditorCamera(60.0f, 1.778f, 0.1f, 1000.0f);
     NewScene();
+
+    // Create the offscreen renderer for the editor scene view
+    auto& renderer = PyEngine::Application::Get().GetRenderer();
+    m_OffscreenRenderer = std::make_unique<PyEngine::OffscreenRenderer>(
+        renderer.GetContext(), renderer.GetAllocator(), 1280, 720, renderer.GetImageFormat());
+    m_SceneViewPanel.SetOffscreenRenderer(m_OffscreenRenderer.get());
 
     InitGrid();
     InitNavMeshDebug();
@@ -67,13 +71,20 @@ void EditorLayer::OnUpdate(float deltaTime) {
 
     // Get raw GLFW states for maximum reliability
     auto nativeWindow = static_cast<GLFWwindow*>(Application::Get().GetWindow().GetNativeWindow());
-    bool rmbHeld = glfwGetMouseButton(nativeWindow, GLFW_MOUSE_BUTTON_RIGHT) == GLFW_PRESS;
-    bool mmbHeld = glfwGetMouseButton(nativeWindow, GLFW_MOUSE_BUTTON_MIDDLE) == GLFW_PRESS;
+    
+    bool sceneViewActive = m_SceneViewPanel.IsFocused() || m_SceneViewPanel.IsHovered();
+    
+    bool rmbHeld = sceneViewActive && glfwGetMouseButton(nativeWindow, GLFW_MOUSE_BUTTON_RIGHT) == GLFW_PRESS;
+    bool mmbHeld = sceneViewActive && glfwGetMouseButton(nativeWindow, GLFW_MOUSE_BUTTON_MIDDLE) == GLFW_PRESS;
+    bool lmbHeld = sceneViewActive && glfwGetMouseButton(nativeWindow, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS;
+    bool altHeld = glfwGetKey(nativeWindow, GLFW_KEY_LEFT_ALT) == GLFW_PRESS || glfwGetKey(nativeWindow, GLFW_KEY_RIGHT_ALT) == GLFW_PRESS;
 
     // Ensure speed is very noticeable
     m_EditorCamera.SetMoveSpeed(30.0f);
     m_EditorCamera.SetRightMouseButton(rmbHeld);
     m_EditorCamera.SetMiddleMouseButton(mmbHeld);
+    m_EditorCamera.SetLeftMouseButton(lmbHeld);
+    m_EditorCamera.SetAltPressed(altHeld);
 
     if (rmbHeld || mmbHeld) {
         // LOCK CURSOR for reliable delta
@@ -109,9 +120,7 @@ void EditorLayer::OnUpdate(float deltaTime) {
         auto selectedEntity = m_HierarchyPanel.GetSelectedEntity();
         if (selectedEntity && selectedEntity.HasComponent<PyEngine::TransformComponent>()) {
             const auto& tc = selectedEntity.GetComponent<PyEngine::TransformComponent>();
-            float distance = 3.0f;  // Closer focus
-            glm::vec3 newPos = tc.Position - m_EditorCamera.GetForwardDirection() * distance;
-            m_EditorCamera.SetPosition(newPos);
+            m_EditorCamera.Focus(tc.Position);
         }
     }
 
@@ -133,15 +142,30 @@ void EditorLayer::OnUpdate(float deltaTime) {
         }
 
     } else {
-        // Draw Grid and NavMesh (using Editor Camera)
+        // ── Editor mode: render into offscreen target ──────────────────
         auto& renderer = PyEngine::Application::Get().GetRenderer();
-        if (renderer.IsFrameInProgress()) {
-            VkCommandBuffer cmd = renderer.GetCurrentCommandBuffer();
-            DrawGrid(cmd, m_EditorCamera.GetViewMatrix(), m_EditorCamera.GetProjectionMatrix());
-            DrawNavMeshDebug(cmd, m_EditorCamera.GetViewMatrix(), m_EditorCamera.GetProjectionMatrix());
+
+        if (m_ViewportSize.x > 1 && m_ViewportSize.y > 1) {
+            m_OffscreenRenderer->Resize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
         }
 
-        m_ActiveScene->OnUpdateEditor(deltaTime, m_EditorCamera);
+        if (m_OffscreenRenderer->BeginFrame()) {
+            VkCommandBuffer offCmd = m_OffscreenRenderer->GetCommandBuffer();
+
+            // Intercept scene drawing into offscreen cmd buffer
+            renderer.SetExternalCommandBuffer(offCmd);
+            
+            // This will call DrawMesh, which now goes to offCmd
+            m_ActiveScene->OnUpdateEditor(deltaTime, m_EditorCamera);
+            
+            // Draw overlays over scene
+            DrawGrid(offCmd, m_EditorCamera.GetViewMatrix(), m_EditorCamera.GetProjectionMatrix());
+            DrawNavMeshDebug(offCmd, m_EditorCamera.GetViewMatrix(), m_EditorCamera.GetProjectionMatrix());
+            
+            renderer.SetExternalCommandBuffer(VK_NULL_HANDLE);
+
+            m_OffscreenRenderer->EndFrame(offCmd);
+        }
     }
 }
 
@@ -315,16 +339,16 @@ void EditorLayer::BuildDefaultLayout(ImGuiID dockspace_id) {
     ImGui::DockBuilderSetNodeSize(dockspace_id, ImGui::GetMainViewport()->Size);
 
     ImGuiID dock_main_id = dockspace_id;
-    ImGuiID dock_id_prop = ImGui::DockBuilderSplitNode(dock_main_id, ImGuiDir_Right, 0.2f, nullptr, &dock_main_id);
-    ImGuiID dock_id_bottom = ImGui::DockBuilderSplitNode(dock_main_id, ImGuiDir_Down, 0.25f, nullptr, &dock_main_id);
+    ImGuiID dock_id_right = ImGui::DockBuilderSplitNode(dock_main_id, ImGuiDir_Right, 0.25f, nullptr, &dock_main_id);
+    ImGuiID dock_id_bottom = ImGui::DockBuilderSplitNode(dock_main_id, ImGuiDir_Down, 0.3f, nullptr, &dock_main_id);
     ImGuiID dock_id_left = ImGui::DockBuilderSplitNode(dock_main_id, ImGuiDir_Left, 0.2f, nullptr, &dock_main_id);
 
-    ImGui::DockBuilderDockWindow("Hierarchy", dock_id_left);
-    ImGui::DockBuilderDockWindow("Inspector", dock_id_prop);
-    ImGui::DockBuilderDockWindow("Project", dock_id_bottom);
-    ImGui::DockBuilderDockWindow("Console", dock_id_bottom);
+    ImGui::DockBuilderDockWindow("\xef\x80\xa8  Hierarchy", dock_id_left);
+    ImGui::DockBuilderDockWindow("\xef\x81\x9a  Inspector", dock_id_right);
+    ImGui::DockBuilderDockWindow("\xef\x81\xbb  Project", dock_id_bottom);
+    ImGui::DockBuilderDockWindow("\xef\x84\xa0  Console", dock_id_bottom);
     ImGui::DockBuilderDockWindow("\xef\x80\xb0  Scene", dock_main_id);  // Match SceneViewPanel title
-    ImGui::DockBuilderDockWindow("Stats", dock_id_left);
+    ImGui::DockBuilderDockWindow("Stats", dock_id_right);
 
     ImGui::DockBuilderFinish(dockspace_id);
 }
@@ -332,87 +356,124 @@ void EditorLayer::BuildDefaultLayout(ImGuiID dockspace_id) {
 void EditorLayer::DrawMenuBar() {
     if (ImGui::BeginMenuBar()) {
         if (ImGui::BeginMenu("File")) {
-            if (ImGui::MenuItem("New Scene", "Ctrl+N"))
-                NewScene();
-
-            if (ImGui::MenuItem("Open Scene...", "Ctrl+O"))
-                OpenScene();
-
-            if (ImGui::MenuItem("Save Scene", "Ctrl+S"))
-                SaveScene();
-
-            if (ImGui::MenuItem("Save Scene As...", "Ctrl+Shift+S"))
-                SaveSceneAs();
-
+            if (ImGui::MenuItem("New Scene", "Ctrl+N")) NewScene();
+            if (ImGui::MenuItem("Open Scene...", "Ctrl+O")) OpenScene();
             ImGui::Separator();
+            if (ImGui::MenuItem("Save", "Ctrl+S")) SaveScene();
+            if (ImGui::MenuItem("Save As...", "Ctrl+Shift+S")) SaveSceneAs();
+            ImGui::Separator();
+            if (ImGui::MenuItem("Exit")) PyEngine::Application::Get().Close();
+            ImGui::EndMenu();
+        }
 
-            if (ImGui::MenuItem("Import Model...")) {
+        if (ImGui::BeginMenu("Edit")) {
+            // Placeholder for Undo/Redo/Cut/Copy/Paste
+            ImGui::MenuItem("Undo", "Ctrl+Z");
+            ImGui::MenuItem("Redo", "Ctrl+Y");
+            ImGui::Separator();
+            ImGui::MenuItem("Cut", "Ctrl+X");
+            ImGui::MenuItem("Copy", "Ctrl+C");
+            ImGui::MenuItem("Paste", "Ctrl+V");
+            ImGui::Separator();
+            if (ImGui::MenuItem("Delete", "Del")) {
+                if (m_HierarchyPanel.GetSelectedEntity()) {
+                    m_ActiveScene->DestroyEntity(m_HierarchyPanel.GetSelectedEntity());
+                    m_HierarchyPanel.SetSelectedEntity({});
+                }
+            }
+            ImGui::EndMenu();
+        }
+
+        if (ImGui::BeginMenu("Assets")) {
+            if (ImGui::MenuItem("Import New Asset...")) {
                 m_ShowModelImportModal = true;
             }
-
-            ImGui::Separator();
-
-            if (ImGui::MenuItem("Exit"))
-                PyEngine::Application::Get().Close();
             ImGui::EndMenu();
         }
 
         if (ImGui::BeginMenu("GameObject")) {
-            if (ImGui::MenuItem("Create Empty")) {
-                m_ActiveScene->CreateEntity("Empty Object");
+            if (ImGui::MenuItem("Create Empty", "Ctrl+Shift+N")) {
+                m_ActiveScene->CreateEntity("GameObject");
             }
-            if (ImGui::MenuItem("Cube")) {
-                auto e = m_ActiveScene->CreateEntity("Cube");
-                e.AddComponent<PyEngine::MeshRendererComponent>().MeshID = 0;
-            }
-            if (ImGui::MenuItem("Sphere")) {
-                auto e = m_ActiveScene->CreateEntity("Sphere");
-                e.AddComponent<PyEngine::MeshRendererComponent>().MeshID = 1;
-            }
-            if (ImGui::MenuItem("Plane")) {
-                auto e = m_ActiveScene->CreateEntity("Plane");
-                e.AddComponent<PyEngine::MeshRendererComponent>().MeshID = 2;
-            }
-            if (ImGui::MenuItem("Cylinder")) {
-                auto e = m_ActiveScene->CreateEntity("Cylinder");
-                e.AddComponent<PyEngine::MeshRendererComponent>().MeshID = 3;
-            }
-            if (ImGui::MenuItem("Capsule")) {
-                auto e = m_ActiveScene->CreateEntity("Capsule");
-                e.AddComponent<PyEngine::MeshRendererComponent>().MeshID = 4;
+            ImGui::Separator();
+            
+            if (ImGui::BeginMenu("3D Object")) {
+                if (ImGui::MenuItem("Cube")) {
+                    auto e = m_ActiveScene->CreateEntity("Cube");
+                    e.AddComponent<PyEngine::MeshRendererComponent>().MeshID = 0;
+                }
+                if (ImGui::MenuItem("Sphere")) {
+                    auto e = m_ActiveScene->CreateEntity("Sphere");
+                    e.AddComponent<PyEngine::MeshRendererComponent>().MeshID = 1;
+                }
+                if (ImGui::MenuItem("Plane")) {
+                    auto e = m_ActiveScene->CreateEntity("Plane");
+                    e.AddComponent<PyEngine::MeshRendererComponent>().MeshID = 2;
+                }
+                if (ImGui::MenuItem("Cylinder")) {
+                    auto e = m_ActiveScene->CreateEntity("Cylinder");
+                    e.AddComponent<PyEngine::MeshRendererComponent>().MeshID = 3;
+                }
+                if (ImGui::MenuItem("Capsule")) {
+                    auto e = m_ActiveScene->CreateEntity("Capsule");
+                    e.AddComponent<PyEngine::MeshRendererComponent>().MeshID = 4;
+                }
+                if (ImGui::MenuItem("Terrain")) {
+                    auto entity = m_ActiveScene->CreateEntity("Terrain");
+                    auto& mrc = entity.AddComponent<PyEngine::MeshRendererComponent>();
+                    mrc.MeshID = 2; // Flat plane default
+                    entity.AddComponent<PyEngine::TerrainComponent>();
+                }
+                ImGui::EndMenu();
             }
 
-            if (ImGui::MenuItem("Terrain")) {
-                auto entity = m_ActiveScene->CreateEntity("Terrain");
-                auto& mrc = entity.AddComponent<PyEngine::MeshRendererComponent>();
-                mrc.MeshID = 2;
-                entity.AddComponent<PyEngine::TerrainComponent>();
+            if (ImGui::BeginMenu("Light")) {
+                if (ImGui::MenuItem("Directional Light")) {
+                    auto e = m_ActiveScene->CreateEntity("Directional Light");
+                    e.AddComponent<PyEngine::LightComponent>();
+                }
+                if (ImGui::MenuItem("Point Light")) {
+                    auto e = m_ActiveScene->CreateEntity("Point Light");
+                    e.AddComponent<PyEngine::LightComponent>().LightType = PyEngine::LightComponent::Type::Point;
+                }
+                if (ImGui::MenuItem("Spot Light")) {
+                    auto e = m_ActiveScene->CreateEntity("Spot Light");
+                    e.AddComponent<PyEngine::LightComponent>().LightType = PyEngine::LightComponent::Type::Spot;
+                }
+                ImGui::EndMenu();
             }
-
+            
             if (ImGui::MenuItem("Camera")) {
                 auto e = m_ActiveScene->CreateEntity("Camera");
                 e.AddComponent<PyEngine::CameraComponent>();
             }
-            if (ImGui::MenuItem("Light")) {
-                auto e = m_ActiveScene->CreateEntity("Light");
-                e.AddComponent<PyEngine::LightComponent>();
-            }
+
             ImGui::EndMenu();
         }
 
-        if (ImGui::BeginMenu("AI")) {
-            if (ImGui::MenuItem("Bake NavMesh")) {
-                m_ActiveScene->GetNavMeshSystem().BakeNavMesh(m_ActiveScene.get());
-                UpdateNavMeshDebugMesh();
-            }
-            if (ImGui::MenuItem("Show NavMesh", nullptr, &m_ShowNavMesh)) {
-            }
+        if (ImGui::BeginMenu("Component")) {
+            // If unity-like, could add components to selected entity here.
+            ImGui::TextDisabled("Use Inspector instead.");
             ImGui::EndMenu();
         }
 
         if (ImGui::BeginMenu("Window")) {
+            if (ImGui::BeginMenu("AI")) {
+                if (ImGui::MenuItem("Bake NavMesh")) {
+                    m_ActiveScene->GetNavMeshSystem().BakeNavMesh(m_ActiveScene.get());
+                    UpdateNavMeshDebugMesh();
+                }
+                ImGui::MenuItem("Show NavMesh", nullptr, &m_ShowNavMesh);
+                ImGui::EndMenu();
+            }
+            ImGui::Separator();
             if (ImGui::MenuItem("Show Demo Window", nullptr, m_ShowDemoWindow))
                 m_ShowDemoWindow = !m_ShowDemoWindow;
+            ImGui::EndMenu();
+        }
+
+        if (ImGui::BeginMenu("Help")) {
+            ImGui::TextDisabled("PyEngine (by Pyrena)");
             ImGui::EndMenu();
         }
 
@@ -507,7 +568,7 @@ void EditorLayer::InitGrid() {
     std::string fragPath = (exeDir / "shaders" / "grid.frag.spv").string();
 
     PyEngine::PipelineConfig config;
-    config.RenderPass = renderer.GetRenderPass();
+    config.RenderPass = m_OffscreenRenderer->GetRenderPass();
     config.DepthTestEnable = true;
     config.DepthWriteEnable = false;      // Grid is transparent/overlay
     config.CullMode = VK_CULL_MODE_NONE;  // Double sided
@@ -564,7 +625,7 @@ void EditorLayer::InitNavMeshDebug() {
     std::string fragPath = (exeDir / "shaders" / "navmesh_debug.frag.spv").string();
 
     PyEngine::PipelineConfig config;
-    config.RenderPass = renderer.GetRenderPass();
+    config.RenderPass = m_OffscreenRenderer->GetRenderPass();
     config.DepthTestEnable = true;
     config.DepthWriteEnable = false;
     config.CullMode = VK_CULL_MODE_NONE;

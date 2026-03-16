@@ -31,8 +31,14 @@ public:
     void DrawMesh(Mesh* mesh, const glm::mat4& transform);
     void SetCamera(const glm::mat4& view, const glm::mat4& projection);
 
+    // ── External command buffer override ──────────────────────────────
+    // When set, DrawMesh records commands into this buffer instead of the
+    // swapchain buffer.  Pass VK_NULL_HANDLE to restore normal behaviour.
+    void SetExternalCommandBuffer(VkCommandBuffer cmd) { m_ExternalCommandBuffer = cmd; }
+
     VmaAllocator GetAllocator() const { return m_Allocator; }
     VulkanContext& GetContext() { return *m_Context; }
+    VkFormat GetImageFormat() const;
 
     bool IsFrameInProgress() const { return m_IsFrameStarted; }
     VkCommandBuffer GetCurrentCommandBuffer() const { return m_CommandBuffers[m_CurrentImageIndex]; }
@@ -74,6 +80,7 @@ private:
     std::vector<VkSemaphore> m_ImageAvailableSemaphores;
     std::vector<VkSemaphore> m_RenderFinishedSemaphores;
     std::vector<VkFence> m_InFlightFences;
+    std::vector<VkFence> m_ImagesInFlight;
 
     std::vector<VkBuffer> m_UniformBuffers;
     std::vector<VmaAllocation> m_UniformBufferAllocations;
@@ -85,6 +92,9 @@ private:
     uint32_t m_CurrentImageIndex = 0;
     uint32_t m_CurrentFrameIndex = 0;
     bool m_IsFrameStarted = false;
+
+    // External override for editor offscreen rendering
+    VkCommandBuffer m_ExternalCommandBuffer = VK_NULL_HANDLE;
 
     glm::mat4 m_ViewMatrix = glm::mat4(1.0f);
     glm::mat4 m_ProjectionMatrix = glm::mat4(1.0f);

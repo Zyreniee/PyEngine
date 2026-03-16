@@ -82,9 +82,6 @@ CMakeFiles/json-populate-complete: json-populate-prefix/src/json-populate-stamp/
 	/usr/bin/cmake -E touch /home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/json-subbuild/CMakeFiles/json-populate-complete
 	/usr/bin/cmake -E touch /home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/json-subbuild/json-populate-prefix/src/json-populate-stamp/json-populate-done
 
-json-populate-prefix/src/json-populate-stamp/json-populate-update:
-.PHONY : json-populate-prefix/src/json-populate-stamp/json-populate-update
-
 json-populate-prefix/src/json-populate-stamp/json-populate-build: json-populate-prefix/src/json-populate-stamp/json-populate-configure
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/json-subbuild/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "No build step for 'json-populate'"
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/json-build && /usr/bin/cmake -E echo_append
@@ -96,10 +93,13 @@ json-populate-prefix/src/json-populate-stamp/json-populate-configure: json-popul
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/json-build && /usr/bin/cmake -E echo_append
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/json-build && /usr/bin/cmake -E touch /home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/json-subbuild/json-populate-prefix/src/json-populate-stamp/json-populate-configure
 
-json-populate-prefix/src/json-populate-stamp/json-populate-download: json-populate-prefix/src/json-populate-stamp/json-populate-gitinfo.txt
+json-populate-prefix/src/json-populate-stamp/json-populate-download: json-populate-prefix/src/json-populate-stamp/download-json-populate.cmake
+json-populate-prefix/src/json-populate-stamp/json-populate-download: json-populate-prefix/src/json-populate-stamp/json-populate-urlinfo.txt
 json-populate-prefix/src/json-populate-stamp/json-populate-download: json-populate-prefix/src/json-populate-stamp/json-populate-mkdir
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/json-subbuild/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Performing download step (git clone) for 'json-populate'"
-	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps && /usr/bin/cmake -DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE -P /home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/json-subbuild/json-populate-prefix/tmp/json-populate-gitclone.cmake
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/json-subbuild/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Performing download step (download, verify and extract) for 'json-populate'"
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps && /usr/bin/cmake -DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE -P /home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/json-subbuild/json-populate-prefix/src/json-populate-stamp/download-json-populate.cmake
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps && /usr/bin/cmake -DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE -P /home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/json-subbuild/json-populate-prefix/src/json-populate-stamp/verify-json-populate.cmake
+	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps && /usr/bin/cmake -DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE -P /home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/json-subbuild/json-populate-prefix/src/json-populate-stamp/extract-json-populate.cmake
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps && /usr/bin/cmake -E touch /home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/json-subbuild/json-populate-prefix/src/json-populate-stamp/json-populate-download
 
 json-populate-prefix/src/json-populate-stamp/json-populate-install: json-populate-prefix/src/json-populate-stamp/json-populate-build
@@ -118,19 +118,16 @@ json-populate-prefix/src/json-populate-stamp/json-populate-patch: json-populate-
 	/usr/bin/cmake -E echo_append
 	/usr/bin/cmake -E touch /home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/json-subbuild/json-populate-prefix/src/json-populate-stamp/json-populate-patch
 
-json-populate-prefix/src/json-populate-stamp/json-populate-update:
-.PHONY : json-populate-prefix/src/json-populate-stamp/json-populate-update
-
 json-populate-prefix/src/json-populate-stamp/json-populate-test: json-populate-prefix/src/json-populate-stamp/json-populate-install
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/json-subbuild/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "No test step for 'json-populate'"
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/json-build && /usr/bin/cmake -E echo_append
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/json-build && /usr/bin/cmake -E touch /home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/json-subbuild/json-populate-prefix/src/json-populate-stamp/json-populate-test
 
-json-populate-prefix/src/json-populate-stamp/json-populate-update: json-populate-prefix/tmp/json-populate-gitupdate.cmake
 json-populate-prefix/src/json-populate-stamp/json-populate-update: json-populate-prefix/src/json-populate-stamp/json-populate-update-info.txt
 json-populate-prefix/src/json-populate-stamp/json-populate-update: json-populate-prefix/src/json-populate-stamp/json-populate-download
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/json-subbuild/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Performing update step for 'json-populate'"
-	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/json-src && /usr/bin/cmake -Dcan_fetch=YES -DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE -P /home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/json-subbuild/json-populate-prefix/tmp/json-populate-gitupdate.cmake
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/json-subbuild/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "No update step for 'json-populate'"
+	/usr/bin/cmake -E echo_append
+	/usr/bin/cmake -E touch /home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/json-subbuild/json-populate-prefix/src/json-populate-stamp/json-populate-update
 
 CMakeFiles/json-populate.dir/codegen:
 .PHONY : CMakeFiles/json-populate.dir/codegen

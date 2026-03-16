@@ -3,7 +3,7 @@
 
 class PyEngineEditor : public PyEngine::Application {
 public:
-    PyEngineEditor() : Application({"PyEngine Editor", 1920, 1080}) { PushLayer(new EditorLayer()); }
+    PyEngineEditor() : Application({"PyEngine (by Pyrena) Editor", 1920, 1080}) { PushLayer(new EditorLayer()); }
 };
 
 PyEngine::Application* PyEngine::CreateApplication() {

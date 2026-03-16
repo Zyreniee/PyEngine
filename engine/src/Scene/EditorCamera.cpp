@@ -21,50 +21,49 @@ void EditorCamera::OnUpdate(float deltaTime) {
         glm::vec3 right = GetRightDirection();
         glm::vec3 worldUp = {0.0f, 1.0f, 0.0f};
 
-        if (m_MoveForward)
-            m_Position += forward * velocity;
-        if (m_MoveBackward)
-            m_Position -= forward * velocity;
-        if (m_MoveRight)
-            m_Position += right * velocity;
-        if (m_MoveLeft)
-            m_Position -= right * velocity;
-        if (m_MoveUp)
-            m_Position += worldUp * velocity;
-        if (m_MoveDown)
-            m_Position -= worldUp * velocity;
-    }
-
-    if (m_MiddleMouseDown) {
-        // Middle mouse for panning (Alt behavior like Unity)
-        // Handled via OnMouseMove when middle is down
+        if (m_MoveForward)  m_FocalPoint += forward * velocity;
+        if (m_MoveBackward) m_FocalPoint -= forward * velocity;
+        if (m_MoveRight)    m_FocalPoint += right * velocity;
+        if (m_MoveLeft)     m_FocalPoint -= right * velocity;
+        if (m_MoveUp)       m_FocalPoint += worldUp * velocity;
+        if (m_MoveDown)     m_FocalPoint -= worldUp * velocity;
     }
 
     UpdateViewMatrix();
 }
 
 void EditorCamera::OnMouseMove(float xOffset, float yOffset) {
-    if (m_RightMouseDown) {
+    if (m_AltPressed && m_LeftMouseDown) {
+        // Orbit (Alt + LMB)
+        m_Yaw += xOffset * m_MouseSensitivity;
+        m_Pitch -= yOffset * m_MouseSensitivity;
+        m_Pitch = std::clamp(m_Pitch, -89.0f, 89.0f);
+    } else if (m_MiddleMouseDown) {
+        // Pan (MMB)
+        float panSpeed = 0.002f * m_Distance; // Speed based on zoom level
+        glm::vec3 right = GetRightDirection();
+        glm::vec3 up = GetUpDirection();
+        m_FocalPoint -= right * xOffset * panSpeed;
+        m_FocalPoint += up * yOffset * panSpeed;
+    } else if (m_RightMouseDown) {
         // FPS look (right-click held)
         m_Yaw += xOffset * m_MouseSensitivity;
         m_Pitch -= yOffset * m_MouseSensitivity;
         m_Pitch = std::clamp(m_Pitch, -89.0f, 89.0f);
-        UpdateViewMatrix();
-    } else if (m_MiddleMouseDown) {
-        // Pan (middle mouse)
-        float panSpeed = 0.01f * m_MoveSpeed;
-        glm::vec3 right = GetRightDirection();
-        glm::vec3 up = GetUpDirection();
-        m_Position -= right * xOffset * panSpeed;
-        m_Position += up * yOffset * panSpeed;
-        UpdateViewMatrix();
     }
+    
+    UpdateViewMatrix();
 }
 
 void EditorCamera::OnMouseScroll(float yOffset) {
-    // Scroll to zoom (move along forward direction)
-    glm::vec3 forward = GetForwardDirection();
-    m_Position += forward * yOffset * m_ScrollSpeed;
+    // Zoom toward focal point
+    float delta = yOffset * (m_Distance * 0.1f);
+    m_Distance -= delta;
+    if (m_Distance < 0.1f) {
+        // If we get too close, push the focal point forward
+        m_FocalPoint += GetForwardDirection() * (0.1f - m_Distance);
+        m_Distance = 0.1f;
+    }
     UpdateViewMatrix();
 }
 
@@ -82,8 +81,11 @@ void EditorCamera::UpdateProjectionMatrix() {
 }
 
 void EditorCamera::UpdateViewMatrix() {
-    glm::vec3 front = GetForwardDirection();
-    m_ViewMatrix = glm::lookAt(m_Position, m_Position + front, glm::vec3(0.0f, 1.0f, 0.0f));
+    // Position is calculated from FocalPoint, Distance, and Rotation
+    glm::vec3 forward = GetForwardDirection();
+    m_Position = m_FocalPoint - forward * m_Distance;
+
+    m_ViewMatrix = glm::lookAt(m_Position, m_FocalPoint, glm::vec3(0.0f, 1.0f, 0.0f));
 }
 
 glm::vec3 EditorCamera::GetForwardDirection() const {

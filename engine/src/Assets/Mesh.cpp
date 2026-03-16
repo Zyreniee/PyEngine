@@ -39,18 +39,31 @@ Mesh::Mesh(VulkanContext& context, VmaAllocator allocator, const std::vector<Ver
 
     vmaCreateBuffer(m_Allocator, &indexBufferInfo, &allocInfo, &m_IndexBuffer, &m_IndexAllocation, nullptr);
 
-    // Create staging buffer and upload
-    Buffer stagingBuffer(context, allocator, vertexBufferSize + indexBufferSize, VK_BUFFER_USAGE_TRANSFER_SRC_BIT,
-                         VMA_MEMORY_USAGE_CPU_ONLY);
+    // Create staging buffers and upload
+    Buffer stagingVertexBuffer(context, allocator, vertexBufferSize, VK_BUFFER_USAGE_TRANSFER_SRC_BIT,
+                               VMA_MEMORY_USAGE_CPU_ONLY);
+    void* vData = stagingVertexBuffer.Map();
+    memcpy(vData, vertices.data(), vertexBufferSize);
+    stagingVertexBuffer.Unmap();
 
-    void* data = stagingBuffer.Map();
-    memcpy(data, vertices.data(), vertexBufferSize);
-    memcpy(static_cast<char*>(data) + vertexBufferSize, indices.data(), indexBufferSize);
-    stagingBuffer.Unmap();
+    Buffer stagingIndexBuffer(context, allocator, indexBufferSize, VK_BUFFER_USAGE_TRANSFER_SRC_BIT,
+                              VMA_MEMORY_USAGE_CPU_ONLY);
+    void* iData = stagingIndexBuffer.Map();
+    memcpy(iData, indices.data(), indexBufferSize);
+    stagingIndexBuffer.Unmap();
 
-    // Copy via command buffer (simplified - should use proper command pool)
-    // For now, this is a placeholder that works
-    // In a real engine, you'd have a dedicated transfer queue
+    // Copy via temporary command pool
+    VkCommandPoolCreateInfo poolInfo{};
+    poolInfo.sType = VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO;
+    poolInfo.flags = VK_COMMAND_POOL_CREATE_TRANSIENT_BIT;
+    poolInfo.queueFamilyIndex = context.GetQueueFamilies().GraphicsFamily.value();
+    VkCommandPool commandPool;
+    vkCreateCommandPool(context.GetDevice(), &poolInfo, nullptr, &commandPool);
+
+    Buffer::CopyBuffer(context, commandPool, stagingVertexBuffer.GetBuffer(), m_VertexBuffer, vertexBufferSize);
+    Buffer::CopyBuffer(context, commandPool, stagingIndexBuffer.GetBuffer(), m_IndexBuffer, indexBufferSize);
+
+    vkDestroyCommandPool(context.GetDevice(), commandPool, nullptr);
 }
 
 Mesh::~Mesh() {

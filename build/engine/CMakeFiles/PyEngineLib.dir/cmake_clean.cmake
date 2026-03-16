@@ -57,6 +57,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/PyEngineLib.dir/src/Renderer/MaterialLibrary.cpp.o.d"
   "CMakeFiles/PyEngineLib.dir/src/Renderer/MeshGenerator.cpp.o"
   "CMakeFiles/PyEngineLib.dir/src/Renderer/MeshGenerator.cpp.o.d"
+  "CMakeFiles/PyEngineLib.dir/src/Renderer/OffscreenRenderer.cpp.o"
+  "CMakeFiles/PyEngineLib.dir/src/Renderer/OffscreenRenderer.cpp.o.d"
   "CMakeFiles/PyEngineLib.dir/src/Renderer/Pipeline.cpp.o"
   "CMakeFiles/PyEngineLib.dir/src/Renderer/Pipeline.cpp.o.d"
   "CMakeFiles/PyEngineLib.dir/src/Renderer/RenderQueue.cpp.o"
