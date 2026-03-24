@@ -24,6 +24,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/PyEngineEditor.dir/src/Panels/ToolbarPanel.cpp.o.d"
   "CMakeFiles/PyEngineEditor.dir/src/main.cpp.o"
   "CMakeFiles/PyEngineEditor.dir/src/main.cpp.o.d"
+  "CMakeFiles/PyEngineEditor.dir/thirdparty/ImGuizmo/ImGuizmo.cpp.o"
+  "CMakeFiles/PyEngineEditor.dir/thirdparty/ImGuizmo/ImGuizmo.cpp.o.d"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -97,8 +97,8 @@ CMAKE_EXE_LINKER_FLAGS_RELEASE:STRING=
 //Flags used by the linker during RELWITHDEBINFO builds.
 CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 
-//Enable/Disable output of compile commands during generation.
-CMAKE_EXPORT_COMPILE_COMMANDS:BOOL=
+//No help, variable specified on the command line.
+CMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE
 
 //Value Computed by CMake.
 CMAKE_FIND_PACKAGE_REDIRECTS_DIR:STATIC=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles/pkgRedirects
@@ -341,6 +341,10 @@ FETCHCONTENT_SOURCE_DIR_IMGUI:PATH=
 FETCHCONTENT_SOURCE_DIR_JSON:PATH=
 
 //When not empty, overrides where to find pre-populated content
+// for pybind11
+FETCHCONTENT_SOURCE_DIR_PYBIND11:PATH=
+
+//When not empty, overrides where to find pre-populated content
 // for tinygltf
 FETCHCONTENT_SOURCE_DIR_TINYGLTF:PATH=
 
@@ -359,6 +363,9 @@ FETCHCONTENT_UPDATES_DISCONNECTED_IMGUI:BOOL=OFF
 
 //Enables UPDATE_DISCONNECTED behavior just for population of json
 FETCHCONTENT_UPDATES_DISCONNECTED_JSON:BOOL=OFF
+
+//Enables UPDATE_DISCONNECTED behavior just for population of pybind11
+FETCHCONTENT_UPDATES_DISCONNECTED_PYBIND11:BOOL=OFF
 
 //Enables UPDATE_DISCONNECTED behavior just for population of tinygltf
 FETCHCONTENT_UPDATES_DISCONNECTED_TINYGLTF:BOOL=OFF
@@ -402,6 +409,45 @@ JSON_MultipleHeaders:BOOL=ON
 //Include as system headers (skip for clang-tidy).
 JSON_SystemInclude:BOOL=OFF
 
+//To enforce that a handle_type_name<> specialization exists
+PYBIND11_DISABLE_HANDLE_TYPE_NAME_DEFAULT_IMPLEMENTATION:BOOL=OFF
+
+//Force new FindPython
+PYBIND11_FINDPYTHON:BOOL=OFF
+
+//Install pybind11 header files?
+PYBIND11_INSTALL:BOOL=OFF
+
+//Override the ABI version, may be used to enable the unstable
+// ABI.
+PYBIND11_INTERNALS_VERSION:STRING=
+
+//Disable search for Python
+PYBIND11_NOPYTHON:BOOL=OFF
+
+//Disable NumPy 2 support to avoid changes to previous pybind11
+// versions.
+PYBIND11_NUMPY_1_ONLY:BOOL=OFF
+
+//Overwrite cached values read from Python library (classic search).
+// Turn off if cross-compiling and manually setting these values.
+PYBIND11_PYTHONLIBS_OVERWRITE:BOOL=ON
+
+//Python version to use for compiling modules
+PYBIND11_PYTHON_VERSION:STRING=
+
+//Use simpler GIL management logic that does not support disassociation
+PYBIND11_SIMPLE_GIL_MANAGEMENT:BOOL=OFF
+
+//Build pybind11 test suite?
+PYBIND11_TEST:BOOL=OFF
+
+//Path to a program.
+PYTHON_EXECUTABLE:FILEPATH=/home/zyreniee/.pyenv/shims/python3
+
+//Path to a library.
+PYTHON_LIBRARY:FILEPATH=/home/zyreniee/.pyenv/versions/3.11.9/lib/libpython3.11.so
+
 //Value Computed by CMake
 PyEngine_BINARY_DIR:STATIC=/home/zyreniee/Belgeler/GitHub/PyEngine/build
 
@@ -436,16 +482,16 @@ VMA_BUILD_LIBRARY:BOOL=OFF
 VMA_BUILD_SAMPLE:BOOL=OFF
 
 //Path to a program.
-Vulkan_GLSLANG_VALIDATOR_EXECUTABLE:FILEPATH=/bin/glslangValidator
+Vulkan_GLSLANG_VALIDATOR_EXECUTABLE:FILEPATH=/usr/bin/glslangValidator
 
 //Path to a program.
-Vulkan_GLSLC_EXECUTABLE:FILEPATH=/bin/glslc
+Vulkan_GLSLC_EXECUTABLE:FILEPATH=/usr/bin/glslc
 
 //Path to a file.
 Vulkan_INCLUDE_DIR:PATH=/usr/include
 
 //Path to a library.
-Vulkan_LIBRARY:FILEPATH=/lib/libvulkan.so
+Vulkan_LIBRARY:FILEPATH=/usr/lib/libvulkan.so
 
 //The directory containing a CMake configuration file for fmt.
 fmt_DIR:PATH=/usr/lib/cmake/fmt
@@ -464,6 +510,15 @@ nlohmann_json_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
 nlohmann_json_SOURCE_DIR:STATIC=/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/json-src
+
+//Value Computed by CMake
+pybind11_BINARY_DIR:STATIC=/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/pybind11-build
+
+//Value Computed by CMake
+pybind11_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+pybind11_SOURCE_DIR:STATIC=/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/pybind11-src
 
 //The directory containing a CMake configuration file for spdlog.
 spdlog_DIR:PATH=/usr/lib/cmake/spdlog
@@ -491,9 +546,9 @@ CMAKE_CACHEFILE_DIR:INTERNAL=/home/zyreniee/Belgeler/GitHub/PyEngine/build
 //Major version of cmake used to create the current loaded cache
 CMAKE_CACHE_MAJOR_VERSION:INTERNAL=4
 //Minor version of cmake used to create the current loaded cache
-CMAKE_CACHE_MINOR_VERSION:INTERNAL=2
+CMAKE_CACHE_MINOR_VERSION:INTERNAL=3
 //Patch version of cmake used to create the current loaded cache
-CMAKE_CACHE_PATCH_VERSION:INTERNAL=3
+CMAKE_CACHE_PATCH_VERSION:INTERNAL=0
 //ADVANCED property for variable: CMAKE_COLOR_MAKEFILE
 CMAKE_COLOR_MAKEFILE-ADVANCED:INTERNAL=1
 //Path to CMake executable.
@@ -550,8 +605,6 @@ CMAKE_EXE_LINKER_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
 CMAKE_EXE_LINKER_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO
 CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_EXPORT_COMPILE_COMMANDS
-CMAKE_EXPORT_COMPILE_COMMANDS-ADVANCED:INTERNAL=1
 //Name of external makefile project generator.
 CMAKE_EXTRA_GENERATOR:INTERNAL=
 //Name of generator.
@@ -620,7 +673,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=7
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=8
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -665,13 +718,36 @@ CMAKE_TAPI-ADVANCED:INTERNAL=1
 CMAKE_UNAME:INTERNAL=/usr/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//Details about finding PYTHON
+FIND_PACKAGE_MESSAGE_DETAILS_PYTHON:INTERNAL=/home/zyreniee/.pyenv/shims/python33.11.9
+//Details about finding Python3
+FIND_PACKAGE_MESSAGE_DETAILS_Python3:INTERNAL=[/home/zyreniee/.pyenv/shims/python3.11][/home/zyreniee/.pyenv/versions/3.11.9/include/python3.11][/home/zyreniee/.pyenv/versions/3.11.9/lib/libpython3.11.so][found components: Interpreter Development Development.Module Development.Embed ][v3.11.9()]
+//Details about finding PythonInterp
+FIND_PACKAGE_MESSAGE_DETAILS_PythonInterp:INTERNAL=[/home/zyreniee/.pyenv/shims/python3][v3.11.9(3.6)]
 //Details about finding Threads
 FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
 //Details about finding Vulkan
-FIND_PACKAGE_MESSAGE_DETAILS_Vulkan:INTERNAL=[/lib/libvulkan.so][/usr/include][found components: glslc glslangValidator ][v1.4.341()]
+FIND_PACKAGE_MESSAGE_DETAILS_Vulkan:INTERNAL=[/usr/lib/libvulkan.so][/usr/include][found components: glslc glslangValidator ][v1.4.341()]
 //ADVANCED property for variable: GIT_EXECUTABLE
 GIT_EXECUTABLE-ADVANCED:INTERNAL=1
+//Test HAS_FLTO
+HAS_FLTO:INTERNAL=1
 NLOHMANN_JSON_CONFIG_INSTALL_DIR:INTERNAL=share/cmake/nlohmann_json
+PYBIND11_INCLUDE_DIR:INTERNAL=/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/pybind11-src/include
+//ADVANCED property for variable: PYTHON_EXECUTABLE
+PYTHON_EXECUTABLE-ADVANCED:INTERNAL=1
+PYTHON_INCLUDE_DIRS:INTERNAL=/home/zyreniee/.pyenv/versions/3.11.9/include/python3.11
+PYTHON_IS_DEBUG:INTERNAL=0
+PYTHON_LIBRARIES:INTERNAL=/home/zyreniee/.pyenv/versions/3.11.9/lib/libpython3.11.so
+//ADVANCED property for variable: PYTHON_LIBRARY
+PYTHON_LIBRARY-ADVANCED:INTERNAL=1
+PYTHON_MODULE_DEBUG_POSTFIX:INTERNAL=
+PYTHON_MODULE_EXTENSION:INTERNAL=.cpython-311-x86_64-linux-gnu.so
+PYTHON_MODULE_PREFIX:INTERNAL=
+PYTHON_VERSION:INTERNAL=3.11.9
+PYTHON_VERSION_MAJOR:INTERNAL=3
+PYTHON_VERSION_MINOR:INTERNAL=11
+Python_ADDITIONAL_VERSIONS:INTERNAL=3.12;3.11;3.10;3.9;3.8;3.7;3.6
 //ADVANCED property for variable: Vulkan_GLSLANG_VALIDATOR_EXECUTABLE
 Vulkan_GLSLANG_VALIDATOR_EXECUTABLE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: Vulkan_GLSLC_EXECUTABLE
@@ -682,4 +758,30 @@ Vulkan_INCLUDE_DIR-ADVANCED:INTERNAL=1
 Vulkan_LIBRARY-ADVANCED:INTERNAL=1
 //CMAKE_INSTALL_PREFIX during last run
 _GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=/usr/local
+_Python:INTERNAL=PYTHON
+//Compiler reason failure
+_Python3_Compiler_REASON_FAILURE:INTERNAL=
+_Python3_DEVELOPMENT_EMBED_SIGNATURE:INTERNAL=9624017141a01dd83d7e6688a09f73e2
+_Python3_DEVELOPMENT_MODULE_SIGNATURE:INTERNAL=b464ad174dc25618c17f1dccaf1922f3
+//Development reason failure
+_Python3_Development_REASON_FAILURE:INTERNAL=
+//Path to a program.
+_Python3_EXECUTABLE:INTERNAL=/home/zyreniee/.pyenv/shims/python3.11
+//Path to a file.
+_Python3_INCLUDE_DIR:INTERNAL=/home/zyreniee/.pyenv/versions/3.11.9/include/python3.11
+//Python3 Properties
+_Python3_INTERPRETER_PROPERTIES:INTERNAL=Python;3;11;9;64;<none>;cpython-311-x86_64-linux-gnu;abi3;/home/zyreniee/.pyenv/versions/3.11.9/lib/python3.11;/home/zyreniee/.pyenv/versions/3.11.9/lib/python3.11;/home/zyreniee/.pyenv/versions/3.11.9/lib/python3.11/site-packages;/home/zyreniee/.pyenv/versions/3.11.9/lib/python3.11/site-packages
+_Python3_INTERPRETER_SIGNATURE:INTERNAL=c253bdf595560003ba8a2e6d4c4392f1
+//Interpreter reason failure
+_Python3_Interpreter_REASON_FAILURE:INTERNAL=
+//Path to a library.
+_Python3_LIBRARY_RELEASE:INTERNAL=/home/zyreniee/.pyenv/versions/3.11.9/lib/libpython3.11.so
+//NumPy reason failure
+_Python3_NumPy_REASON_FAILURE:INTERNAL=
+//True if pybind11 and all required components found on the system
+pybind11_FOUND:INTERNAL=TRUE
+//Directory where pybind11 headers are located
+pybind11_INCLUDE_DIR:INTERNAL=/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/pybind11-src/include
+//Directories where pybind11 and possibly Python headers are located
+pybind11_INCLUDE_DIRS:INTERNAL=/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/pybind11-src/include;/home/zyreniee/.pyenv/versions/3.11.9/include/python3.11
 

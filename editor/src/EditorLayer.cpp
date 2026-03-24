@@ -6,6 +6,7 @@
 #include <functional>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include <glm/gtx/matrix_decompose.hpp>
 
 // Core Engine Headers
 #include <GLFW/glfw3.h>
@@ -179,6 +180,74 @@ void EditorLayer::OnImGuiRender() {
     m_ProjectPanel.OnImGuiRender();
     m_ConsolePanel.OnImGuiRender();
 
+    // ── ImGuizmo Setup for this frame ──────────────────────────
+    ImGuizmo::SetOrthographic(false);
+    ImGuizmo::BeginFrame();
+
+    // ── Gizmo in Scene View ──────────────────────────────────
+    auto selectedEntity = m_HierarchyPanel.GetSelectedEntity();
+    if (selectedEntity && selectedEntity.HasComponent<PyEngine::TransformComponent>() &&
+        m_SceneViewPanel.GetGizmoOperation() != GizmoOperation::None) {
+
+        ImGuizmo::SetDrawlist(ImGui::GetForegroundDrawList());
+        ImVec2 vpMin = m_SceneViewPanel.GetViewportMin();
+        ImVec2 vpSize = m_SceneViewPanel.GetViewportSize();
+        ImGuizmo::SetRect(vpMin.x, vpMin.y, vpSize.x, vpSize.y);
+
+        // Camera matrices
+        const glm::mat4& viewMat = m_EditorCamera.GetViewMatrix();
+        const glm::mat4& projMat = m_EditorCamera.GetProjectionMatrix();
+
+        // Entity transform
+        auto& tc = selectedEntity.GetComponent<PyEngine::TransformComponent>();
+        glm::mat4 transform = tc.GetTransformMatrix();
+
+        // Map our enum to ImGuizmo
+        ImGuizmo::OPERATION op = ImGuizmo::TRANSLATE;
+        switch (m_SceneViewPanel.GetGizmoOperation()) {
+            case GizmoOperation::Rotate: op = ImGuizmo::ROTATE; break;
+            case GizmoOperation::Scale:  op = ImGuizmo::SCALE;  break;
+            default: break;
+        }
+
+        // Snap (hold Ctrl for snap)
+        bool snap = PyEngine::Input::IsKeyPressed(PyEngine::Key::LeftControl);
+        float snapValue = (op == ImGuizmo::ROTATE) ? 15.0f : 0.5f;
+        float snapValues[3] = {snapValue, snapValue, snapValue};
+
+        ImGuizmo::Manipulate(glm::value_ptr(viewMat), glm::value_ptr(projMat),
+                             op, ImGuizmo::LOCAL,
+                             glm::value_ptr(transform),
+                             nullptr,
+                             snap ? snapValues : nullptr);
+
+        m_UsingGizmo = ImGuizmo::IsUsing();
+
+        if (ImGuizmo::IsUsing()) {
+            glm::vec3 translation, scale, skew;
+            glm::quat rotation;
+            glm::vec4 perspective;
+            glm::decompose(transform, scale, rotation, translation, skew, perspective);
+
+            tc.Position = translation;
+            tc.Scale = scale;
+
+            // Convert quaternion to euler (degrees)
+            glm::vec3 eulerRad = glm::eulerAngles(rotation);
+            glm::vec3 deltaRot = glm::degrees(eulerRad) - tc.Rotation;
+            tc.Rotation += deltaRot;
+        }
+    }
+
+    // ── Selection Outline & Collider Debug (2D overlay) ──────────
+    DrawSelectionOutline();
+    DrawColliderDebug();
+
+    // ── Mouse Picking ────────────────────────────────────────────
+    if (m_SceneViewPanel.WasClickedThisFrame() && !m_UsingGizmo) {
+        DoMousePicking();
+    }
+
     // Stats
     ImGui::Begin("Stats");
     ImGui::Text("FPS: %.1f", PyEngine::Application::Get().GetFPS());
@@ -275,6 +344,27 @@ bool EditorLayer::OnKeyPressed(PyEngine::KeyPressedEvent& event) {
             if (control) {
                 // Duplicate
             }
+            break;
+        }
+        // Tool shortcuts (only when not typing in text fields)
+        case PyEngine::Key::W: {
+            if (!control && !shift && !ImGui::GetIO().WantTextInput)
+                m_SceneViewPanel.SetGizmoOperation(GizmoOperation::Translate);
+            break;
+        }
+        case PyEngine::Key::E: {
+            if (!control && !shift && !ImGui::GetIO().WantTextInput)
+                m_SceneViewPanel.SetGizmoOperation(GizmoOperation::Rotate);
+            break;
+        }
+        case PyEngine::Key::R: {
+            if (!control && !shift && !ImGui::GetIO().WantTextInput)
+                m_SceneViewPanel.SetGizmoOperation(GizmoOperation::Scale);
+            break;
+        }
+        case PyEngine::Key::Escape: {
+            // Deselect
+            SelectEntity({});
             break;
         }
     }
@@ -484,25 +574,86 @@ void EditorLayer::DrawMenuBar() {
 void EditorLayer::NewScene() {
     m_ActiveScene = std::make_shared<PyEngine::Scene>();
     m_ActiveScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
-    m_HierarchyPanel.SetScene(m_ActiveScene);  // Changed to SetScene
+    m_HierarchyPanel.SetScene(m_ActiveScene);
     m_CurrentScenePath = "";
 
-    // Default scene
+    // Camera
     auto camera = m_ActiveScene->CreateEntity("Main Camera");
     camera.AddComponent<PyEngine::CameraComponent>();
-
-    // Adjust camera position
     auto& tc = camera.GetComponent<PyEngine::TransformComponent>();
-    tc.Position = {0.0f, 2.0f, 5.0f};
+    tc.Position = {4.0f, 4.0f, 8.0f};
+    tc.Rotation = {-20.0f, 25.0f, 0.0f};
 
-    // Default Cube for reference
+    // Floor
+    auto floor = m_ActiveScene->CreateEntity("Floor");
+    auto& floorMesh = floor.AddComponent<PyEngine::MeshRendererComponent>();
+    floorMesh.MeshID = 2; // Plane
+    floorMesh.ColorTint = {0.2f, 0.2f, 0.25f, 1.0f};
+    floorMesh.Roughness = 0.9f;
+    floorMesh.Metallic = 0.0f;
+    auto& floorTc = floor.GetComponent<PyEngine::TransformComponent>();
+    floorTc.Position = {0.0f, -0.5f, 0.0f};
+    floorTc.Scale = {10.0f, 1.0f, 10.0f};
+
+    // Center Cube (Shiny Metal)
     auto cube = m_ActiveScene->CreateEntity("Cube");
-    cube.AddComponent<PyEngine::MeshRendererComponent>().MeshID = 0;  // 0 = Cube
-    cube.GetComponent<PyEngine::TransformComponent>().Position = {0.0f, 0.0f, 0.0f};
+    auto& cubeMesh = cube.AddComponent<PyEngine::MeshRendererComponent>();
+    cubeMesh.MeshID = 0; // Cube
+    cubeMesh.ColorTint = {0.1f, 0.5f, 0.9f, 1.0f};
+    cubeMesh.Metallic = 0.8f;
+    cubeMesh.Roughness = 0.2f;
+    auto& cubeTc = cube.GetComponent<PyEngine::TransformComponent>();
+    cubeTc.Position = {0.0f, 0.5f, 0.0f};
 
-    auto light = m_ActiveScene->CreateEntity("Directional Light");
-    light.AddComponent<PyEngine::LightComponent>();
-    light.GetComponent<PyEngine::TransformComponent>().Rotation = {-45.0f, -45.0f, 0.0f};
+    // Sphere (Smooth Plastic)
+    auto sphere1 = m_ActiveScene->CreateEntity("Sphere1");
+    auto& sphere1Mesh = sphere1.AddComponent<PyEngine::MeshRendererComponent>();
+    sphere1Mesh.MeshID = 1; // Sphere
+    sphere1Mesh.ColorTint = {0.9f, 0.2f, 0.3f, 1.0f};
+    sphere1Mesh.Metallic = 0.0f;
+    sphere1Mesh.Roughness = 0.4f;
+    auto& sphere1Tc = sphere1.GetComponent<PyEngine::TransformComponent>();
+    sphere1Tc.Position = {-2.5f, 0.5f, -1.0f};
+    sphere1Tc.Scale = {1.5f, 1.5f, 1.5f};
+
+    // Cylinder (Polished Gold)
+    auto cyl = m_ActiveScene->CreateEntity("Cylinder");
+    auto& cylMesh = cyl.AddComponent<PyEngine::MeshRendererComponent>();
+    cylMesh.MeshID = 3; // Cylinder
+    cylMesh.ColorTint = {1.0f, 0.85f, 0.0f, 1.0f};
+    cylMesh.Metallic = 1.0f;
+    cylMesh.Roughness = 0.1f;
+    auto& cylTc = cyl.GetComponent<PyEngine::TransformComponent>();
+    cylTc.Position = {2.5f, 0.5f, -1.5f};
+    cylTc.Scale = {1.0f, 2.0f, 1.0f};
+
+    // Lighting — Directional (main sun)
+    auto dirLight = m_ActiveScene->CreateEntity("Directional Light");
+    auto& dLightComp = dirLight.AddComponent<PyEngine::LightComponent>();
+    dLightComp.Color = {0.9f, 0.9f, 1.0f};
+    dLightComp.Intensity = 0.8f;
+    auto& dLightTc = dirLight.GetComponent<PyEngine::TransformComponent>();
+    dLightTc.Rotation = {-45.0f, -30.0f, 0.0f};
+
+    // Point Light (warm orange)
+    auto pointLight = m_ActiveScene->CreateEntity("Point Light");
+    auto& pLightComp = pointLight.AddComponent<PyEngine::LightComponent>();
+    pLightComp.LightType = PyEngine::LightComponent::Type::Point;
+    pLightComp.Color = {0.8f, 0.3f, 0.1f};
+    pLightComp.Intensity = 2.0f;
+    pLightComp.Range = 15.0f;
+    auto& pLightTc = pointLight.GetComponent<PyEngine::TransformComponent>();
+    pLightTc.Position = {-2.0f, 2.0f, 2.0f};
+
+    // Point Light 2 (cool blue)
+    auto pointLight2 = m_ActiveScene->CreateEntity("Point Light 2");
+    auto& pLight2Comp = pointLight2.AddComponent<PyEngine::LightComponent>();
+    pLight2Comp.LightType = PyEngine::LightComponent::Type::Point;
+    pLight2Comp.Color = {0.2f, 0.4f, 1.0f};
+    pLight2Comp.Intensity = 1.5f;
+    pLight2Comp.Range = 12.0f;
+    auto& pLight2Tc = pointLight2.GetComponent<PyEngine::TransformComponent>();
+    pLight2Tc.Position = {3.0f, 3.0f, 3.0f};
 }
 
 void EditorLayer::OpenScene() {
@@ -689,4 +840,222 @@ void EditorLayer::DrawNavMeshDebug(VkCommandBuffer commandBuffer, const glm::mat
 
     m_NavMeshDebugMesh->Bind(commandBuffer);
     m_NavMeshDebugMesh->Draw(commandBuffer);
+}
+
+// ══════════════════════════════════════════════════════════════════
+// Entity Selection & Picking
+// ══════════════════════════════════════════════════════════════════
+
+void EditorLayer::SelectEntity(PyEngine::Entity entity) {
+    m_HierarchyPanel.SetSelectedEntity(entity);
+    m_InspectorPanel.SetSelectedEntity(entity);
+}
+
+glm::vec2 EditorLayer::ProjectToScreen(const glm::vec3& worldPos,
+                                        const glm::mat4& viewProj,
+                                        const glm::vec2& viewportSize,
+                                        const glm::vec2& viewportMin) const {
+    glm::vec4 clip = viewProj * glm::vec4(worldPos, 1.0f);
+    if (clip.w <= 0.0001f) return {-1, -1};
+    glm::vec3 ndc = glm::vec3(clip) / clip.w;
+    float sx = viewportMin.x + (ndc.x * 0.5f + 0.5f) * viewportSize.x;
+    float sy = viewportMin.y + (1.0f - (ndc.y * 0.5f + 0.5f)) * viewportSize.y;
+    return {sx, sy};
+}
+
+void EditorLayer::DoMousePicking() {
+    glm::vec2 mouseVP = m_SceneViewPanel.GetMouseViewportPos();
+    ImVec2 vpSize = m_SceneViewPanel.GetViewportSize();
+    if (vpSize.x < 1 || vpSize.y < 1) return;
+
+    // Normalized device coordinates
+    float ndcX = (2.0f * mouseVP.x / vpSize.x) - 1.0f;
+    float ndcY = 1.0f - (2.0f * mouseVP.y / vpSize.y);
+
+    // Build ray from camera
+    glm::mat4 invProj = glm::inverse(m_EditorCamera.GetProjectionMatrix());
+    glm::mat4 invView = glm::inverse(m_EditorCamera.GetViewMatrix());
+
+    glm::vec4 rayClip(ndcX, ndcY, -1.0f, 1.0f);
+    glm::vec4 rayEye = invProj * rayClip;
+    rayEye = glm::vec4(rayEye.x, rayEye.y, -1.0f, 0.0f);
+    glm::vec3 rayDir = glm::normalize(glm::vec3(invView * rayEye));
+    glm::vec3 rayOrigin = m_EditorCamera.GetPosition();
+
+    // Test all meshes with AABB
+    float closestT = std::numeric_limits<float>::max();
+    PyEngine::Entity closestEntity;
+
+    auto entities = m_ActiveScene->GetAllEntities();
+    for (auto entity : entities) {
+        if (!entity.HasComponent<PyEngine::TransformComponent>()) continue;
+        if (!entity.HasComponent<PyEngine::MeshRendererComponent>()) continue;
+
+        auto& tc = entity.GetComponent<PyEngine::TransformComponent>();
+        glm::vec3 pos = tc.Position;
+        glm::vec3 halfScale = tc.Scale * 0.5f;
+
+        // AABB bounds
+        glm::vec3 aabbMin = pos - halfScale;
+        glm::vec3 aabbMax = pos + halfScale;
+
+        // Ray-AABB intersection (slab method)
+        float tmin = -std::numeric_limits<float>::max();
+        float tmax = std::numeric_limits<float>::max();
+
+        for (int i = 0; i < 3; i++) {
+            if (std::abs(rayDir[i]) < 0.0001f) {
+                if (rayOrigin[i] < aabbMin[i] || rayOrigin[i] > aabbMax[i]) {
+                    tmin = std::numeric_limits<float>::max();
+                    break;
+                }
+            } else {
+                float t1 = (aabbMin[i] - rayOrigin[i]) / rayDir[i];
+                float t2 = (aabbMax[i] - rayOrigin[i]) / rayDir[i];
+                if (t1 > t2) std::swap(t1, t2);
+                tmin = std::max(tmin, t1);
+                tmax = std::min(tmax, t2);
+                if (tmin > tmax) {
+                    tmin = std::numeric_limits<float>::max();
+                    break;
+                }
+            }
+        }
+
+        if (tmin > 0 && tmin < closestT) {
+            closestT = tmin;
+            closestEntity = entity;
+        }
+    }
+
+    SelectEntity(closestEntity);  // Selects closest or deselects if nothing hit
+}
+
+void EditorLayer::DrawSelectionOutline() {
+    auto selectedEntity = m_HierarchyPanel.GetSelectedEntity();
+    if (!selectedEntity || !selectedEntity.HasComponent<PyEngine::TransformComponent>()) return;
+
+    auto& tc = selectedEntity.GetComponent<PyEngine::TransformComponent>();
+    glm::vec3 pos = tc.Position;
+    glm::vec3 halfScale = tc.Scale * 0.5f;
+
+    glm::mat4 viewProj = m_EditorCamera.GetViewProjectionMatrix();
+    ImVec2 vpSize = m_SceneViewPanel.GetViewportSize();
+    ImVec2 vpMin  = m_SceneViewPanel.GetViewportMin();
+    glm::vec2 vpSizeVec = {vpSize.x, vpSize.y};
+    glm::vec2 vpMinVec  = {vpMin.x, vpMin.y};
+
+    // 8 corners of the AABB
+    glm::vec3 corners[8] = {
+        pos + glm::vec3(-halfScale.x, -halfScale.y, -halfScale.z),
+        pos + glm::vec3( halfScale.x, -halfScale.y, -halfScale.z),
+        pos + glm::vec3( halfScale.x,  halfScale.y, -halfScale.z),
+        pos + glm::vec3(-halfScale.x,  halfScale.y, -halfScale.z),
+        pos + glm::vec3(-halfScale.x, -halfScale.y,  halfScale.z),
+        pos + glm::vec3( halfScale.x, -halfScale.y,  halfScale.z),
+        pos + glm::vec3( halfScale.x,  halfScale.y,  halfScale.z),
+        pos + glm::vec3(-halfScale.x,  halfScale.y,  halfScale.z),
+    };
+
+    glm::vec2 screenCorners[8];
+    bool allValid = true;
+    for (int i = 0; i < 8; i++) {
+        screenCorners[i] = ProjectToScreen(corners[i], viewProj, vpSizeVec, vpMinVec);
+        if (screenCorners[i].x < -5000) allValid = false;
+    }
+    if (!allValid) return;
+
+    ImDrawList* drawList = ImGui::GetForegroundDrawList();
+    ImU32 color = IM_COL32(255, 165, 0, 220);  // Orange selection
+    float thickness = 2.0f;
+
+    // 12 edges of the box
+    int edges[12][2] = {
+        {0,1}, {1,2}, {2,3}, {3,0},  // front face
+        {4,5}, {5,6}, {6,7}, {7,4},  // back face
+        {0,4}, {1,5}, {2,6}, {3,7}   // connecting edges
+    };
+
+    for (auto& e : edges) {
+        drawList->AddLine(
+            ImVec2(screenCorners[e[0]].x, screenCorners[e[0]].y),
+            ImVec2(screenCorners[e[1]].x, screenCorners[e[1]].y),
+            color, thickness);
+    }
+}
+
+void EditorLayer::DrawColliderDebug() {
+    auto selectedEntity = m_HierarchyPanel.GetSelectedEntity();
+    if (!selectedEntity) return;
+
+    glm::mat4 viewProj = m_EditorCamera.GetViewProjectionMatrix();
+    ImVec2 vpSize = m_SceneViewPanel.GetViewportSize();
+    ImVec2 vpMin  = m_SceneViewPanel.GetViewportMin();
+    glm::vec2 vpSizeVec = {vpSize.x, vpSize.y};
+    glm::vec2 vpMinVec  = {vpMin.x, vpMin.y};
+
+    ImDrawList* drawList = ImGui::GetForegroundDrawList();
+
+    // ── Box Collider ─────────────────────────────────────────────
+    if (selectedEntity.HasComponent<PyEngine::BoxColliderComponent>()) {
+        auto& bc = selectedEntity.GetComponent<PyEngine::BoxColliderComponent>();
+        auto& tc = selectedEntity.GetComponent<PyEngine::TransformComponent>();
+
+        glm::vec3 center = tc.Position + bc.Center;
+        glm::vec3 halfSize = bc.Size * 0.5f * tc.Scale;
+
+        glm::vec3 corners[8] = {
+            center + glm::vec3(-halfSize.x, -halfSize.y, -halfSize.z),
+            center + glm::vec3( halfSize.x, -halfSize.y, -halfSize.z),
+            center + glm::vec3( halfSize.x,  halfSize.y, -halfSize.z),
+            center + glm::vec3(-halfSize.x,  halfSize.y, -halfSize.z),
+            center + glm::vec3(-halfSize.x, -halfSize.y,  halfSize.z),
+            center + glm::vec3( halfSize.x, -halfSize.y,  halfSize.z),
+            center + glm::vec3( halfSize.x,  halfSize.y,  halfSize.z),
+            center + glm::vec3(-halfSize.x,  halfSize.y,  halfSize.z),
+        };
+
+        glm::vec2 sc[8];
+        for (int i = 0; i < 8; i++)
+            sc[i] = ProjectToScreen(corners[i], viewProj, vpSizeVec, vpMinVec);
+
+        ImU32 color = IM_COL32(0, 255, 0, 180);
+        int edges[12][2] = {{0,1},{1,2},{2,3},{3,0},{4,5},{5,6},{6,7},{7,4},{0,4},{1,5},{2,6},{3,7}};
+        for (auto& e : edges)
+            drawList->AddLine(ImVec2(sc[e[0]].x, sc[e[0]].y), ImVec2(sc[e[1]].x, sc[e[1]].y), color, 1.5f);
+    }
+
+    // ── Sphere Collider ──────────────────────────────────────────
+    if (selectedEntity.HasComponent<PyEngine::SphereColliderComponent>()) {
+        auto& sc = selectedEntity.GetComponent<PyEngine::SphereColliderComponent>();
+        auto& tc = selectedEntity.GetComponent<PyEngine::TransformComponent>();
+
+        glm::vec3 center = tc.Position + sc.Center;
+        float maxScale = std::max({tc.Scale.x, tc.Scale.y, tc.Scale.z});
+        float worldRadius = sc.Radius * maxScale;
+
+        // Draw circle approximation — 3 rings (XY, XZ, YZ)
+        ImU32 color = IM_COL32(0, 255, 0, 160);
+        int segments = 32;
+
+        auto drawCircle = [&](int axis1, int axis2) {
+            glm::vec2 prevScreen;
+            for (int i = 0; i <= segments; i++) {
+                float angle = 2.0f * 3.14159265f * (float)i / (float)segments;
+                glm::vec3 point = center;
+                point[axis1] += cosf(angle) * worldRadius;
+                point[axis2] += sinf(angle) * worldRadius;
+                glm::vec2 screen = ProjectToScreen(point, viewProj, vpSizeVec, vpMinVec);
+                if (i > 0 && prevScreen.x > -5000 && screen.x > -5000) {
+                    drawList->AddLine(ImVec2(prevScreen.x, prevScreen.y),
+                                     ImVec2(screen.x, screen.y), color, 1.5f);
+                }
+                prevScreen = screen;
+            }
+        };
+
+        drawCircle(0, 1);  // XY
+        drawCircle(0, 2);  // XZ
+        drawCircle(1, 2);  // YZ
+    }
 }

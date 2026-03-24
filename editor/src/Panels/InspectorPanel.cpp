@@ -139,6 +139,15 @@ void InspectorPanel::DrawComponents(PyEngine::Entity entity) {
             }
 
             ImGui::ColorEdit4("Color", glm::value_ptr(mrc.ColorTint));
+
+            ImGui::Spacing();
+            ImGui::Text("PBR Material");
+            ImGui::Separator();
+            ImGui::SliderFloat("Metallic", &mrc.Metallic, 0.0f, 1.0f, "%.2f");
+            ImGui::SliderFloat("Roughness", &mrc.Roughness, 0.04f, 1.0f, "%.2f");
+            ImGui::SliderFloat("AO", &mrc.AO, 0.0f, 1.0f, "%.2f");
+            ImGui::Spacing();
+
             ImGui::Checkbox("Cast Shadows", &mrc.CastShadows);
             ImGui::Checkbox("Receive Shadows", &mrc.ReceiveShadows);
             ImGui::TreePop();
@@ -275,6 +284,26 @@ void InspectorPanel::DrawComponents(PyEngine::Entity entity) {
         }
     }
 
+    // ─── PythonScript ────────────────────────────────────────
+    if (entity.HasComponent<PyEngine::PythonScriptComponent>()) {
+        if (ImGui::TreeNodeEx("\xf0\x9f\x90\x8d Python Script", ImGuiTreeNodeFlags_DefaultOpen | ImGuiTreeNodeFlags_Framed |
+                                            ImGuiTreeNodeFlags_SpanAvailWidth)) {
+            auto& psc = entity.GetComponent<PyEngine::PythonScriptComponent>();
+            char buffer[512];
+            std::strncpy(buffer, psc.ScriptPath.c_str(), sizeof(buffer) - 1);
+            buffer[sizeof(buffer) - 1] = '\0';
+            if (ImGui::InputText("Script Path", buffer, sizeof(buffer))) {
+                psc.ScriptPath = std::string(buffer);
+            }
+            ImGui::Checkbox("Enabled", &psc.Enabled);
+            ImGui::Checkbox("Auto Reload", &psc.AutoReload);
+            if (ImGui::Button("Reload Script")) {
+                // TODO: Trigger hot-reload for this entity's PythonScript
+            }
+            ImGui::TreePop();
+        }
+    }
+
     ImGui::Spacing();
     ImGui::Spacing();
 
@@ -368,6 +397,12 @@ void InspectorPanel::DrawAddComponentMenu(PyEngine::Entity entity) {
     if (!entity.HasComponent<PyEngine::ParticleSystemComponent>()) {
         if (ImGui::MenuItem("Particle System")) {
             entity.AddComponent<PyEngine::ParticleSystemComponent>();
+            ImGui::CloseCurrentPopup();
+        }
+    }
+    if (!entity.HasComponent<PyEngine::PythonScriptComponent>()) {
+        if (ImGui::MenuItem("Python Script")) {
+            entity.AddComponent<PyEngine::PythonScriptComponent>();
             ImGui::CloseCurrentPopup();
         }
     }

@@ -90,6 +90,10 @@ void SceneSerializer::SerializeEntity(std::ofstream& out, Entity entity) {
         out << "    MeshRendererComponent:\n";
         out << "      MeshID: " << mrc.MeshID << "\n";
         out << "      MaterialID: " << mrc.MaterialID << "\n";
+        out << "      ColorTint: " << mrc.ColorTint << "\n";
+        out << "      Metallic: " << mrc.Metallic << "\n";
+        out << "      Roughness: " << mrc.Roughness << "\n";
+        out << "      AO: " << mrc.AO << "\n";
         out << "      CastShadows: " << mrc.CastShadows << "\n";
         out << "      ReceiveShadows: " << mrc.ReceiveShadows << "\n";
     }
@@ -123,6 +127,14 @@ void SceneSerializer::SerializeEntity(std::ofstream& out, Entity entity) {
         out << "      Size: " << bcc.Size << "\n";
         out << "      IsTrigger: " << bcc.IsTrigger << "\n";
         out << "      Material: " << bcc.PhysicsMaterialID << "\n";
+    }
+
+    if (entity.HasComponent<PythonScriptComponent>()) {
+        auto& psc = entity.GetComponent<PythonScriptComponent>();
+        out << "    PythonScriptComponent:\n";
+        out << "      ScriptPath: " << psc.ScriptPath << "\n";
+        out << "      Enabled: " << psc.Enabled << "\n";
+        out << "      AutoReload: " << psc.AutoReload << "\n";
     }
 
     out << "  EndEntity\n";
@@ -171,6 +183,8 @@ bool SceneSerializer::Deserialize(const std::string& filepath) {
                     currentEntity.AddComponent<MeshRendererComponent>();
                 if (currentComponent == "LightComponent" && !currentEntity.HasComponent<LightComponent>())
                     currentEntity.AddComponent<LightComponent>();
+                if (currentComponent == "PythonScriptComponent" && !currentEntity.HasComponent<PythonScriptComponent>())
+                    currentEntity.AddComponent<PythonScriptComponent>();
                 // ...
             } else {
                 size_t colonPos = content.find(':');
@@ -211,6 +225,24 @@ bool SceneSerializer::Deserialize(const std::string& filepath) {
                             mrc.MeshID = std::stoul(value);
                         else if (key == "MaterialID")
                             mrc.MaterialID = std::stoul(value);
+                        else if (key == "ColorTint") {
+                            std::stringstream ss(value);
+                            ss >> mrc.ColorTint.r >> mrc.ColorTint.g >> mrc.ColorTint.b >> mrc.ColorTint.a;
+                        }
+                        else if (key == "Metallic")
+                            mrc.Metallic = std::stof(value);
+                        else if (key == "Roughness")
+                            mrc.Roughness = std::stof(value);
+                        else if (key == "AO")
+                            mrc.AO = std::stof(value);
+                    } else if (currentComponent == "PythonScriptComponent") {
+                        auto& psc = currentEntity.GetComponent<PythonScriptComponent>();
+                        if (key == "ScriptPath")
+                            psc.ScriptPath = value;
+                        else if (key == "Enabled")
+                            psc.Enabled = (value == "1");
+                        else if (key == "AutoReload")
+                            psc.AutoReload = (value == "1");
                     }
                 }
             }

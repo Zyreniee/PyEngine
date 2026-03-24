@@ -13,11 +13,38 @@ class Swapchain;
 class Pipeline;
 class Window;
 class Mesh;
+class Scene;
+
+// ═══════════════════════════════════════════════════════════════
+// GPU-side structs — must match shader layout exactly
+// ═══════════════════════════════════════════════════════════════
+
+static constexpr int MAX_LIGHTS = 8;
+
+struct GPULightData {
+    alignas(16) glm::vec4 Position;     // xyz = position, w = type (0=dir, 1=point, 2=spot)
+    alignas(16) glm::vec4 Direction;    // xyz = direction, w = range
+    alignas(16) glm::vec4 Color;        // xyz = color, w = intensity
+    alignas(16) glm::vec4 SpotParams;   // x = innerCone, y = outerCone, z = unused, w = unused
+};
 
 struct UniformBufferObject {
-    alignas(16) glm::mat4 model;
     alignas(16) glm::mat4 view;
     alignas(16) glm::mat4 proj;
+    alignas(16) glm::vec4 cameraPos;      // xyz = camera world position, w = unused
+    alignas(16) glm::vec4 ambientColor;    // xyz = ambient color, w = ambient intensity
+    GPULightData lights[MAX_LIGHTS];
+    alignas(4) int lightCount;
+};
+
+// Per-object push constants — sent with each draw call
+struct ObjectPushConstants {
+    alignas(16) glm::mat4 model;
+    alignas(16) glm::vec4 albedoColor;    // xyz = color, w = alpha
+    alignas(4) float metallic;
+    alignas(4) float roughness;
+    alignas(4) float ao;
+    alignas(4) float _pad;
 };
 
 class Renderer {
@@ -28,12 +55,15 @@ public:
     void BeginFrame();
     void EndFrame();
 
-    void DrawMesh(Mesh* mesh, const glm::mat4& transform);
+    void DrawMesh(Mesh* mesh, const glm::mat4& transform,
+                  const glm::vec4& color = glm::vec4(1.0f),
+                  float metallic = 0.0f, float roughness = 0.5f, float ao = 1.0f);
     void SetCamera(const glm::mat4& view, const glm::mat4& projection);
 
+    // Scene light collection — call once per frame before drawing
+    void CollectLights(Scene* scene);
+
     // ── External command buffer override ──────────────────────────────
-    // When set, DrawMesh records commands into this buffer instead of the
-    // swapchain buffer.  Pass VK_NULL_HANDLE to restore normal behaviour.
     void SetExternalCommandBuffer(VkCommandBuffer cmd) { m_ExternalCommandBuffer = cmd; }
 
     VmaAllocator GetAllocator() const { return m_Allocator; }
@@ -98,6 +128,12 @@ private:
 
     glm::mat4 m_ViewMatrix = glm::mat4(1.0f);
     glm::mat4 m_ProjectionMatrix = glm::mat4(1.0f);
+
+    // Light data collected per-frame
+    GPULightData m_LightData[MAX_LIGHTS] = {};
+    int m_LightCount = 0;
+    glm::vec3 m_AmbientColor{0.1f, 0.1f, 0.12f};
+    float m_AmbientIntensity = 0.3f;
 };
 
 }  // namespace PyEngine

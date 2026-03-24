@@ -16,6 +16,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/zyreniee/Belgeler/GitHub/PyEngine/editor/src/Panels/SceneViewPanel.cpp" "editor/CMakeFiles/PyEngineEditor.dir/src/Panels/SceneViewPanel.cpp.o" "gcc" "editor/CMakeFiles/PyEngineEditor.dir/src/Panels/SceneViewPanel.cpp.o.d"
   "/home/zyreniee/Belgeler/GitHub/PyEngine/editor/src/Panels/ToolbarPanel.cpp" "editor/CMakeFiles/PyEngineEditor.dir/src/Panels/ToolbarPanel.cpp.o" "gcc" "editor/CMakeFiles/PyEngineEditor.dir/src/Panels/ToolbarPanel.cpp.o.d"
   "/home/zyreniee/Belgeler/GitHub/PyEngine/editor/src/main.cpp" "editor/CMakeFiles/PyEngineEditor.dir/src/main.cpp.o" "gcc" "editor/CMakeFiles/PyEngineEditor.dir/src/main.cpp.o.d"
+  "/home/zyreniee/Belgeler/GitHub/PyEngine/editor/thirdparty/ImGuizmo/ImGuizmo.cpp" "editor/CMakeFiles/PyEngineEditor.dir/thirdparty/ImGuizmo/ImGuizmo.cpp.o" "gcc" "editor/CMakeFiles/PyEngineEditor.dir/thirdparty/ImGuizmo/ImGuizmo.cpp.o.d"
   "" "bin/PyEngineEditor" "gcc" "editor/CMakeFiles/PyEngineEditor.dir/link.d"
   )
 

@@ -97,6 +97,9 @@ void Scene::Render() {
     auto& app = Application::Get();
     auto& renderer = app.GetRenderer();
 
+    // Collect lights from scene entities for PBR lighting
+    renderer.CollectLights(this);
+
     // Lazy initialize default meshes
     static std::shared_ptr<Mesh> cubeMesh;
     static std::shared_ptr<Mesh> sphereMesh;
@@ -136,10 +139,10 @@ void Scene::Render() {
                     break;
                 case 3:
                     meshToDraw = cylinderMesh.get();
-                    break;  // Cylinder
+                    break;
                 case 4:
                     meshToDraw = capsuleMesh.get();
-                    break;  // Capsule
+                    break;
                 default:
                     meshToDraw = cubeMesh.get();
                     break;
@@ -147,9 +150,10 @@ void Scene::Render() {
         }
 
         if (meshToDraw) {
-            // Apply scale from transform
-            // Note: TransformComponent::GetTransformMatrix() already includes scale
-            renderer.DrawMesh(meshToDraw, transform.GetTransformMatrix());
+            // Pass per-entity color tint and material properties to PBR renderer
+            renderer.DrawMesh(meshToDraw, transform.GetTransformMatrix(),
+                              meshComp.ColorTint, meshComp.Metallic,
+                              meshComp.Roughness, meshComp.AO);
         }
     }
 }

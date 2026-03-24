@@ -27,6 +27,13 @@ void SceneViewPanel::OnImGuiRender() {
     ImVec2 wPos  = ImGui::GetWindowPos();
     ImVec2 wSize = ImGui::GetWindowSize();
     ImVec2 contentStart = ImGui::GetCursorScreenPos();
+    m_ViewportMin = contentStart;
+
+    // Track mouse position relative to viewport for picking
+    ImVec2 mousePos = ImGui::GetMousePos();
+    m_MouseViewportPos = {mousePos.x - contentStart.x, mousePos.y - contentStart.y};
+    m_ClickedThisFrame = m_Hovered && ImGui::IsMouseClicked(ImGuiMouseButton_Left)
+                         && !ImGui::IsAnyItemActive() && !ImGui::GetIO().WantCaptureMouse;
 
     // ─── Display the 3D Scene ────────────────────────────────────
     if (m_OffscreenRenderer) {
@@ -73,20 +80,34 @@ void SceneViewPanel::OnImGuiRender() {
     // ─── Tool selector (top-left) ─────────────────────────────────
     {
         ImGui::SetCursorScreenPos(ImVec2(contentStart.x + 8, contentStart.y + 8));
-        ImGui::PushStyleColor(ImGuiCol_Button,        ImVec4(0.10f, 0.10f, 0.10f, 0.82f));
-        ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.22f, 0.44f, 0.72f, 0.88f));
-        ImGui::PushStyleColor(ImGuiCol_ButtonActive,  ImVec4(0.18f, 0.38f, 0.65f, 1.00f));
         ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 4.0f);
         ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing,   ImVec2(3, 0));
 
-        ImGui::Button("W##move",   ImVec2(26, 24));
+        auto toolButton = [&](const char* label, GizmoOperation op) {
+            bool active = (m_GizmoOp == op);
+            if (active) {
+                ImGui::PushStyleColor(ImGuiCol_Button,        ImVec4(0.22f, 0.44f, 0.72f, 1.00f));
+                ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.30f, 0.52f, 0.82f, 1.00f));
+                ImGui::PushStyleColor(ImGuiCol_ButtonActive,  ImVec4(0.18f, 0.38f, 0.65f, 1.00f));
+            } else {
+                ImGui::PushStyleColor(ImGuiCol_Button,        ImVec4(0.10f, 0.10f, 0.10f, 0.82f));
+                ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.22f, 0.44f, 0.72f, 0.88f));
+                ImGui::PushStyleColor(ImGuiCol_ButtonActive,  ImVec4(0.18f, 0.38f, 0.65f, 1.00f));
+            }
+
+            if (ImGui::Button(label, ImVec2(26, 24))) {
+                m_GizmoOp = op;
+            }
+            ImGui::PopStyleColor(3);
+        };
+
+        toolButton("W##move",   GizmoOperation::Translate);
         ImGui::SameLine();
-        ImGui::Button("E##rotate", ImVec2(26, 24));
+        toolButton("E##rotate", GizmoOperation::Rotate);
         ImGui::SameLine();
-        ImGui::Button("R##scale",  ImVec2(26, 24));
+        toolButton("R##scale",  GizmoOperation::Scale);
 
         ImGui::PopStyleVar(2);
-        ImGui::PopStyleColor(3);
     }
 
     // ─── Viewport Stats (Top-Right) ──────────────────────────────
@@ -118,7 +139,7 @@ void SceneViewPanel::OnImGuiRender() {
             ImVec2(hintX + 480, hintY + 14),
             IM_COL32(8, 8, 8, 185), 3.0f);
         drawList->AddText(ImVec2(hintX, hintY), IM_COL32(165, 165, 165, 200),
-            "RMB+WASD: Fly   Alt+LMB: Orbit   MMB: Pan   Scroll: Zoom   Shift: Speed");
+            "RMB+WASD: Fly   Alt+LMB: Orbit   MMB: Pan   Scroll: Zoom   F: Focus");
     }
 
     ImGui::End();

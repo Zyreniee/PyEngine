@@ -27,6 +27,7 @@ find_package(glfw3 REQUIRED)
 find_package(glm REQUIRED)
 find_package(spdlog REQUIRED)
 find_package(fmt REQUIRED)
+find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
 
 # FetchContent for third-party libraries
 include(FetchContent)
@@ -65,11 +66,18 @@ FetchContent_Declare(
     URL https://github.com/nlohmann/json/archive/refs/tags/v3.11.3.tar.gz
 )
 
+# pybind11 for Python scripting
+FetchContent_Declare(
+    pybind11
+    GIT_REPOSITORY https://github.com/pybind/pybind11.git
+    GIT_TAG v2.12.0
+)
+
 # Disable VMA building its own library (we provide our own implementation in vma_impl.cpp)
 set(VMA_BUILD_LIBRARY OFF CACHE BOOL "" FORCE)
 set(VMA_BUILD_SAMPLE OFF CACHE BOOL "" FORCE)
 
-FetchContent_MakeAvailable(EnTT tinygltf json)
+FetchContent_MakeAvailable(EnTT tinygltf json pybind11)
 
 # VMA: only fetch, don't build its library (we have our own vma_impl.cpp)
 FetchContent_GetProperties(VulkanMemoryAllocator)

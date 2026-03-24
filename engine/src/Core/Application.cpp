@@ -8,6 +8,8 @@
 #include "PyEngine/Platform/Window.hpp"
 #include "PyEngine/Renderer/Renderer.hpp"
 #include "PyEngine/Renderer/VulkanContext.hpp"
+#include "PyEngine/Scripting/PythonEngine.hpp"
+#include "PyEngine/Scripting/PyEngineModule.hpp"
 
 namespace PyEngine {
 
@@ -36,10 +38,15 @@ Application::Application(const ApplicationSpecification& spec) : m_Specification
 
     PYENGINE_CORE_INFO("PyEngine initialized successfully");
     PYENGINE_CORE_INFO("GPU: {}", m_Renderer->GetContext().GetGPUName());
+
+    // Initialize Python scripting
+    RegisterPyEngineModule();
+    PythonEngine::Get().Initialize();
 }
 
 Application::~Application() {
     PYENGINE_CORE_INFO("PyEngine shutting down...");
+    PythonEngine::Get().Shutdown();
     Log::Shutdown();
     s_Instance = nullptr;
 }

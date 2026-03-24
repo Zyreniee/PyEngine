@@ -21,12 +21,18 @@ void EditorCamera::OnUpdate(float deltaTime) {
         glm::vec3 right = GetRightDirection();
         glm::vec3 worldUp = {0.0f, 1.0f, 0.0f};
 
-        if (m_MoveForward)  m_FocalPoint += forward * velocity;
-        if (m_MoveBackward) m_FocalPoint -= forward * velocity;
-        if (m_MoveRight)    m_FocalPoint += right * velocity;
-        if (m_MoveLeft)     m_FocalPoint -= right * velocity;
-        if (m_MoveUp)       m_FocalPoint += worldUp * velocity;
-        if (m_MoveDown)     m_FocalPoint -= worldUp * velocity;
+        if (m_MoveForward)
+            m_FocalPoint += forward * velocity;
+        if (m_MoveBackward)
+            m_FocalPoint -= forward * velocity;
+        if (m_MoveRight)
+            m_FocalPoint += right * velocity;
+        if (m_MoveLeft)
+            m_FocalPoint -= right * velocity;
+        if (m_MoveUp)
+            m_FocalPoint += worldUp * velocity;
+        if (m_MoveDown)
+            m_FocalPoint -= worldUp * velocity;
     }
 
     UpdateViewMatrix();
@@ -40,7 +46,7 @@ void EditorCamera::OnMouseMove(float xOffset, float yOffset) {
         m_Pitch = std::clamp(m_Pitch, -89.0f, 89.0f);
     } else if (m_MiddleMouseDown) {
         // Pan (MMB)
-        float panSpeed = 0.002f * m_Distance; // Speed based on zoom level
+        float panSpeed = 0.002f * m_Distance;  // Speed based on zoom level
         glm::vec3 right = GetRightDirection();
         glm::vec3 up = GetUpDirection();
         m_FocalPoint -= right * xOffset * panSpeed;
@@ -51,7 +57,7 @@ void EditorCamera::OnMouseMove(float xOffset, float yOffset) {
         m_Pitch -= yOffset * m_MouseSensitivity;
         m_Pitch = std::clamp(m_Pitch, -89.0f, 89.0f);
     }
-    
+
     UpdateViewMatrix();
 }
 
@@ -102,5 +108,4 @@ glm::vec3 EditorCamera::GetRightDirection() const {
 glm::vec3 EditorCamera::GetUpDirection() const {
     return glm::normalize(glm::cross(GetRightDirection(), GetForwardDirection()));
 }
-
 }  // namespace PyEngine

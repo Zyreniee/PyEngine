@@ -12,6 +12,8 @@
 #include "PyEngine/Renderer/Pipeline.hpp"
 #include "PyEngine/Renderer/Swapchain.hpp"
 #include "PyEngine/Renderer/VulkanContext.hpp"
+#include "PyEngine/Scene/Components.hpp"
+#include "PyEngine/Scene/Scene.hpp"
 
 namespace PyEngine {
 
@@ -182,17 +184,50 @@ void Renderer::EndFrame() {
     m_IsFrameStarted = false;
 }
 
-void Renderer::DrawMesh(Mesh* mesh, const glm::mat4& transform) {
+void Renderer::CollectLights(Scene* scene) {
+    if (!scene) return;
+
+    m_LightCount = 0;
+    auto& registry = scene->GetRegistry();
+
+    auto view = registry.view<TransformComponent, LightComponent>();
+    for (auto entity : view) {
+        if (m_LightCount >= MAX_LIGHTS) break;
+
+        auto [transform, light] = view.get<TransformComponent, LightComponent>(entity);
+        auto& gpuLight = m_LightData[m_LightCount];
+
+        float typeVal = 0.0f;
+        if (light.LightType == LightComponent::Type::Point) typeVal = 1.0f;
+        else if (light.LightType == LightComponent::Type::Spot) typeVal = 2.0f;
+
+        gpuLight.Position = glm::vec4(transform.Position, typeVal);
+        gpuLight.Direction = glm::vec4(transform.GetForward(), light.Range);
+        gpuLight.Color = glm::vec4(light.Color, light.Intensity);
+        gpuLight.SpotParams = glm::vec4(light.InnerConeAngle, light.OuterConeAngle, 0.0f, 0.0f);
+
+        m_LightCount++;
+    }
+
+    // Try to get ambient from EnvironmentComponent
+    auto envView = registry.view<EnvironmentComponent>();
+    for (auto entity : envView) {
+        auto& env = envView.get<EnvironmentComponent>(entity);
+        m_AmbientColor = env.AmbientColor;
+        m_AmbientIntensity = env.AmbientIntensity;
+        break; // Use first environment
+    }
+}
+
+void Renderer::DrawMesh(Mesh* mesh, const glm::mat4& transform,
+                        const glm::vec4& color, float metallic, float roughness, float ao) {
     if (!m_Pipeline)
         return;
 
-    // When the editor sets an external command buffer (for offscreen rendering),
-    // record commands there instead of the swapchain command buffer.
     VkCommandBuffer cmd = (m_ExternalCommandBuffer != VK_NULL_HANDLE)
                               ? m_ExternalCommandBuffer
                               : m_CommandBuffers[m_CurrentImageIndex];
 
-    // External buffer doesn't require IsFrameStarted check
     if (m_ExternalCommandBuffer == VK_NULL_HANDLE && !m_IsFrameStarted)
         return;
 
@@ -201,6 +236,18 @@ void Renderer::DrawMesh(Mesh* mesh, const glm::mat4& transform) {
     m_Pipeline->Bind(cmd);
     vkCmdBindDescriptorSets(cmd, VK_PIPELINE_BIND_POINT_GRAPHICS, m_PipelineLayout, 0,
                             1, &m_DescriptorSets[m_CurrentFrameIndex], 0, nullptr);
+
+    // Push per-object constants
+    ObjectPushConstants pushConstants{};
+    pushConstants.model = transform;
+    pushConstants.albedoColor = color;
+    pushConstants.metallic = metallic;
+    pushConstants.roughness = roughness;
+    pushConstants.ao = ao;
+
+    vkCmdPushConstants(cmd, m_PipelineLayout,
+                       VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT,
+                       0, sizeof(ObjectPushConstants), &pushConstants);
 
     mesh->Bind(cmd);
     mesh->Draw(cmd);
@@ -279,7 +326,7 @@ void Renderer::CreateDescriptorSetLayout() {
     uboLayoutBinding.binding = 0;
     uboLayoutBinding.descriptorType = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER;
     uboLayoutBinding.descriptorCount = 1;
-    uboLayoutBinding.stageFlags = VK_SHADER_STAGE_VERTEX_BIT;
+    uboLayoutBinding.stageFlags = VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT;
 
     VkDescriptorSetLayoutCreateInfo layoutInfo{};
     layoutInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO;
@@ -291,10 +338,18 @@ void Renderer::CreateDescriptorSetLayout() {
 }
 
 void Renderer::CreatePipelineLayout() {
+    // Push constants for per-object data (model matrix + material)
+    VkPushConstantRange pushConstantRange{};
+    pushConstantRange.stageFlags = VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT;
+    pushConstantRange.offset = 0;
+    pushConstantRange.size = sizeof(ObjectPushConstants);
+
     VkPipelineLayoutCreateInfo pipelineLayoutInfo{};
     pipelineLayoutInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO;
     pipelineLayoutInfo.setLayoutCount = 1;
     pipelineLayoutInfo.pSetLayouts = &m_DescriptorSetLayout;
+    pipelineLayoutInfo.pushConstantRangeCount = 1;
+    pipelineLayoutInfo.pPushConstantRanges = &pushConstantRange;
 
     VkResult result = vkCreatePipelineLayout(m_Context->GetDevice(), &pipelineLayoutInfo, nullptr, &m_PipelineLayout);
     PYENGINE_CORE_ASSERT(result == VK_SUCCESS, "Failed to create pipeline layout!");
@@ -468,9 +523,20 @@ void Renderer::RecreateSwapchain() {
 
 void Renderer::UpdateUniformBuffer(uint32_t currentImage) {
     UniformBufferObject ubo{};
-    ubo.model = glm::rotate(glm::mat4(1.0f), glm::radians(45.0f), glm::vec3(0.0f, 1.0f, 0.0f));
     ubo.view = m_ViewMatrix;
     ubo.proj = m_ProjectionMatrix;
+
+    // Extract camera position from inverse view matrix
+    glm::mat4 invView = glm::inverse(m_ViewMatrix);
+    ubo.cameraPos = glm::vec4(invView[3][0], invView[3][1], invView[3][2], 1.0f);
+
+    ubo.ambientColor = glm::vec4(m_AmbientColor, m_AmbientIntensity);
+
+    // Copy light data
+    ubo.lightCount = m_LightCount;
+    for (int i = 0; i < m_LightCount; i++) {
+        ubo.lights[i] = m_LightData[i];
+    }
 
     memcpy(m_UniformBuffersMapped[currentImage], &ubo, sizeof(ubo));
 }

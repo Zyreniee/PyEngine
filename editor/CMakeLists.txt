@@ -5,18 +5,27 @@ file(GLOB_RECURSE EDITOR_SOURCES
     "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp"
 )
 
+# ImGuizmo
+set(IMGUIZMO_SOURCES
+    "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/ImGuizmo/ImGuizmo.cpp"
+)
+
 # Create editor executable
-add_executable(PyEngineEditor ${EDITOR_SOURCES})
+add_executable(PyEngineEditor ${EDITOR_SOURCES} ${IMGUIZMO_SOURCES})
 
 # Include directories
 target_include_directories(PyEngineEditor PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/ImGuizmo
 )
 
 # Link engine library (brings all transitive dependencies)
 target_link_libraries(PyEngineEditor PRIVATE
     PyEngineLib
 )
+
+# ImGuizmo needs IMGUI_DEFINE_MATH_OPERATORS
+target_compile_definitions(PyEngineEditor PRIVATE IMGUI_DEFINE_MATH_OPERATORS)
 
 # Shader compilation
 set(SHADER_SOURCE_DIR ${CMAKE_SOURCE_DIR}/assets/shaders)

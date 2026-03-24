@@ -17,6 +17,7 @@
 #include "PyEngine/Renderer/Pipeline.hpp"
 #include "PyEngine/Scene/EditorCamera.hpp"
 #include "PyEngine/Scene/Scene.hpp"
+#include "ImGuizmo.h"
 
 class EditorLayer : public PyEngine::Layer {
 public:
@@ -40,6 +41,16 @@ private:
     void SaveSceneAs();
 
     bool OnKeyPressed(PyEngine::KeyPressedEvent& event);
+
+    // ── Entity Selection & Picking ──────────────────────────────
+    void SelectEntity(PyEngine::Entity entity);
+    void DoMousePicking();
+    void DrawSelectionOutline();
+    void DrawColliderDebug();
+    glm::vec2 ProjectToScreen(const glm::vec3& worldPos,
+                              const glm::mat4& viewProj,
+                              const glm::vec2& viewportSize,
+                              const glm::vec2& viewportMin) const;
 
 private:
     // Scene
@@ -94,7 +105,8 @@ private:
     char m_ImportPathBuffer[256] = "";
 
     // ── Offscreen Scene Renderer ───────────────────────────────
-    // Renders the 3D scene to a VkImage and passes it to SceneViewPanel
-    // as an ImGui texture so the viewport shows the actual scene.
     std::unique_ptr<PyEngine::OffscreenRenderer> m_OffscreenRenderer;
+
+    // ── Gizmo State ───────────────────────────────────────────
+    bool m_UsingGizmo = false;
 };

@@ -59,6 +59,11 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
+  include("/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/pybind11-build/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
   include("/home/zyreniee/Belgeler/GitHub/PyEngine/build/engine/cmake_install.cmake")
 endif()
 

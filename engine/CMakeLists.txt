@@ -31,6 +31,7 @@ target_link_libraries(PyEngineLib PUBLIC
     imgui
     nlohmann_json::nlohmann_json
     tinygltf
+    pybind11::embed
 )
 
 # Add preprocessor definitions

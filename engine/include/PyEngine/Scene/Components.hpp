@@ -72,6 +72,11 @@ struct MeshRendererComponent {
 
     glm::vec4 ColorTint{1.0f};
 
+    // PBR Material Properties
+    float Metallic = 0.0f;
+    float Roughness = 0.5f;
+    float AO = 1.0f;
+
     // For dynamic meshes (Terrain, Procedural, etc.)
     std::shared_ptr<Mesh> CustomMesh;
 };
@@ -271,6 +276,12 @@ struct NavMeshAgentComponent {
     int CurrentPathIndex = 0;
 
     int AreaMask = 0xFFFFFFFF;
+};
+
+struct PythonScriptComponent {
+    std::string ScriptPath;       // Path to .py file (relative to project)
+    bool Enabled = true;
+    bool AutoReload = true;       // Hot-reload on file change
 };
 
 }  // namespace PyEngine

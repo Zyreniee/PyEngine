@@ -1,0 +1,607 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "bin/PyEngineEditor"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_executable",
+			"target_link_libraries",
+			"include",
+			"add_compile_options",
+			"target_compile_definitions",
+			"target_include_directories",
+			"target_sources",
+			"compile_shader",
+			"compile_shaders"
+		],
+		"files" : 
+		[
+			"editor/CMakeLists.txt",
+			"engine/CMakeLists.txt",
+			"build/_deps/pybind11-src/tools/pybind11Tools.cmake",
+			"build/_deps/pybind11-src/tools/pybind11Common.cmake",
+			"build/_deps/pybind11-src/CMakeLists.txt",
+			"CMakeLists.txt",
+			"cmake/CompileShaders.cmake"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 14,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 23,
+				"parent" : 0
+			},
+			{
+				"file" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 24,
+				"parent" : 3
+			},
+			{
+				"file" : 4
+			},
+			{
+				"command" : 2,
+				"file" : 4,
+				"line" : 247,
+				"parent" : 5
+			},
+			{
+				"file" : 3,
+				"parent" : 6
+			},
+			{
+				"command" : 2,
+				"file" : 3,
+				"line" : 192,
+				"parent" : 7
+			},
+			{
+				"file" : 2,
+				"parent" : 8
+			},
+			{
+				"command" : 1,
+				"file" : 2,
+				"line" : 139,
+				"parent" : 9
+			},
+			{
+				"file" : 5
+			},
+			{
+				"command" : 3,
+				"file" : 5,
+				"line" : 19,
+				"parent" : 11
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 28,
+				"parent" : 0
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 17,
+				"parent" : 0
+			},
+			{
+				"command" : 8,
+				"file" : 0,
+				"line" : 34,
+				"parent" : 0
+			},
+			{
+				"command" : 7,
+				"file" : 6,
+				"line" : 37,
+				"parent" : 15
+			},
+			{
+				"command" : 6,
+				"file" : 6,
+				"line" : 30,
+				"parent" : 16
+			},
+			{
+				"command" : 7,
+				"file" : 6,
+				"line" : 37,
+				"parent" : 15
+			},
+			{
+				"command" : 6,
+				"file" : 6,
+				"line" : 30,
+				"parent" : 18
+			},
+			{
+				"command" : 7,
+				"file" : 6,
+				"line" : 37,
+				"parent" : 15
+			},
+			{
+				"command" : 6,
+				"file" : 6,
+				"line" : 30,
+				"parent" : 20
+			},
+			{
+				"command" : 7,
+				"file" : 6,
+				"line" : 37,
+				"parent" : 15
+			},
+			{
+				"command" : 6,
+				"file" : 6,
+				"line" : 30,
+				"parent" : 22
+			},
+			{
+				"command" : 7,
+				"file" : 6,
+				"line" : 37,
+				"parent" : 15
+			},
+			{
+				"command" : 6,
+				"file" : 6,
+				"line" : 30,
+				"parent" : 24
+			},
+			{
+				"command" : 7,
+				"file" : 6,
+				"line" : 37,
+				"parent" : 15
+			},
+			{
+				"command" : 6,
+				"file" : 6,
+				"line" : 30,
+				"parent" : 26
+			}
+		]
+	},
+	"codemodelVersion" : 
+	{
+		"major" : 2,
+		"minor" : 10
+	},
+	"compileDependencies" : 
+	[
+		{
+			"backtrace" : 2,
+			"id" : "PyEngineLib::@4088515cb4035b412499"
+		}
+	],
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g -std=c++20"
+				},
+				{
+					"backtrace" : 12,
+					"fragment" : "-w"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 2,
+					"define" : "FMT_SHARED"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "GLM_ENABLE_EXPERIMENTAL"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "GLM_FORCE_DEPTH_ZERO_TO_ONE"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "GLM_FORCE_RADIANS"
+				},
+				{
+					"backtrace" : 13,
+					"define" : "IMGUI_DEFINE_MATH_OPERATORS"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "IMGUI_IMPL_VULKAN_HAS_DYNAMIC_RENDERING=1"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "PYENGINE_DEBUG"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "PYENGINE_ENABLE_ASSERTS"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "SPDLOG_COMPILED_LIB"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "SPDLOG_FMT_EXTERNAL"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "SPDLOG_SHARED_LIB"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 14,
+					"path" : "/home/zyreniee/Belgeler/GitHub/PyEngine/editor/include"
+				},
+				{
+					"backtrace" : 14,
+					"path" : "/home/zyreniee/Belgeler/GitHub/PyEngine/editor/thirdparty/ImGuizmo"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/home/zyreniee/Belgeler/GitHub/PyEngine/engine/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/home/zyreniee/Belgeler/GitHub/PyEngine/third_party"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/entt-src/single_include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/vulkanmemoryallocator-src/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/entt-src/src"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/imgui-src/backends"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/json-src/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/tinygltf-src"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/pybind11-src/include"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "/home/zyreniee/.pyenv/versions/3.11.9/include/python3.11"
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					2,
+					2,
+					2,
+					2,
+					2
+				],
+				"standard" : "20"
+			},
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 2,
+			"id" : "imgui::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "tinygltf::@cf7fec98cfc62fa92173"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "PyEngineLib::@4088515cb4035b412499"
+		}
+	],
+	"id" : "PyEngineEditor::@ed37844f285895dce70e",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "-g",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "-Wl,-rpath,/home/zyreniee/.pyenv/versions/3.11.9/lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "../lib/libPyEngineLib.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "/usr/lib/libglm.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "/usr/lib/libspdlog.so.1.17.0",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "/usr/lib/libfmt.so.12.1.0",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "../lib/libimgui.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "/usr/lib/libvulkan.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "/usr/lib/libglfw.so.3.4",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "../lib/libtinygltf.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 10,
+				"fragment" : "/home/zyreniee/.pyenv/versions/3.11.9/lib/libpython3.11.so",
+				"role" : "libraries"
+			}
+		],
+		"language" : "CXX"
+	},
+	"linkLibraries" : 
+	[
+		{
+			"backtrace" : 2,
+			"id" : "PyEngineLib::@4088515cb4035b412499"
+		}
+	],
+	"name" : "PyEngineEditor",
+	"nameOnDisk" : "PyEngineEditor",
+	"paths" : 
+	{
+		"build" : "editor",
+		"source" : "editor"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8
+			]
+		},
+		{
+			"name" : "",
+			"sourceIndexes" : 
+			[
+				9,
+				10,
+				11,
+				12,
+				13,
+				14
+			]
+		},
+		{
+			"name" : "CMake Rules",
+			"sourceIndexes" : 
+			[
+				15,
+				16,
+				17,
+				18,
+				19,
+				20
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "editor/src/EditorLayer.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "editor/src/Panels/ConsolePanel.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "editor/src/Panels/HierarchyPanel.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "editor/src/Panels/InspectorPanel.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "editor/src/Panels/ProjectPanel.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "editor/src/Panels/SceneViewPanel.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "editor/src/Panels/ToolbarPanel.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "editor/src/main.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "editor/thirdparty/ImGuizmo/ImGuizmo.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 17,
+			"isGenerated" : true,
+			"path" : "build/bin/shaders/basic.vert.spv",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 19,
+			"isGenerated" : true,
+			"path" : "build/bin/shaders/basic.frag.spv",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 21,
+			"isGenerated" : true,
+			"path" : "build/bin/shaders/grid.vert.spv",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 23,
+			"isGenerated" : true,
+			"path" : "build/bin/shaders/grid.frag.spv",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 25,
+			"isGenerated" : true,
+			"path" : "build/bin/shaders/navmesh_debug.vert.spv",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 27,
+			"isGenerated" : true,
+			"path" : "build/bin/shaders/navmesh_debug.frag.spv",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/bin/shaders/basic.vert.spv.rule",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/bin/shaders/basic.frag.spv.rule",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/bin/shaders/grid.vert.spv.rule",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/bin/shaders/grid.frag.spv.rule",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/bin/shaders/navmesh_debug.vert.spv.rule",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/bin/shaders/navmesh_debug.frag.spv.rule",
+			"sourceGroupIndex" : 2
+		}
+	],
+	"type" : "EXECUTABLE"
+}
