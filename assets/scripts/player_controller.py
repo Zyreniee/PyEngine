@@ -2,7 +2,7 @@
 # PyEngine Example Script — Player Controller
 # ═══════════════════════════════════════════════════════════════
 # Attach this script to any entity to control it with WASD keys.
-# This demonstrates the Python scripting API of PyEngine.
+# This demonstrates the Python scripting API of PyEngine
 
 import pyengine
 
