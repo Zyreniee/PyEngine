@@ -5,7 +5,6 @@ This document provides the exact commands to install all required dependencies f
 ## Required Dependencies
 
 Install all required packages using `pacman`:
-
 ```bash
 sudo pacman -S --needed \
   base-devel \
