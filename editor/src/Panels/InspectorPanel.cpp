@@ -5,9 +5,10 @@
 #include <glm/gtc/type_ptr.hpp>
 
 #include "PyEngine/Scene/Components.hpp"
+#include "PyEngine/Scripting/PythonScript.hpp"
 
 void InspectorPanel::OnImGuiRender() {
-    ImGui::Begin("\xef\x81\x9a  Inspector");  // Icon: info-circle
+    ImGui::Begin("Inspector");
 
     if (m_SelectedEntity) {
         DrawComponents(m_SelectedEntity);
@@ -286,19 +287,39 @@ void InspectorPanel::DrawComponents(PyEngine::Entity entity) {
 
     // ─── PythonScript ────────────────────────────────────────
     if (entity.HasComponent<PyEngine::PythonScriptComponent>()) {
-        if (ImGui::TreeNodeEx("\xf0\x9f\x90\x8d Python Script", ImGuiTreeNodeFlags_DefaultOpen | ImGuiTreeNodeFlags_Framed |
+        if (ImGui::TreeNodeEx("Python Script", ImGuiTreeNodeFlags_DefaultOpen | ImGuiTreeNodeFlags_Framed |
                                             ImGuiTreeNodeFlags_SpanAvailWidth)) {
             auto& psc = entity.GetComponent<PyEngine::PythonScriptComponent>();
+
+            // Script path input
             char buffer[512];
             std::strncpy(buffer, psc.ScriptPath.c_str(), sizeof(buffer) - 1);
             buffer[sizeof(buffer) - 1] = '\0';
             if (ImGui::InputText("Script Path", buffer, sizeof(buffer))) {
                 psc.ScriptPath = std::string(buffer);
             }
+
+            // Show detected class name if runtime instance exists
+            if (psc.ScriptInstance) {
+                ImGui::TextColored(ImVec4(0.4f, 0.8f, 0.4f, 1.0f), "Status: Active");
+                if (psc.ScriptInstance->IsClassBased()) {
+                    ImGui::Text("Class: %s", psc.ScriptInstance->GetClassName().c_str());
+                } else {
+                    ImGui::TextDisabled("Mode: Module-level functions");
+                }
+            } else {
+                ImGui::TextColored(ImVec4(0.6f, 0.6f, 0.6f, 1.0f), "Status: Inactive (Press Play)");
+            }
+
             ImGui::Checkbox("Enabled", &psc.Enabled);
             ImGui::Checkbox("Auto Reload", &psc.AutoReload);
+
+            // Reload button
+            ImGui::Spacing();
             if (ImGui::Button("Reload Script")) {
-                // TODO: Trigger hot-reload for this entity's PythonScript
+                if (psc.ScriptInstance) {
+                    psc.ScriptInstance->Reload();
+                }
             }
             ImGui::TreePop();
         }

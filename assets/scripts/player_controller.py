@@ -1,49 +1,56 @@
 # ═══════════════════════════════════════════════════════════════
-# PyEngine Example Script — Player Controller
+# PyEngine — Player Controller Script
 # ═══════════════════════════════════════════════════════════════
-# Attach this script to any entity to control it with WASD keys.
-# This demonstrates the Python scripting API of PyEngine
+# WASD movement controller. Attach to any entity with a Transform.
+# Similar to Unity's CharacterController but using direct transform.
 
 import pyengine
 
-# Movement speed (units per second)
-SPEED = 5.0
+class PlayerController:
+    """Basic WASD movement controller for PyEngine."""
 
-# Entity transform — set by the engine before on_start()
-_position = pyengine.Vec3(0.0, 0.0, 0.0)
+    def on_create(self):
+        self.move_speed = 5.0
+        self.sprint_speed = 10.0
+        self.jump_force = 8.0
+        self.is_grounded = True
+        pyengine.Debug.log("PlayerController initialized")
 
+    def on_start(self):
+        pyengine.Debug.log(f"PlayerController started on entity {self.entity_id}")
 
-def on_create():
-    pyengine.log_info("PlayerController script created!")
+    def on_update(self, dt):
+        speed = self.move_speed
 
+        # Sprint
+        if pyengine.Input.is_key_pressed(pyengine.KEY_LEFT_SHIFT):
+            speed = self.sprint_speed
 
-def on_start():
-    pyengine.log_info("PlayerController ready — Use WASD to move, Space/Ctrl for up/down")
+        # Movement direction
+        move_dir = pyengine.Vec3.zero()
 
+        if pyengine.Input.is_key_pressed(pyengine.KEY_W):
+            move_dir.z -= 1.0
+        if pyengine.Input.is_key_pressed(pyengine.KEY_S):
+            move_dir.z += 1.0
+        if pyengine.Input.is_key_pressed(pyengine.KEY_A):
+            move_dir.x -= 1.0
+        if pyengine.Input.is_key_pressed(pyengine.KEY_D):
+            move_dir.x += 1.0
 
-def on_update(dt):
-    global _position
+        # Normalize and apply speed
+        length = move_dir.length()
+        if length > 0.001:
+            move_dir = move_dir.normalized() * speed * dt
 
-    velocity = SPEED * dt
+        # Jump
+        if pyengine.Input.is_key_pressed(pyengine.KEY_SPACE) and self.is_grounded:
+            move_dir.y = self.jump_force * dt
+            self.is_grounded = False
 
-    # Forward / Backward
-    if pyengine.is_key_pressed(pyengine.KEY_W):
-        _position.z -= velocity
-    if pyengine.is_key_pressed(pyengine.KEY_S):
-        _position.z += velocity
+    def on_collision_enter(self, other_entity):
+        self.is_grounded = True
+        pyengine.Debug.log(f"Player landed! Collided with entity {other_entity}")
 
-    # Left / Right
-    if pyengine.is_key_pressed(pyengine.KEY_A):
-        _position.x -= velocity
-    if pyengine.is_key_pressed(pyengine.KEY_D):
-        _position.x += velocity
-
-    # Up / Down
-    if pyengine.is_key_pressed(pyengine.KEY_SPACE):
-        _position.y += velocity
-    if pyengine.is_key_pressed(pyengine.KEY_LEFT_CONTROL):
-        _position.y -= velocity
-
-
-def on_destroy():
-    pyengine.log_info("PlayerController destroyed")
+    def on_destroy(self):
+        pyengine.Debug.log("PlayerController destroyed")

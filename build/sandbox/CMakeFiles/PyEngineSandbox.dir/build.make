@@ -114,7 +114,7 @@ bin/PyEngineSandbox: lib/libimgui.a
 bin/PyEngineSandbox: /usr/lib/libvulkan.so
 bin/PyEngineSandbox: /usr/lib/libglfw.so.3.4
 bin/PyEngineSandbox: lib/libtinygltf.a
-bin/PyEngineSandbox: /home/zyreniee/.pyenv/versions/3.11.9/lib/libpython3.11.so
+bin/PyEngineSandbox: /usr/lib/libpython3.14.so
 bin/PyEngineSandbox: sandbox/CMakeFiles/PyEngineSandbox.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable ../bin/PyEngineSandbox"
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/sandbox && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/PyEngineSandbox.dir/link.txt --verbose=$(VERBOSE)

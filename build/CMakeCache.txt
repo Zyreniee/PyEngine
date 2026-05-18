@@ -97,8 +97,8 @@ CMAKE_EXE_LINKER_FLAGS_RELEASE:STRING=
 //Flags used by the linker during RELWITHDEBINFO builds.
 CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 
-//No help, variable specified on the command line.
-CMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE
+//Enable/Disable output of compile commands during generation.
+CMAKE_EXPORT_COMPILE_COMMANDS:BOOL=
 
 //Value Computed by CMake.
 CMAKE_FIND_PACKAGE_REDIRECTS_DIR:STATIC=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles/pkgRedirects
@@ -443,10 +443,10 @@ PYBIND11_SIMPLE_GIL_MANAGEMENT:BOOL=OFF
 PYBIND11_TEST:BOOL=OFF
 
 //Path to a program.
-PYTHON_EXECUTABLE:FILEPATH=/home/zyreniee/.pyenv/shims/python3
+PYTHON_EXECUTABLE:FILEPATH=/usr/bin/python3
 
 //Path to a library.
-PYTHON_LIBRARY:FILEPATH=/home/zyreniee/.pyenv/versions/3.11.9/lib/libpython3.11.so
+PYTHON_LIBRARY:FILEPATH=/usr/lib/libpython3.14.so
 
 //Value Computed by CMake
 PyEngine_BINARY_DIR:STATIC=/home/zyreniee/Belgeler/GitHub/PyEngine/build
@@ -456,6 +456,9 @@ PyEngine_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
 PyEngine_SOURCE_DIR:STATIC=/home/zyreniee/Belgeler/GitHub/PyEngine
+
+//No help, variable specified on the command line.
+Python3_EXECUTABLE:UNINITIALIZED=/usr/bin/python3
 
 //Build glTF builder example
 TINYGLTF_BUILD_BUILDER_EXAMPLE:BOOL=OFF
@@ -548,7 +551,7 @@ CMAKE_CACHE_MAJOR_VERSION:INTERNAL=4
 //Minor version of cmake used to create the current loaded cache
 CMAKE_CACHE_MINOR_VERSION:INTERNAL=3
 //Patch version of cmake used to create the current loaded cache
-CMAKE_CACHE_PATCH_VERSION:INTERNAL=0
+CMAKE_CACHE_PATCH_VERSION:INTERNAL=2
 //ADVANCED property for variable: CMAKE_COLOR_MAKEFILE
 CMAKE_COLOR_MAKEFILE-ADVANCED:INTERNAL=1
 //Path to CMake executable.
@@ -605,6 +608,8 @@ CMAKE_EXE_LINKER_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
 CMAKE_EXE_LINKER_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO
 CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_EXPORT_COMPILE_COMMANDS
+CMAKE_EXPORT_COMPILE_COMMANDS-ADVANCED:INTERNAL=1
 //Name of external makefile project generator.
 CMAKE_EXTRA_GENERATOR:INTERNAL=
 //Name of generator.
@@ -719,15 +724,15 @@ CMAKE_UNAME:INTERNAL=/usr/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //Details about finding PYTHON
-FIND_PACKAGE_MESSAGE_DETAILS_PYTHON:INTERNAL=/home/zyreniee/.pyenv/shims/python33.11.9
+FIND_PACKAGE_MESSAGE_DETAILS_PYTHON:INTERNAL=/usr/bin/python33.14.4
 //Details about finding Python3
-FIND_PACKAGE_MESSAGE_DETAILS_Python3:INTERNAL=[/home/zyreniee/.pyenv/shims/python3.11][/home/zyreniee/.pyenv/versions/3.11.9/include/python3.11][/home/zyreniee/.pyenv/versions/3.11.9/lib/libpython3.11.so][found components: Interpreter Development Development.Module Development.Embed ][v3.11.9()]
+FIND_PACKAGE_MESSAGE_DETAILS_Python3:INTERNAL=[/usr/bin/python3][/usr/include/python3.14][/usr/lib/libpython3.14.so][found components: Interpreter Development Development.Module Development.Embed ][v3.14.4()]
 //Details about finding PythonInterp
-FIND_PACKAGE_MESSAGE_DETAILS_PythonInterp:INTERNAL=[/home/zyreniee/.pyenv/shims/python3][v3.11.9(3.6)]
+FIND_PACKAGE_MESSAGE_DETAILS_PythonInterp:INTERNAL=[/usr/bin/python3][v3.14.4(3.6)]
 //Details about finding Threads
 FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
 //Details about finding Vulkan
-FIND_PACKAGE_MESSAGE_DETAILS_Vulkan:INTERNAL=[/usr/lib/libvulkan.so][/usr/include][found components: glslc glslangValidator ][v1.4.341()]
+FIND_PACKAGE_MESSAGE_DETAILS_Vulkan:INTERNAL=[/usr/lib/libvulkan.so][/usr/include][found components: glslc glslangValidator ][v1.4.350()]
 //ADVANCED property for variable: GIT_EXECUTABLE
 GIT_EXECUTABLE-ADVANCED:INTERNAL=1
 //Test HAS_FLTO
@@ -736,17 +741,17 @@ NLOHMANN_JSON_CONFIG_INSTALL_DIR:INTERNAL=share/cmake/nlohmann_json
 PYBIND11_INCLUDE_DIR:INTERNAL=/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/pybind11-src/include
 //ADVANCED property for variable: PYTHON_EXECUTABLE
 PYTHON_EXECUTABLE-ADVANCED:INTERNAL=1
-PYTHON_INCLUDE_DIRS:INTERNAL=/home/zyreniee/.pyenv/versions/3.11.9/include/python3.11
+PYTHON_INCLUDE_DIRS:INTERNAL=/usr/include/python3.14
 PYTHON_IS_DEBUG:INTERNAL=0
-PYTHON_LIBRARIES:INTERNAL=/home/zyreniee/.pyenv/versions/3.11.9/lib/libpython3.11.so
+PYTHON_LIBRARIES:INTERNAL=/usr/lib/libpython3.14.so
 //ADVANCED property for variable: PYTHON_LIBRARY
 PYTHON_LIBRARY-ADVANCED:INTERNAL=1
 PYTHON_MODULE_DEBUG_POSTFIX:INTERNAL=
-PYTHON_MODULE_EXTENSION:INTERNAL=.cpython-311-x86_64-linux-gnu.so
+PYTHON_MODULE_EXTENSION:INTERNAL=.cpython-314-x86_64-linux-gnu.so
 PYTHON_MODULE_PREFIX:INTERNAL=
-PYTHON_VERSION:INTERNAL=3.11.9
+PYTHON_VERSION:INTERNAL=3.14.4
 PYTHON_VERSION_MAJOR:INTERNAL=3
-PYTHON_VERSION_MINOR:INTERNAL=11
+PYTHON_VERSION_MINOR:INTERNAL=14
 Python_ADDITIONAL_VERSIONS:INTERNAL=3.12;3.11;3.10;3.9;3.8;3.7;3.6
 //ADVANCED property for variable: Vulkan_GLSLANG_VALIDATOR_EXECUTABLE
 Vulkan_GLSLANG_VALIDATOR_EXECUTABLE-ADVANCED:INTERNAL=1
@@ -761,21 +766,18 @@ _GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=/usr/local
 _Python:INTERNAL=PYTHON
 //Compiler reason failure
 _Python3_Compiler_REASON_FAILURE:INTERNAL=
-_Python3_DEVELOPMENT_EMBED_SIGNATURE:INTERNAL=9624017141a01dd83d7e6688a09f73e2
-_Python3_DEVELOPMENT_MODULE_SIGNATURE:INTERNAL=b464ad174dc25618c17f1dccaf1922f3
+_Python3_DEVELOPMENT_EMBED_SIGNATURE:INTERNAL=8032f713489547e322697198b30697d2
+_Python3_DEVELOPMENT_MODULE_SIGNATURE:INTERNAL=72a2c9bb46240cf2230673b8310f17fe
 //Development reason failure
 _Python3_Development_REASON_FAILURE:INTERNAL=
-//Path to a program.
-_Python3_EXECUTABLE:INTERNAL=/home/zyreniee/.pyenv/shims/python3.11
+_Python3_EXECUTABLE:INTERNAL=/usr/bin/python3
 //Path to a file.
-_Python3_INCLUDE_DIR:INTERNAL=/home/zyreniee/.pyenv/versions/3.11.9/include/python3.11
+_Python3_INCLUDE_DIR:INTERNAL=/usr/include/python3.14
 //Python3 Properties
-_Python3_INTERPRETER_PROPERTIES:INTERNAL=Python;3;11;9;64;<none>;cpython-311-x86_64-linux-gnu;abi3;/home/zyreniee/.pyenv/versions/3.11.9/lib/python3.11;/home/zyreniee/.pyenv/versions/3.11.9/lib/python3.11;/home/zyreniee/.pyenv/versions/3.11.9/lib/python3.11/site-packages;/home/zyreniee/.pyenv/versions/3.11.9/lib/python3.11/site-packages
-_Python3_INTERPRETER_SIGNATURE:INTERNAL=c253bdf595560003ba8a2e6d4c4392f1
-//Interpreter reason failure
-_Python3_Interpreter_REASON_FAILURE:INTERNAL=
+_Python3_INTERPRETER_PROPERTIES:INTERNAL=Python;3;14;4;64;<none>;cpython-314-x86_64-linux-gnu;abi3;/usr/lib/python3.14;/usr/lib/python3.14;/usr/lib/python3.14/site-packages;/usr/lib/python3.14/site-packages
+_Python3_INTERPRETER_SIGNATURE:INTERNAL=bb1f7d862e7cc7765c27ce56f43851f0
 //Path to a library.
-_Python3_LIBRARY_RELEASE:INTERNAL=/home/zyreniee/.pyenv/versions/3.11.9/lib/libpython3.11.so
+_Python3_LIBRARY_RELEASE:INTERNAL=/usr/lib/libpython3.14.so
 //NumPy reason failure
 _Python3_NumPy_REASON_FAILURE:INTERNAL=
 //True if pybind11 and all required components found on the system
@@ -783,5 +785,5 @@ pybind11_FOUND:INTERNAL=TRUE
 //Directory where pybind11 headers are located
 pybind11_INCLUDE_DIR:INTERNAL=/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/pybind11-src/include
 //Directories where pybind11 and possibly Python headers are located
-pybind11_INCLUDE_DIRS:INTERNAL=/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/pybind11-src/include;/home/zyreniee/.pyenv/versions/3.11.9/include/python3.11
+pybind11_INCLUDE_DIRS:INTERNAL=/home/zyreniee/Belgeler/GitHub/PyEngine/build/_deps/pybind11-src/include;/usr/include/python3.14
 

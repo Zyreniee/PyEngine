@@ -24,7 +24,7 @@ public:
 
 private:
     std::vector<Layer*> m_Layers;
-    uint32_t m_LayerInsertIndex = 0;
+    size_t m_LayerInsertIndex = 0;
 };
 
 }  // namespace PyEngine

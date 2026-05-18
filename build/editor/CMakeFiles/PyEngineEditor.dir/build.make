@@ -262,7 +262,7 @@ bin/PyEngineEditor: lib/libimgui.a
 bin/PyEngineEditor: /usr/lib/libvulkan.so
 bin/PyEngineEditor: /usr/lib/libglfw.so.3.4
 bin/PyEngineEditor: lib/libtinygltf.a
-bin/PyEngineEditor: /home/zyreniee/.pyenv/versions/3.11.9/lib/libpython3.11.so
+bin/PyEngineEditor: /usr/lib/libpython3.14.so
 bin/PyEngineEditor: editor/CMakeFiles/PyEngineEditor.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/zyreniee/Belgeler/GitHub/PyEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Linking CXX executable ../bin/PyEngineEditor"
 	cd /home/zyreniee/Belgeler/GitHub/PyEngine/build/editor && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/PyEngineEditor.dir/link.txt --verbose=$(VERBOSE)

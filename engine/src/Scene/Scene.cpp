@@ -8,6 +8,9 @@
 #include "PyEngine/Scene/Components.hpp"
 #include "PyEngine/Scene/EditorCamera.hpp"
 #include "PyEngine/Scene/Entity.hpp"
+#include "PyEngine/Scripting/PythonEngine.hpp"
+#include "PyEngine/Scripting/PythonScript.hpp"
+#include "PyEngine/Scripting/PyEngineModule.hpp"
 
 namespace PyEngine {
 
@@ -43,11 +46,21 @@ void Scene::OnUpdate(float deltaTime) {
 }
 
 void Scene::OnUpdateRuntime(float deltaTime) {
-    // Update scripts
+    // Update C++ scripts
     {
         auto view = m_Registry.view<ScriptComponent>();
         for (auto entity : view) {
-            // Script update logic would go here
+            // C++ script update logic
+        }
+    }
+
+    // Update Python scripts
+    {
+        auto view = m_Registry.view<PythonScriptComponent>();
+        for (auto entityHandle : view) {
+            auto& psc = view.get<PythonScriptComponent>(entityHandle);
+            if (!psc.Enabled || !psc.ScriptInstance) continue;
+            psc.ScriptInstance->OnUpdate(deltaTime);
         }
     }
 
@@ -206,10 +219,43 @@ size_t Scene::GetEntityCount() const {
 
 void Scene::OnRuntimeStart() {
     PYENGINE_CORE_INFO("Scene '{}' runtime started", m_Name);
+
+    // Initialize Python interpreter
+    auto& pyEngine = PythonEngine::Get();
+    if (!pyEngine.IsInitialized()) {
+        RegisterPyEngineModule();  // Ensure linkage anchor
+        pyEngine.Initialize();
+    }
+
+    // Initialize Python scripts on all entities
+    auto view = m_Registry.view<PythonScriptComponent>();
+    for (auto entityHandle : view) {
+        auto& psc = view.get<PythonScriptComponent>(entityHandle);
+        if (psc.ScriptPath.empty() || !psc.Enabled) continue;
+
+        // Create a PythonScript instance for this entity
+        auto script = std::make_shared<PythonScript>();
+        script->SetScriptPath(psc.ScriptPath);
+        script->SetEntityID(static_cast<uint32_t>(entityHandle));
+        psc.ScriptInstance = script;
+
+        script->OnCreate();
+        script->OnStart();
+    }
 }
 
 void Scene::OnRuntimeStop() {
     PYENGINE_CORE_INFO("Scene '{}' runtime stopped", m_Name);
+
+    // Destroy all Python script instances
+    auto view = m_Registry.view<PythonScriptComponent>();
+    for (auto entityHandle : view) {
+        auto& psc = view.get<PythonScriptComponent>(entityHandle);
+        if (psc.ScriptInstance) {
+            psc.ScriptInstance->OnDestroy();
+            psc.ScriptInstance.reset();
+        }
+    }
 }
 
 }  // namespace PyEngine

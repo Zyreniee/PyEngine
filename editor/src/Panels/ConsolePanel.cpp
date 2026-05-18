@@ -21,7 +21,7 @@ void ConsolePanel::Clear() {
 }
 
 void ConsolePanel::OnImGuiRender() {
-    ImGui::Begin("\xef\x84\xa0  Console");  // Icon: terminal
+    ImGui::Begin("Console");
 
     // Toolbar
     if (ImGui::Button("Clear")) {

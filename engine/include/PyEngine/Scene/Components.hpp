@@ -278,10 +278,15 @@ struct NavMeshAgentComponent {
     int AreaMask = 0xFFFFFFFF;
 };
 
+class PythonScript;  // Forward declare
+
 struct PythonScriptComponent {
     std::string ScriptPath;       // Path to .py file (relative to project)
     bool Enabled = true;
     bool AutoReload = true;       // Hot-reload on file change
+
+    // Runtime state (managed by Scene, not serialized)
+    std::shared_ptr<PythonScript> ScriptInstance;
 };
 
 }  // namespace PyEngine

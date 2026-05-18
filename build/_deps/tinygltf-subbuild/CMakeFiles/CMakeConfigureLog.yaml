@@ -20,32 +20,25 @@ events:
     names:
       - "uname"
     candidate_directories:
-      - "/home/zyreniee/.pyenv/shims/"
-      - "/home/zyreniee/.pyenv/bin/"
-      - "/usr/local/sbin/"
+      - "/home/zyreniee/.local/bin/"
       - "/usr/local/bin/"
       - "/usr/bin/"
-      - "/var/lib/flatpak/exports/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
       - "/usr/bin/site_perl/"
       - "/usr/bin/vendor_perl/"
       - "/usr/bin/core_perl/"
-      - "/bin/"
     searched_directories:
-      - "/home/zyreniee/.pyenv/shims/uname"
-      - "/home/zyreniee/.pyenv/bin/uname"
-      - "/usr/local/sbin/uname"
+      - "/home/zyreniee/.local/bin/uname"
       - "/usr/local/bin/uname"
     found: "/usr/bin/uname"
     search_context:
       ENV{PATH}:
-        - "/home/zyreniee/.pyenv/shims"
-        - "/home/zyreniee/.pyenv/bin"
-        - "/home/zyreniee/.pyenv/bin"
-        - "/home/zyreniee/.pyenv/bin"
-        - "/usr/local/sbin"
+        - "/home/zyreniee/.local/bin"
         - "/usr/local/bin"
         - "/usr/bin"
-        - "/var/lib/flatpak/exports/bin"
+        - "/bin"
+        - "/usr/local/sbin"
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
@@ -55,16 +48,5 @@ events:
       - "/usr/share/cmake/Modules/CMakeDetermineSystem.cmake:212 (message)"
       - "CMakeLists.txt:16 (project)"
     message: |
-      The system is: Linux - 6.19.6-arch1-1 - x86_64
-...
-
----
-events:
-  -
-    kind: "message-v1"
-    backtrace:
-      - "/usr/share/cmake/Modules/CMakeDetermineSystem.cmake:212 (message)"
-      - "CMakeLists.txt:16 (project)"
-    message: |
-      The system is: Linux - 6.19.6-arch1-1 - x86_64
+      The system is: Linux - 7.0.8-1-cachyos - x86_64
 ...

@@ -17,6 +17,7 @@ public:
     SceneViewPanel() = default;
 
     void OnImGuiRender();
+    void OnGamePanelRender();
 
     bool IsFocused() const { return m_Focused; }
     bool IsHovered() const { return m_Hovered; }
@@ -44,6 +45,7 @@ private:
 
     glm::vec2 m_MouseViewportPos = {0, 0};
     bool m_ClickedThisFrame = false;
+    bool m_WasPlayingLastFrame = false;
 
     PyEngine::OffscreenRenderer* m_OffscreenRenderer = nullptr;
 };

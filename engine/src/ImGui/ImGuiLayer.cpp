@@ -47,12 +47,50 @@ ImGuiLayer::ImGuiLayer(Window& window, VulkanContext& context, Renderer& rendere
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
     io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
 
-    // Load custom fonts (Roboto + FontAwesome)
-    // float fontSize = 16.0f;
-    // bool fontsLoaded = false;
-    
-    // Bypassing custom TTF loading because Roboto-Regular.ttf causes an STB truetype assertion
-    io.Fonts->AddFontDefault();
+    // ── Font Loading ─────────────────────────────────────────
+    float fontSize = 15.0f;
+    float iconSize = 14.0f;
+    bool fontsLoaded = false;
+
+    // Try to load Inter font (professional, Unity-like)
+    auto interPath = std::filesystem::current_path() / "assets" / "fonts" / "Inter-Regular.ttf";
+    auto interBoldPath = std::filesystem::current_path() / "assets" / "fonts" / "Inter-Bold.ttf";
+    auto faPath = std::filesystem::current_path() / "assets" / "fonts" / "fa-solid-900.ttf";
+
+    if (std::filesystem::exists(interPath)) {
+        // Primary font: Inter Regular
+        ImFontConfig fontConfig;
+        fontConfig.OversampleH = 3;
+        fontConfig.OversampleV = 2;
+        fontConfig.PixelSnapH = true;
+        io.Fonts->AddFontFromFileTTF(interPath.string().c_str(), fontSize, &fontConfig);
+
+        // Merge FontAwesome icons into the default font
+        if (std::filesystem::exists(faPath)) {
+            ImFontConfig iconConfig;
+            iconConfig.MergeMode = true;
+            iconConfig.PixelSnapH = true;
+            iconConfig.GlyphMinAdvanceX = iconSize;
+            static const ImWchar icon_ranges[] = {0xf000, 0xf999, 0};
+            io.Fonts->AddFontFromFileTTF(faPath.string().c_str(), iconSize, &iconConfig, icon_ranges);
+        }
+
+        // Bold font (index 1)
+        if (std::filesystem::exists(interBoldPath)) {
+            ImFontConfig boldConfig;
+            boldConfig.OversampleH = 3;
+            boldConfig.OversampleV = 2;
+            io.Fonts->AddFontFromFileTTF(interBoldPath.string().c_str(), fontSize, &boldConfig);
+        }
+
+        fontsLoaded = true;
+        PYENGINE_CORE_INFO("[ImGui] Loaded Inter font ({}px)", fontSize);
+    }
+
+    if (!fontsLoaded) {
+        PYENGINE_CORE_WARN("[ImGui] Custom fonts not found, using default");
+        io.Fonts->AddFontDefault();
+    }
 
     SetupImGuiStyle();
 
@@ -140,109 +178,117 @@ void ImGuiLayer::RenderDrawData(VkCommandBuffer commandBuffer) {
 void ImGuiLayer::SetupImGuiStyle() {
     ImGuiStyle& style = ImGui::GetStyle();
 
-    // ── Rounding & Spacing (Unity exact match approach) ─────────────────────────
-    style.WindowRounding = 0.0f;
-    style.FrameRounding = 3.0f;     // Input fields and buttons
-    style.ScrollbarRounding = 0.0f;
-    style.TabRounding = 0.0f;
-    style.PopupRounding = 0.0f;
-    style.ChildRounding = 0.0f;
+    // ── Rounding & Spacing ─────────────────────────────────────
+    style.WindowRounding = 2.0f;
+    style.FrameRounding = 3.0f;
+    style.ScrollbarRounding = 2.0f;
+    style.TabRounding = 2.0f;
+    style.PopupRounding = 2.0f;
+    style.ChildRounding = 2.0f;
+    style.GrabRounding = 2.0f;
 
-    style.WindowPadding = ImVec2(4.0f, 4.0f);
-    style.FramePadding = ImVec2(4.0f, 3.0f);
-    style.ItemSpacing = ImVec2(4.0f, 3.0f);
+    style.WindowPadding = ImVec2(8.0f, 8.0f);
+    style.FramePadding = ImVec2(6.0f, 4.0f);
+    style.ItemSpacing = ImVec2(8.0f, 4.0f);
     style.ItemInnerSpacing = ImVec2(4.0f, 4.0f);
-    style.IndentSpacing = 14.0f;
-    style.ScrollbarSize = 14.0f;
-    style.GrabMinSize = 10.0f;
+    style.IndentSpacing = 16.0f;
+    style.ScrollbarSize = 12.0f;
+    style.GrabMinSize = 8.0f;
 
     style.WindowBorderSize = 1.0f;
     style.FrameBorderSize = 0.0f;
     style.PopupBorderSize = 1.0f;
-    style.TabBorderSize = 1.0f;
+    style.TabBorderSize = 0.0f;
 
     // ═══════════════════════════════════════════════════════════
-    // Unity Dark Theme Palette
-    // Unity standard dark theme colors (approximate)
-    // Backgrounds: #383838, #282828
-    // Accents: #2B5D87 (Blue highlight)
+    // Unity 2024 Dark Theme — Professional Color Palette
     // ═══════════════════════════════════════════════════════════
     ImVec4* c = style.Colors;
 
-    // Backgrounds
-    c[ImGuiCol_WindowBg] = ImVec4(0.12f, 0.12f, 0.12f, 1.0f);  // #1A1A1A
-    c[ImGuiCol_ChildBg] = ImVec4(0.12f, 0.12f, 0.12f, 1.0f);
-    c[ImGuiCol_PopupBg] = ImVec4(0.08f, 0.08f, 0.08f, 1.0f);  // #141414
+    // Base backgrounds
+    ImVec4 bgDark    = ImVec4(0.118f, 0.118f, 0.118f, 1.0f);   // #1E1E1E
+    ImVec4 bgMid     = ImVec4(0.157f, 0.157f, 0.157f, 1.0f);   // #282828
+    ImVec4 bgLight   = ImVec4(0.200f, 0.200f, 0.200f, 1.0f);   // #333333
+    ImVec4 bgPopup   = ImVec4(0.137f, 0.137f, 0.137f, 1.0f);   // #232323
 
-    // UI elements background (Input fields, dropdowns)
-    c[ImGuiCol_FrameBg] = ImVec4(0.08f, 0.08f, 0.08f, 1.0f);
-    c[ImGuiCol_FrameBgHovered] = ImVec4(0.18f, 0.18f, 0.18f, 1.0f); 
-    c[ImGuiCol_FrameBgActive] = ImVec4(0.08f, 0.08f, 0.08f, 1.0f);
-
-    // Window formatting (Title bar and background matching)
-    c[ImGuiCol_TitleBg] = ImVec4(0.12f, 0.12f, 0.12f, 1.0f);
-    c[ImGuiCol_TitleBgActive] = ImVec4(0.12f, 0.12f, 0.12f, 1.0f);
-    c[ImGuiCol_TitleBgCollapsed] = ImVec4(0.12f, 0.12f, 0.12f, 1.0f);
-    c[ImGuiCol_MenuBarBg] = ImVec4(0.12f, 0.12f, 0.12f, 1.0f);
-
-    // Unity Accent Blue: #3A72B0 (approx 0.227, 0.447, 0.690)
-    ImVec4 unityBlue = ImVec4(0.227f, 0.447f, 0.690f, 1.0f);
-    ImVec4 unityBlueHover = ImVec4(0.278f, 0.533f, 0.812f, 1.0f);
-    ImVec4 unityBlueActive = ImVec4(0.188f, 0.380f, 0.592f, 1.0f);
-
-    // Interactions
-    c[ImGuiCol_Button] = ImVec4(0.35f, 0.35f, 0.35f, 1.0f);         // Unity button idle (#585858)
-    c[ImGuiCol_ButtonHovered] = ImVec4(0.40f, 0.40f, 0.40f, 1.0f);  // Button hover  (#666666)
-    c[ImGuiCol_ButtonActive] = ImVec4(0.28f, 0.28f, 0.28f, 1.0f);   // Button active (#474747)
-
-    // Header (In Inspector/Hierarchy)
-    c[ImGuiCol_Header] = ImVec4(0.16f, 0.16f, 0.16f, 1.0f); 
-    c[ImGuiCol_HeaderHovered] = ImVec4(0.25f, 0.25f, 0.25f, 1.0f);
-    c[ImGuiCol_HeaderActive] = unityBlue; // Selection background active
-
-    // Tabs
-    c[ImGuiCol_Tab] = ImVec4(0.18f, 0.18f, 0.18f, 1.0f);         // Non-selected tab (#2d2d2d)
-    c[ImGuiCol_TabHovered] = ImVec4(0.26f, 0.26f, 0.26f, 1.0f);  // Tab hover
-    c[ImGuiCol_TabActive] = c[ImGuiCol_WindowBg];                // Selected tab matches background
-    c[ImGuiCol_TabUnfocused] = ImVec4(0.18f, 0.18f, 0.18f, 1.0f);
-    c[ImGuiCol_TabUnfocusedActive] = c[ImGuiCol_WindowBg];
-
-    // Borders
-    c[ImGuiCol_Border] = ImVec4(0.13f, 0.13f, 0.13f, 1.0f);  // Dark thin borders between panels (#212121)
-    c[ImGuiCol_BorderShadow] = ImVec4(0.00f, 0.00f, 0.00f, 0.00f);
-
-    // Accents / Highlights
-    c[ImGuiCol_NavHighlight] = unityBlue;
-    c[ImGuiCol_CheckMark] = ImVec4(0.85f, 0.85f, 0.85f, 1.0f);  // Off-white checkmark
-
-    // Sliders
-    c[ImGuiCol_SliderGrab] = ImVec4(0.40f, 0.40f, 0.40f, 1.0f);
-    c[ImGuiCol_SliderGrabActive] = unityBlue;
-
-    // Scrollbar (very subtle in Unity)
-    c[ImGuiCol_ScrollbarBg] = c[ImGuiCol_WindowBg];
-    c[ImGuiCol_ScrollbarGrab] = ImVec4(0.35f, 0.35f, 0.35f, 1.0f);
-    c[ImGuiCol_ScrollbarGrabHovered] = ImVec4(0.45f, 0.45f, 0.45f, 1.0f);
-    c[ImGuiCol_ScrollbarGrabActive] = ImVec4(0.50f, 0.50f, 0.50f, 1.0f);
-
-    // Resizing
-    c[ImGuiCol_ResizeGrip] = ImVec4(0.00f, 0.00f, 0.00f, 0.00f);
-    c[ImGuiCol_ResizeGripHovered] = ImVec4(0.00f, 0.00f, 0.00f, 0.00f);
-    c[ImGuiCol_ResizeGripActive] = ImVec4(0.00f, 0.00f, 0.00f, 0.00f);
+    // Accent
+    ImVec4 accent    = ImVec4(0.259f, 0.588f, 0.980f, 1.0f);   // #4296FA
+    ImVec4 accentHov = ImVec4(0.310f, 0.640f, 1.000f, 1.0f);
+    ImVec4 accentAct = ImVec4(0.200f, 0.500f, 0.900f, 1.0f);
 
     // Text
-    c[ImGuiCol_Text] = ImVec4(0.85f, 0.85f, 0.85f, 1.0f);  // Off-white for readability
-    c[ImGuiCol_TextDisabled] = ImVec4(0.50f, 0.50f, 0.50f, 1.0f);
-    c[ImGuiCol_TextSelectedBg] = ImVec4(unityBlue.x, unityBlue.y, unityBlue.z, 0.5f); // Text selection
+    ImVec4 textMain  = ImVec4(0.860f, 0.860f, 0.860f, 1.0f);   // #DBDBDB
+    ImVec4 textDim   = ImVec4(0.500f, 0.500f, 0.500f, 1.0f);
 
-    // Panels/Separators
-    c[ImGuiCol_Separator] = ImVec4(0.14f, 0.14f, 0.14f, 1.0f); // Similar to border
+    // Backgrounds
+    c[ImGuiCol_WindowBg]     = bgMid;
+    c[ImGuiCol_ChildBg]      = ImVec4(0.0f, 0.0f, 0.0f, 0.0f);
+    c[ImGuiCol_PopupBg]      = bgPopup;
+
+    // Frame (inputs, dropdowns)
+    c[ImGuiCol_FrameBg]        = ImVec4(0.10f, 0.10f, 0.10f, 1.0f);
+    c[ImGuiCol_FrameBgHovered] = ImVec4(0.18f, 0.18f, 0.18f, 1.0f);
+    c[ImGuiCol_FrameBgActive]  = ImVec4(0.12f, 0.12f, 0.12f, 1.0f);
+
+    // Title bars
+    c[ImGuiCol_TitleBg]          = bgDark;
+    c[ImGuiCol_TitleBgActive]    = bgDark;
+    c[ImGuiCol_TitleBgCollapsed] = bgDark;
+    c[ImGuiCol_MenuBarBg]        = bgDark;
+
+    // Buttons
+    c[ImGuiCol_Button]        = ImVec4(0.28f, 0.28f, 0.28f, 1.0f);
+    c[ImGuiCol_ButtonHovered] = ImVec4(0.35f, 0.35f, 0.35f, 1.0f);
+    c[ImGuiCol_ButtonActive]  = ImVec4(0.22f, 0.22f, 0.22f, 1.0f);
+
+    // Headers
+    c[ImGuiCol_Header]        = ImVec4(0.20f, 0.20f, 0.20f, 1.0f);
+    c[ImGuiCol_HeaderHovered] = ImVec4(0.28f, 0.28f, 0.28f, 1.0f);
+    c[ImGuiCol_HeaderActive]  = accent;
+
+    // Tabs
+    c[ImGuiCol_Tab]               = bgDark;
+    c[ImGuiCol_TabHovered]        = ImVec4(0.28f, 0.28f, 0.28f, 1.0f);
+    c[ImGuiCol_TabActive]         = bgMid;
+    c[ImGuiCol_TabUnfocused]      = bgDark;
+    c[ImGuiCol_TabUnfocusedActive]= bgMid;
+
+    // Borders
+    c[ImGuiCol_Border]       = ImVec4(0.08f, 0.08f, 0.08f, 1.0f);
+    c[ImGuiCol_BorderShadow] = ImVec4(0.0f, 0.0f, 0.0f, 0.0f);
+
+    // Accents
+    c[ImGuiCol_NavHighlight] = accent;
+    c[ImGuiCol_CheckMark]    = accent;
+
+    // Sliders
+    c[ImGuiCol_SliderGrab]       = ImVec4(0.40f, 0.40f, 0.40f, 1.0f);
+    c[ImGuiCol_SliderGrabActive] = accent;
+
+    // Scrollbar
+    c[ImGuiCol_ScrollbarBg]          = ImVec4(0.0f, 0.0f, 0.0f, 0.0f);
+    c[ImGuiCol_ScrollbarGrab]        = ImVec4(0.30f, 0.30f, 0.30f, 1.0f);
+    c[ImGuiCol_ScrollbarGrabHovered] = ImVec4(0.40f, 0.40f, 0.40f, 1.0f);
+    c[ImGuiCol_ScrollbarGrabActive]  = ImVec4(0.50f, 0.50f, 0.50f, 1.0f);
+
+    // Resize grip
+    c[ImGuiCol_ResizeGrip]        = ImVec4(0.0f, 0.0f, 0.0f, 0.0f);
+    c[ImGuiCol_ResizeGripHovered] = ImVec4(0.0f, 0.0f, 0.0f, 0.0f);
+    c[ImGuiCol_ResizeGripActive]  = ImVec4(0.0f, 0.0f, 0.0f, 0.0f);
+
+    // Text
+    c[ImGuiCol_Text]           = textMain;
+    c[ImGuiCol_TextDisabled]   = textDim;
+    c[ImGuiCol_TextSelectedBg] = ImVec4(accent.x, accent.y, accent.z, 0.4f);
+
+    // Separator
+    c[ImGuiCol_Separator]        = ImVec4(0.10f, 0.10f, 0.10f, 1.0f);
     c[ImGuiCol_SeparatorHovered] = ImVec4(0.20f, 0.20f, 0.20f, 1.0f);
-    c[ImGuiCol_SeparatorActive] = unityBlue;
+    c[ImGuiCol_SeparatorActive]  = accent;
 
     // Docking
-    c[ImGuiCol_DockingPreview] = ImVec4(unityBlue.x, unityBlue.y, unityBlue.z, 0.6f);
-    c[ImGuiCol_DockingEmptyBg] = ImVec4(0.12f, 0.12f, 0.12f, 1.0f);
+    c[ImGuiCol_DockingPreview] = ImVec4(accent.x, accent.y, accent.z, 0.5f);
+    c[ImGuiCol_DockingEmptyBg] = bgDark;
 }
 
 }  // namespace PyEngine

@@ -18,6 +18,9 @@ OffscreenRenderer::~OffscreenRenderer() {
 }
 
 void OffscreenRenderer::Resize(uint32_t width, uint32_t height) {
+    // Prevent tiny framebuffers that cause rendering artifacts
+    if (width < 64 || height < 64)
+        return;
     if (m_Width == width && m_Height == height)
         return;
 

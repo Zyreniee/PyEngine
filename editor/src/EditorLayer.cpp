@@ -146,7 +146,7 @@ void EditorLayer::OnUpdate(float deltaTime) {
         // ── Editor mode: render into offscreen target ──────────────────
         auto& renderer = PyEngine::Application::Get().GetRenderer();
 
-        if (m_ViewportSize.x > 1 && m_ViewportSize.y > 1) {
+        if (m_ViewportSize.x > 64.0f && m_ViewportSize.y > 64.0f) {
             m_OffscreenRenderer->Resize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
         }
 
@@ -173,8 +173,8 @@ void EditorLayer::OnUpdate(float deltaTime) {
 void EditorLayer::OnImGuiRender() {
     SetupDockspace();
 
-    m_ToolbarPanel.OnImGuiRender();
     m_SceneViewPanel.OnImGuiRender();
+    m_SceneViewPanel.OnGamePanelRender();
     m_HierarchyPanel.OnImGuiRender();
     m_InspectorPanel.OnImGuiRender();
     m_ProjectPanel.OnImGuiRender();
@@ -232,10 +232,10 @@ void EditorLayer::OnImGuiRender() {
             tc.Position = translation;
             tc.Scale = scale;
 
-            // Convert quaternion to euler (degrees)
+            // Convert quaternion to euler angles (degrees) directly
+            // This avoids the delta accumulation drift from the previous approach
             glm::vec3 eulerRad = glm::eulerAngles(rotation);
-            glm::vec3 deltaRot = glm::degrees(eulerRad) - tc.Rotation;
-            tc.Rotation += deltaRot;
+            tc.Rotation = glm::degrees(eulerRad);
         }
     }
 
@@ -433,11 +433,12 @@ void EditorLayer::BuildDefaultLayout(ImGuiID dockspace_id) {
     ImGuiID dock_id_bottom = ImGui::DockBuilderSplitNode(dock_main_id, ImGuiDir_Down, 0.3f, nullptr, &dock_main_id);
     ImGuiID dock_id_left = ImGui::DockBuilderSplitNode(dock_main_id, ImGuiDir_Left, 0.2f, nullptr, &dock_main_id);
 
-    ImGui::DockBuilderDockWindow("\xef\x80\xa8  Hierarchy", dock_id_left);
-    ImGui::DockBuilderDockWindow("\xef\x81\x9a  Inspector", dock_id_right);
-    ImGui::DockBuilderDockWindow("\xef\x81\xbb  Project", dock_id_bottom);
-    ImGui::DockBuilderDockWindow("\xef\x84\xa0  Console", dock_id_bottom);
-    ImGui::DockBuilderDockWindow("\xef\x80\xb0  Scene", dock_main_id);  // Match SceneViewPanel title
+    ImGui::DockBuilderDockWindow("Hierarchy", dock_id_left);
+    ImGui::DockBuilderDockWindow("Inspector", dock_id_right);
+    ImGui::DockBuilderDockWindow("Project", dock_id_bottom);
+    ImGui::DockBuilderDockWindow("Console", dock_id_bottom);
+    ImGui::DockBuilderDockWindow("Scene", dock_main_id);
+    ImGui::DockBuilderDockWindow("Game", dock_main_id);
     ImGui::DockBuilderDockWindow("Stats", dock_id_right);
 
     ImGui::DockBuilderFinish(dockspace_id);
@@ -445,6 +446,16 @@ void EditorLayer::BuildDefaultLayout(ImGuiID dockspace_id) {
 
 void EditorLayer::DrawMenuBar() {
     if (ImGui::BeginMenuBar()) {
+        // ── PyEngine Logo/Brand ──────────────────────────────
+        ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.4f, 0.7f, 1.0f, 1.0f));
+        ImGui::TextUnformatted("PyEngine");
+        ImGui::PopStyleColor();
+        ImGui::SameLine();
+        ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.4f, 0.4f, 0.4f, 1.0f));
+        ImGui::TextUnformatted("|");
+        ImGui::PopStyleColor();
+        ImGui::SameLine();
+
         if (ImGui::BeginMenu("File")) {
             if (ImGui::MenuItem("New Scene", "Ctrl+N")) NewScene();
             if (ImGui::MenuItem("Open Scene...", "Ctrl+O")) OpenScene();
@@ -457,7 +468,6 @@ void EditorLayer::DrawMenuBar() {
         }
 
         if (ImGui::BeginMenu("Edit")) {
-            // Placeholder for Undo/Redo/Cut/Copy/Paste
             ImGui::MenuItem("Undo", "Ctrl+Z");
             ImGui::MenuItem("Redo", "Ctrl+Y");
             ImGui::Separator();
@@ -483,7 +493,8 @@ void EditorLayer::DrawMenuBar() {
 
         if (ImGui::BeginMenu("GameObject")) {
             if (ImGui::MenuItem("Create Empty", "Ctrl+Shift+N")) {
-                m_ActiveScene->CreateEntity("GameObject");
+                auto e = m_ActiveScene->CreateEntity("GameObject");
+                SelectEntity(e);
             }
             ImGui::Separator();
             
@@ -491,28 +502,39 @@ void EditorLayer::DrawMenuBar() {
                 if (ImGui::MenuItem("Cube")) {
                     auto e = m_ActiveScene->CreateEntity("Cube");
                     e.AddComponent<PyEngine::MeshRendererComponent>().MeshID = 0;
+                    e.GetComponent<PyEngine::TransformComponent>().Position = {0.0f, 0.5f, 0.0f};
+                    SelectEntity(e);
                 }
                 if (ImGui::MenuItem("Sphere")) {
                     auto e = m_ActiveScene->CreateEntity("Sphere");
                     e.AddComponent<PyEngine::MeshRendererComponent>().MeshID = 1;
+                    e.GetComponent<PyEngine::TransformComponent>().Position = {0.0f, 0.5f, 0.0f};
+                    SelectEntity(e);
                 }
                 if (ImGui::MenuItem("Plane")) {
                     auto e = m_ActiveScene->CreateEntity("Plane");
                     e.AddComponent<PyEngine::MeshRendererComponent>().MeshID = 2;
+                    SelectEntity(e);
                 }
                 if (ImGui::MenuItem("Cylinder")) {
                     auto e = m_ActiveScene->CreateEntity("Cylinder");
                     e.AddComponent<PyEngine::MeshRendererComponent>().MeshID = 3;
+                    e.GetComponent<PyEngine::TransformComponent>().Position = {0.0f, 0.5f, 0.0f};
+                    SelectEntity(e);
                 }
                 if (ImGui::MenuItem("Capsule")) {
                     auto e = m_ActiveScene->CreateEntity("Capsule");
                     e.AddComponent<PyEngine::MeshRendererComponent>().MeshID = 4;
+                    e.GetComponent<PyEngine::TransformComponent>().Position = {0.0f, 0.75f, 0.0f};
+                    SelectEntity(e);
                 }
                 if (ImGui::MenuItem("Terrain")) {
                     auto entity = m_ActiveScene->CreateEntity("Terrain");
                     auto& mrc = entity.AddComponent<PyEngine::MeshRendererComponent>();
-                    mrc.MeshID = 2; // Flat plane default
+                    mrc.MeshID = 2;
+                    entity.GetComponent<PyEngine::TransformComponent>().Scale = {10.0f, 1.0f, 10.0f};
                     entity.AddComponent<PyEngine::TerrainComponent>();
+                    SelectEntity(entity);
                 }
                 ImGui::EndMenu();
             }
@@ -520,15 +542,28 @@ void EditorLayer::DrawMenuBar() {
             if (ImGui::BeginMenu("Light")) {
                 if (ImGui::MenuItem("Directional Light")) {
                     auto e = m_ActiveScene->CreateEntity("Directional Light");
-                    e.AddComponent<PyEngine::LightComponent>();
+                    auto& lc = e.AddComponent<PyEngine::LightComponent>();
+                    lc.Intensity = 1.0f;
+                    e.GetComponent<PyEngine::TransformComponent>().Rotation = {-50.0f, -30.0f, 0.0f};
+                    SelectEntity(e);
                 }
                 if (ImGui::MenuItem("Point Light")) {
                     auto e = m_ActiveScene->CreateEntity("Point Light");
-                    e.AddComponent<PyEngine::LightComponent>().LightType = PyEngine::LightComponent::Type::Point;
+                    auto& lc = e.AddComponent<PyEngine::LightComponent>();
+                    lc.LightType = PyEngine::LightComponent::Type::Point;
+                    lc.Intensity = 1.5f;
+                    lc.Range = 15.0f;
+                    e.GetComponent<PyEngine::TransformComponent>().Position = {0.0f, 3.0f, 0.0f};
+                    SelectEntity(e);
                 }
                 if (ImGui::MenuItem("Spot Light")) {
                     auto e = m_ActiveScene->CreateEntity("Spot Light");
-                    e.AddComponent<PyEngine::LightComponent>().LightType = PyEngine::LightComponent::Type::Spot;
+                    auto& lc = e.AddComponent<PyEngine::LightComponent>();
+                    lc.LightType = PyEngine::LightComponent::Type::Spot;
+                    lc.Intensity = 2.0f;
+                    e.GetComponent<PyEngine::TransformComponent>().Position = {0.0f, 3.0f, 0.0f};
+                    e.GetComponent<PyEngine::TransformComponent>().Rotation = {-45.0f, 0.0f, 0.0f};
+                    SelectEntity(e);
                 }
                 ImGui::EndMenu();
             }
@@ -536,13 +571,15 @@ void EditorLayer::DrawMenuBar() {
             if (ImGui::MenuItem("Camera")) {
                 auto e = m_ActiveScene->CreateEntity("Camera");
                 e.AddComponent<PyEngine::CameraComponent>();
+                e.GetComponent<PyEngine::TransformComponent>().Position = {0.0f, 2.0f, 5.0f};
+                e.GetComponent<PyEngine::TransformComponent>().Rotation = {-10.0f, 0.0f, 0.0f};
+                SelectEntity(e);
             }
 
             ImGui::EndMenu();
         }
 
         if (ImGui::BeginMenu("Component")) {
-            // If unity-like, could add components to selected entity here.
             ImGui::TextDisabled("Use Inspector instead.");
             ImGui::EndMenu();
         }
@@ -563,8 +600,25 @@ void EditorLayer::DrawMenuBar() {
         }
 
         if (ImGui::BeginMenu("Help")) {
-            ImGui::TextDisabled("PyEngine (by Pyrena)");
+            ImGui::Text("PyEngine v0.1.0");
+            ImGui::Separator();
+            ImGui::TextDisabled("C++20 / Vulkan 1.3 / Python Scripting");
+            ImGui::TextDisabled("by Pyrena Studios");
+            ImGui::Separator();
+            ImGui::TextDisabled("Scripting: Python via pybind11");
+            ImGui::TextDisabled("ECS: EnTT");
+            ImGui::TextDisabled("Physics: Custom Engine");
+            ImGui::TextDisabled("AI: Behavior Tree + NavMesh");
             ImGui::EndMenu();
+        }
+
+        // ── Right-aligned scene name ─────────────────────────
+        float rightOffset = ImGui::GetWindowContentRegionMax().x - 200.0f;
+        if (rightOffset > ImGui::GetCursorPosX()) {
+            ImGui::SameLine(rightOffset);
+            ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.5f, 0.5f, 0.5f, 1.0f));
+            ImGui::Text("Scene: %s", m_ActiveScene ? m_ActiveScene->GetName().c_str() : "None");
+            ImGui::PopStyleColor();
         }
 
         ImGui::EndMenuBar();
@@ -572,88 +626,81 @@ void EditorLayer::DrawMenuBar() {
 }
 
 void EditorLayer::NewScene() {
-    m_ActiveScene = std::make_shared<PyEngine::Scene>();
+    m_ActiveScene = std::make_shared<PyEngine::Scene>("Untitled");
     m_ActiveScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
     m_HierarchyPanel.SetScene(m_ActiveScene);
     m_CurrentScenePath = "";
 
-    // Camera
+    // ── Camera ─────────────────────────────────────────────
     auto camera = m_ActiveScene->CreateEntity("Main Camera");
     camera.AddComponent<PyEngine::CameraComponent>();
-    auto& tc = camera.GetComponent<PyEngine::TransformComponent>();
-    tc.Position = {4.0f, 4.0f, 8.0f};
-    tc.Rotation = {-20.0f, 25.0f, 0.0f};
+    auto& camTc = camera.GetComponent<PyEngine::TransformComponent>();
+    camTc.Position = {0.0f, 3.0f, 8.0f};
+    camTc.Rotation = {-15.0f, 0.0f, 0.0f};
 
-    // Floor
+    // ── Floor ──────────────────────────────────────────────
     auto floor = m_ActiveScene->CreateEntity("Floor");
     auto& floorMesh = floor.AddComponent<PyEngine::MeshRendererComponent>();
-    floorMesh.MeshID = 2; // Plane
-    floorMesh.ColorTint = {0.2f, 0.2f, 0.25f, 1.0f};
-    floorMesh.Roughness = 0.9f;
+    floorMesh.MeshID = 2;  // Plane
+    floorMesh.ColorTint = {0.18f, 0.18f, 0.22f, 1.0f};
+    floorMesh.Roughness = 0.95f;
     floorMesh.Metallic = 0.0f;
     auto& floorTc = floor.GetComponent<PyEngine::TransformComponent>();
-    floorTc.Position = {0.0f, -0.5f, 0.0f};
-    floorTc.Scale = {10.0f, 1.0f, 10.0f};
+    floorTc.Position = {0.0f, 0.0f, 0.0f};
+    floorTc.Scale = {15.0f, 1.0f, 15.0f};
 
-    // Center Cube (Shiny Metal)
+    // ── Center Cube ────────────────────────────────────────
     auto cube = m_ActiveScene->CreateEntity("Cube");
     auto& cubeMesh = cube.AddComponent<PyEngine::MeshRendererComponent>();
-    cubeMesh.MeshID = 0; // Cube
-    cubeMesh.ColorTint = {0.1f, 0.5f, 0.9f, 1.0f};
-    cubeMesh.Metallic = 0.8f;
-    cubeMesh.Roughness = 0.2f;
+    cubeMesh.MeshID = 0;
+    cubeMesh.ColorTint = {0.15f, 0.55f, 0.85f, 1.0f};
+    cubeMesh.Metallic = 0.7f;
+    cubeMesh.Roughness = 0.25f;
     auto& cubeTc = cube.GetComponent<PyEngine::TransformComponent>();
     cubeTc.Position = {0.0f, 0.5f, 0.0f};
 
-    // Sphere (Smooth Plastic)
-    auto sphere1 = m_ActiveScene->CreateEntity("Sphere1");
-    auto& sphere1Mesh = sphere1.AddComponent<PyEngine::MeshRendererComponent>();
-    sphere1Mesh.MeshID = 1; // Sphere
-    sphere1Mesh.ColorTint = {0.9f, 0.2f, 0.3f, 1.0f};
-    sphere1Mesh.Metallic = 0.0f;
-    sphere1Mesh.Roughness = 0.4f;
-    auto& sphere1Tc = sphere1.GetComponent<PyEngine::TransformComponent>();
-    sphere1Tc.Position = {-2.5f, 0.5f, -1.0f};
-    sphere1Tc.Scale = {1.5f, 1.5f, 1.5f};
+    // ── Sphere (left) ──────────────────────────────────────
+    auto sphere = m_ActiveScene->CreateEntity("Sphere");
+    auto& sphereMesh = sphere.AddComponent<PyEngine::MeshRendererComponent>();
+    sphereMesh.MeshID = 1;
+    sphereMesh.ColorTint = {0.85f, 0.25f, 0.3f, 1.0f};
+    sphereMesh.Metallic = 0.1f;
+    sphereMesh.Roughness = 0.5f;
+    auto& sphereTc = sphere.GetComponent<PyEngine::TransformComponent>();
+    sphereTc.Position = {-3.0f, 0.5f, 0.0f};
 
-    // Cylinder (Polished Gold)
+    // ── Cylinder (right) ───────────────────────────────────
     auto cyl = m_ActiveScene->CreateEntity("Cylinder");
     auto& cylMesh = cyl.AddComponent<PyEngine::MeshRendererComponent>();
-    cylMesh.MeshID = 3; // Cylinder
-    cylMesh.ColorTint = {1.0f, 0.85f, 0.0f, 1.0f};
-    cylMesh.Metallic = 1.0f;
-    cylMesh.Roughness = 0.1f;
+    cylMesh.MeshID = 3;
+    cylMesh.ColorTint = {0.95f, 0.75f, 0.1f, 1.0f};
+    cylMesh.Metallic = 0.9f;
+    cylMesh.Roughness = 0.15f;
     auto& cylTc = cyl.GetComponent<PyEngine::TransformComponent>();
-    cylTc.Position = {2.5f, 0.5f, -1.5f};
-    cylTc.Scale = {1.0f, 2.0f, 1.0f};
+    cylTc.Position = {3.0f, 0.75f, 0.0f};
+    cylTc.Scale = {0.8f, 1.5f, 0.8f};
 
-    // Lighting — Directional (main sun)
+    // ── Directional Light (main sun) ───────────────────────
     auto dirLight = m_ActiveScene->CreateEntity("Directional Light");
     auto& dLightComp = dirLight.AddComponent<PyEngine::LightComponent>();
-    dLightComp.Color = {0.9f, 0.9f, 1.0f};
-    dLightComp.Intensity = 0.8f;
+    dLightComp.Color = {1.0f, 0.95f, 0.9f};
+    dLightComp.Intensity = 1.0f;
+    dLightComp.CastShadows = true;
     auto& dLightTc = dirLight.GetComponent<PyEngine::TransformComponent>();
-    dLightTc.Rotation = {-45.0f, -30.0f, 0.0f};
+    dLightTc.Rotation = {-50.0f, -30.0f, 0.0f};
 
-    // Point Light (warm orange)
+    // ── Point Light (warm fill) ────────────────────────────
     auto pointLight = m_ActiveScene->CreateEntity("Point Light");
     auto& pLightComp = pointLight.AddComponent<PyEngine::LightComponent>();
     pLightComp.LightType = PyEngine::LightComponent::Type::Point;
-    pLightComp.Color = {0.8f, 0.3f, 0.1f};
-    pLightComp.Intensity = 2.0f;
-    pLightComp.Range = 15.0f;
+    pLightComp.Color = {1.0f, 0.6f, 0.3f};
+    pLightComp.Intensity = 1.5f;
+    pLightComp.Range = 20.0f;
     auto& pLightTc = pointLight.GetComponent<PyEngine::TransformComponent>();
-    pLightTc.Position = {-2.0f, 2.0f, 2.0f};
+    pLightTc.Position = {-3.0f, 3.0f, 3.0f};
 
-    // Point Light 2 (cool blue)
-    auto pointLight2 = m_ActiveScene->CreateEntity("Point Light 2");
-    auto& pLight2Comp = pointLight2.AddComponent<PyEngine::LightComponent>();
-    pLight2Comp.LightType = PyEngine::LightComponent::Type::Point;
-    pLight2Comp.Color = {0.2f, 0.4f, 1.0f};
-    pLight2Comp.Intensity = 1.5f;
-    pLight2Comp.Range = 12.0f;
-    auto& pLight2Tc = pointLight2.GetComponent<PyEngine::TransformComponent>();
-    pLight2Tc.Position = {3.0f, 3.0f, 3.0f};
+    // Reset editor camera to look at origin
+    m_EditorCamera = PyEngine::EditorCamera(60.0f, 1.778f, 0.1f, 1000.0f);
 }
 
 void EditorLayer::OpenScene() {
