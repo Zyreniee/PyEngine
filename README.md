@@ -17,6 +17,8 @@
 
 </div>
 
+![PyEngine Editor Preview](./docs/editor_screenshot.png)
+
 ---
 
 ## About PyEngine
